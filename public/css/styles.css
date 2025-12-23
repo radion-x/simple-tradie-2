@@ -2553,7 +2553,7 @@ chat-message.ai p + h4 {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xl);
     text-align: center;
-    border: 1px solid rgba(74, 93, 79, 0.1);
+    border: 1px solid rgba(74, 93, 79, 0.15);
 }
 
 .pricing-hero-card h2 {
@@ -2679,205 +2679,6 @@ chat-message.ai p + h4 {
 .comparison-table th {
     font-size: 0.9rem;
     font-weight: 700;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.comparison-table td {
-    font-size: 1rem;
-    color: var(--color-text-main);
-}
-
-.comparison-table tbody td:first-child {
-    text-align: left;
-    font-weight: 600;
-    color: var(--color-text-main);
-}
-
-.comparison-table .simplepage-col {
-    background: #f7f5f0; /* Warm Cream */
-    font-weight: 700;
-}
-
-.comparison-table .total-cost-row {
-    background: #F0FDF4; /* Light green */
-}
-
-.comparison-table .total-cost-row .simplepage-col {
-    background: #D1FAE5; /* Slightly darker green */
-}
-
-.comparison-table .cell-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-}
-
-.comparison-table .check svg {
-    color: var(--color-accent); /* Wattle Gold */
-}
-
-.comparison-table td.check .cell-content {
-    color: var(--color-text-main);
-}
-
-.comparison-table td.cross .cell-content {
-    color: #9ca3af; /* Grey for cross */
-}
-
-/* Add-ons Section */
-.addons-section {
-    padding: clamp(4rem, 8vw, 6rem) 0;
-}
-
-.addons-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--space-lg);
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: stretch; /* Ensures cards in the same row have same height */
-}
-
-.addon-card {
-       display: flex;
-    flex-direction: column; /* Stack content vertically */
-    text-align: center; /* Center align text */
-    align-items: center; /* Center align items */
-    gap: var(--space-sm);
-    background: white;
-    padding: var(--space-lg);
-    border-radius: var(--radius-xl);
-    border: var(--border-light);
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-sm);
-    height: 100%; /* Make card fill grid cell height */
-    position: relative;
-}
-
-.addon-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--accent-indigo);
-}
-.addon-card.featured {
-   border-color: var(--accent-cyan);
-   box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
-   transform: scale(1.05);
-}
-
-.addon-card.featured:hover {
-   transform: scale(1.05) translateY(-5px);
-}
-
-.addon-card.featured::before {
-   content: "Recommended";
-   position: absolute;
-   top: -15px;
-   left: 50%;
-   transform: translateX(-50%);
-   background: var(--gradient-primary);
-   color: white;
-   padding: 0.3rem 1rem;
-   border-radius: var(--radius-full);
-   font-size: 0.8rem;
-   font-weight: 700;
-   box-shadow: 0 2px 8px rgba(74, 93, 79, 0.3);
-}
-
-.addon-icon {
-    flex-shrink: 0;
-    width: 56px;
-    height: 56px;
-    background: var(--gradient-soft);
-    border-radius: var(--radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-indigo);
-    transition: all 0.3s ease;
-    margin-bottom: var(--space-sm);
-}
-
-.addon-card:hover .addon-icon {
-    background: var(--gradient-primary);
-    color: white;
-    transform: scale(1.1) rotate(-5deg);
-}
-
-.addon-content {
-    flex-grow: 1; /* Allow content to grow */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Space out content and price */
-    width: 100%;
-}
-
-.addon-title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0 0 0.25rem 0;
-}
-
-.addon-description {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    margin: 0 0 var(--space-md) 0;
-    max-width: none; /* Override default p max-width */
-    flex-grow: 1;
-}
-
-.addon-price {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--accent-indigo);
-    background: var(--bg-hover);
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-full);
-    white-space: nowrap;
-    margin-top: auto; /* Push price to the bottom */
-    align-self: center;
-}
-
-/* 16. COMPARISON TABLE */
-.comparison-table-wrapper {
-    background: var(--color-bg-surface); /* White */
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(74, 93, 79, 0.2);
-    box-shadow: var(--shadow-lg);
-    overflow: hidden;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-}
-
-.comparison-table th,
-.comparison-table td {
-    padding: 1.25rem 1rem;
-    border-bottom: 1px solid rgba(74, 93, 79, 0.1);
-    vertical-align: middle;
-}
-
-.comparison-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-.comparison-table thead {
-    background: var(--color-primary); /* Eucalyptus */
-}
-
-.comparison-table th {
-    font-size: 0.9rem;
-    font-weight: 700;
     color: white; /* White */
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -2915,6 +2716,69 @@ chat-message.ai p + h4 {
 
 .comparison-table td.cross .cell-content {
     color: #9ca3af; /* Grey for cross */
+}
+
+/* Pricing Card Styles */
+.pricing-card {
+    background: var(--color-bg-surface); /* Crisp white */
+    border: 1px solid rgba(74, 93, 79, 0.15);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+.pricing-card.featured {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(235, 201, 68, 0.2);
+    transform: scale(1.02);
+}
+
+.pricing-card.featured:hover {
+    transform: scale(1.02) translateY(-5px);
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-name {
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+}
+
+.pricing-ideal {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    flex-grow: 1;
+}
+
+.pricing-features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e0e0e0;
+    color: var(--text-secondary);
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
 }
 
 
