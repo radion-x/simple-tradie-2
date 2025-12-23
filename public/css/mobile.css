@@ -1000,72 +1000,28 @@
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     }
 
-    /* Typing indicator mobile */
-    .chat-message.typing {
-        background: #ffffff;
-        border: 1px solid #e5e7eb;
-        padding: 14px 20px;
-        border-radius: 16px;
-        border-bottom-left-radius: 6px;
+    /* ============================================
+       NEW PRICING SECTION - MOBILE
+       ============================================ */
+       .pricing-hero-card {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
     }
 
-    /* Streaming cursor mobile */
-    .streaming-cursor {
-        height: 1em;
+    .pricing-hero-card h2 {
+        font-size: 1.75rem !important;
     }
 
-    /* Suggested questions - mobile */
-    .chat-suggestions {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        padding: 0.25rem 0;
-        margin-top: 0.25rem;
+    .price-display .price-amount {
+        font-size: 3rem !important;
     }
 
-    .suggestion-btn {
-        background: white;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 0.75rem 1rem;
-        font-size: 0.9rem;
-        color: var(--color-primary);
-        cursor: pointer;
-        text-align: left;
-        transition: all 0.15s ease;
-        font-weight: 500;
+    .price-display .price-amount-small {
+        font-size: 1.5rem !important;
     }
 
-    .suggestion-btn:active {
-        background: var(--bg-surface-hover);
-        border-color: var(--color-primary);
-        transform: scale(0.98);
-    }
-
-    .chat-input-container,
-    .chat-form {
-        padding: 0.875rem 1rem;
-        background: #ffffff;
-        border-top: 1px solid #e5e7eb;
-    }
-
-    .chat-input-container input,
-    .chat-form input {
-        padding: 0.875rem 1.125rem;
-        font-size: 1rem;
-        min-height: 48px;
-        border-radius: 24px;
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-    }
-
-    .chat-input-container button,
-    .chat-form button {
-        width: 48px;
-        height: 48px;
-        border-radius: 24px;
-        background: linear-gradient(135deg, #4A5D4F 0%, #6b7d72 100%);
-        box-shadow: 0 2px 8px rgba(74, 93, 79, 0.25);
+    .benefits-list {
+        gap: 0.75rem;
     }
 
     /* ============================================
