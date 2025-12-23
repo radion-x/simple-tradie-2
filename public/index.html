@@ -35,6 +35,7 @@
 
     <link rel="stylesheet" href="/css/styles.css?v=10">
     <link rel="stylesheet" href="/css/mobile.css?v=10">
+    <link rel="stylesheet" href="/css/contactModal.css">
     
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -301,7 +302,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <h1>3 Steps. 3 Minutes. Done.</h1>
                 <p class="hero-subtitle">The fastest way to get a professional trade website without the headache.</p>
                 <div class="hero-buttons">
-                    <a href="#pricing" class="btn btn-primary">
+                    <a onclick="openContactModal()" class="btn btn-primary" style="cursor: pointer;">
                         <span>Get Started - $997 Setup</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </a>
@@ -458,7 +459,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         No Lock-in Contracts (Cancel anytime)
                     </li>
                 </ul>
-                <a href="#contact" class="btn btn-primary btn-full">GET MY SITE STARTED</a>
+                <a onclick="openContactModal()" class="btn btn-primary btn-full" style="cursor: pointer;">GET MY SITE STARTED</a>
             </div>
 
             <div class="comparison-table-wrapper">
@@ -671,7 +672,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <p class="about-cta-description">Stop losing customers to competitors with better websites.</p>
                 
                 <div class="about-cta-buttons">
-                    <a href="#pricing" class="btn btn-primary btn-lg">
+                    <a onclick="openContactModal()" class="btn btn-primary btn-lg" style="cursor: pointer;">
                         <span>Get Started Now</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </a>
@@ -696,7 +697,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <ul class="footer-links">
                         <li><a href="/">Home</a></li>
                         <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="/admin">Login to Dashboard</a></li>
+                        <li><a href="/admin/callbacks.html">Login to Dashboard</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -708,7 +709,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="footer-copyright">&copy; <span id="current-year"></span> Simple Page. All Rights Reserved.</p>
+                <p class="footer-copyright">&copy; <span id="current-year"></span> Simple Page. All Rights Reserved. <a href="/admin/callbacks.html" class="admin-link">Staff Login</a></p>
                 <div class="australian-owned">
                     <span>Proudly Australian Owned & Operated</span>
                 </div>
@@ -842,5 +843,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
         });
     </script>
+    
+    <!-- Contact Modal -->
+    <script src="/js/contactModal.js"></script>
 </body>
 </html>

@@ -1,0 +1,210 @@
+/* Contact Modal Styles */
+.contact-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.contact-modal.active {
+    opacity: 1;
+}
+
+.contact-modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.contact-modal-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    margin: 0 1rem;
+    overflow-y: auto;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.contact-modal.active .contact-modal-container {
+    transform: translateY(0);
+}
+
+.contact-modal-content {
+    background: white;
+    border-radius: var(--radius-xl, 24px);
+    padding: 2.5rem;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.contact-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b7280;
+    transition: all 0.2s;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.contact-modal-close:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    transform: rotate(90deg);
+}
+
+.contact-modal-header {
+    margin-bottom: 2rem;
+}
+
+.contact-modal-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #111827;
+}
+
+.contact-modal-header p {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+.contact-modal-form {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.contact-modal-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-modal-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+.contact-modal-form input,
+.contact-modal-form select,
+.contact-modal-form textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--radius-md, 12px);
+    font-size: 1rem;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.contact-modal-form input:focus,
+.contact-modal-form select:focus,
+.contact-modal-form textarea:focus {
+    outline: none;
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.contact-modal-form input.error,
+.contact-modal-form select.error,
+.contact-modal-form textarea.error {
+    border-color: #ef4444;
+}
+
+.contact-modal-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-modal-form .btn-full {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    margin-top: 0.5rem;
+}
+
+.contact-modal-form .form-status {
+    padding: 1rem;
+    border-radius: var(--radius-md, 12px);
+    text-align: center;
+    font-weight: 500;
+}
+
+.contact-modal-form .form-status.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.contact-modal-form .form-status.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .contact-modal-container {
+        max-width: 100%;
+        max-height: 100vh;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .contact-modal-content {
+        padding: 2rem 1.5rem;
+        border-radius: 0;
+        min-height: 100vh;
+    }
+
+    .contact-modal-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-modal-close {
+        top: 1rem;
+        right: 1rem;
+    }
+}
+
+/* Scrollbar styling for modal content */
+.contact-modal-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contact-modal-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.contact-modal-container::-webkit-scrollbar-thumb {
+    background: rgba(37, 99, 235, 0.5);
+    border-radius: 10px;
+}
+
+.contact-modal-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(37, 99, 235, 0.7);
+}

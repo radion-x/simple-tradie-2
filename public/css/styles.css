@@ -1800,6 +1800,22 @@ header > .nav-container {
     margin: 0;
 }
 
+/* Discreet Admin Link */
+.admin-link {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.75rem;
+    text-decoration: none;
+    margin-left: 0.5rem;
+    transition: all 0.2s ease;
+    opacity: 0.5;
+}
+
+.admin-link:hover {
+    color: rgba(255, 255, 255, 0.9);
+    opacity: 1;
+    text-decoration: underline;
+}
+
 .australian-owned {
     display: flex;
     align-items: center;

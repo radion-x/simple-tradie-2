@@ -24,20 +24,21 @@
         body.admin-body {
             background-color: var(--admin-bg);
             min-height: 100vh;
+            margin: 0;
             padding: 0;
             font-family: var(--font-body, sans-serif);
             color: var(--admin-text-main);
             line-height: 1.6;
         }
 
-        /* Login Screen - Modern & Clean */
+        /* Login Screen - Simplified Centering */
         .login-screen {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: grid;
+            place-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, rgba(74, 93, 79, 0.05) 0%, rgba(235, 201, 68, 0.03) 100%);
+            width: 100%;
             padding: 2rem;
+            background: linear-gradient(135deg, rgba(74, 93, 79, 0.05) 0%, rgba(235, 201, 68, 0.03) 100%);
         }
 
         .login-card {
