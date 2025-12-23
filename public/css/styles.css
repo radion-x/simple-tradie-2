@@ -2781,4 +2781,100 @@ chat-message.ai p + h4 {
     border-bottom: none;
 }
 
+/* ===== ADDON CARDS / DASHBOARD SECTION ===== */
+.addon-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: var(--space-sm);
+    background: white;
+    padding: var(--space-lg);
+    border-radius: var(--radius-xl);
+    border: var(--border-light);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    height: 100%;
+    position: relative;
+}
+
+.addon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-indigo);
+}
+
+.addon-card.featured {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
+    transform: scale(1.05);
+}
+
+.addon-card.featured:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+
+.addon-card.featured::before {
+    content: "Recommended";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.addon-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    background: var(--gradient-soft);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-indigo);
+    transition: all 0.3s ease;
+    margin-bottom: var(--space-sm);
+}
+
+.addon-card:hover .addon-icon {
+    background: var(--gradient-primary);
+    color: white;
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.addon-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.addon-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem 0;
+}
+
+.addon-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0 0 var(--space-md) 0;
+    max-width: none;
+    flex-grow: 1;
+}
+
+.addons-section {
+    padding: 5rem 0;
+}
+
 
