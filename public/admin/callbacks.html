@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Requests - Admin Dashboard | Websited</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        :root {
+            --admin-bg: var(--color-bg-body, #F7F5F0);
+            --admin-surface: var(--color-bg-surface, #FFFFFF);
+            --admin-primary: var(--color-primary, #4A5D4F);
+            --admin-accent: var(--color-accent, #EBC944);
+            --admin-text-main: var(--color-text-main, #2C352E);
+            --admin-text-secondary: var(--text-secondary, #4a5a50);
+            --admin-border-light: #e0e0e0;
+            --admin-success: #10B981;
+            --admin-warning: #F59E0B;
+            --admin-danger: #EF4444;
+            --admin-info: #06B6D4;
+        }
+
+        /* Base Styles */
+        body.admin-body {
+            background-color: var(--admin-bg);
+            min-height: 100vh;
+            padding: 0;
+            font-family: var(--font-body, sans-serif);
+            color: var(--admin-text-main);
+            line-height: 1.6;
+        }
+
+        /* Login Screen - Modern & Clean */
+        .login-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(74, 93, 79, 0.05) 0%, rgba(235, 201, 68, 0.03) 100%);
+            padding: 2rem;
+        }
+
+        .login-card {
+            background: var(--admin-surface);
+            border-radius: var(--radius-xl, 32px);
+            padding: 3rem;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(74, 93, 79, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .login-card h2 {
+            font-family: var(--font-heading, sans-serif);
+            color: var(--admin-primary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+        
+        .login-card .login-subtitle {
+            color: var(--admin-text-secondary);
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: var(--admin-text-main);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--admin-border-light);
+            border-radius: var(--radius-md, 12px);
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-sizing: border-box;
+            background: #fafbfc;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--admin-primary);
+            box-shadow: 0 0 0 4px rgba(74, 93, 79, 0.15);
+            background: white;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md, 12px);
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(74, 93, 79, 0.2);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(74, 93, 79, 0.3);
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            color: #991b1b;
+            padding: 1.25rem;
+            border-radius: var(--radius-md, 12px);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border-left: 4px solid var(--admin-danger);
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        /* Admin Dashboard - Professional Layout */
+        .admin-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            background: var(--admin-surface);
+            border-radius: var(--radius-xl, 24px);
+            padding: 2rem 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            border: 1px solid var(--admin-border-light);
+        }
+
+        .admin-header-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .admin-header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: var(--admin-primary);
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .admin-header-subtitle {
+            margin: 0.5rem 0 0;
+            color: var(--admin-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .logout-btn {
+            background: var(--admin-danger);
+            color: white;
+            border: none;
+            padding: 0.875rem 1.5rem;
+            border-radius: var(--radius-md, 12px);
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .logout-btn:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(239, 68, 68, 0.3);
+        }
+        
+        /* Stats Grid - Modern Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--admin-surface);
+            border-radius: var(--radius-lg, 20px);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--admin-border-light);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-primary);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(74, 93, 79, 0.2);
+        }
+
+        .stat-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .stat-card .label {
+            font-size: 0.875rem;
+            color: var(--admin-text-secondary);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--admin-primary);
+            line-height: 1;
+        }
+        
+        .stat-card .value.pending {
+            color: var(--admin-warning);
+        }
+        
+        .stat-card .value.contacted {
+            color: var(--admin-info);
+        }
+        
+        .stat-card .value.completed {
+            color: var(--admin-success);
+        }
+        
+        /* Filters Section - Clean & Organized */
+        .filters-card {
+            background: var(--admin-surface);
+            border-radius: var(--radius-xl, 24px);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--admin-border-light);
+        }
+
+        .filters-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filters-header h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--admin-primary);
+            font-weight: 700;
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            align-items: end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--admin-text-main);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-group input,
+        .filter-group select {
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--admin-border-light);
+            border-radius: var(--radius-md, 12px);
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            background: #fafbfc;
+            font-family: var(--font-body);
+        }
+
+        .filter-group input:focus,
+        .filter-group select:focus {
+            outline: none;
+            border-color: var(--admin-primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(74, 93, 79, 0.1);
+        }
+
+        .filter-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.875rem 1.5rem;
+            border-radius: var(--radius-md, 12px);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(74, 93, 79, 0.3);
+        }
+
+        .filter-btn.secondary {
+            background: var(--admin-accent);
+            color: var(--admin-primary);
+        }
+
+        .filter-btn.secondary:hover {
+            background: #d4b53a;
+            box-shadow: 0 6px 16px rgba(235, 201, 68, 0.3);
+        }
+        
+        /* Table - Modern & Readable */
+        .table-card {
+            background: var(--admin-surface);
+            border-radius: var(--radius-xl, 24px);
+            padding: 0;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--admin-border-light);
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 1.5rem 2rem;
+            background: #f7f5f0;
+            border-bottom: 1px solid var(--admin-border-light);
+        }
+
+        .table-header h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--admin-primary);
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f7f5f0;
+        }
+
+        thead th {
+            text-align: left;
+            padding: 1rem 1.5rem;
+            font-weight: 700;
+            color: var(--admin-primary) !important;
+            border-bottom: 2px solid var(--admin-border-light);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tbody td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--admin-border-light);
+            color: var(--admin-text-main) !important;
+            vertical-align: middle;
+        }
+
+        tbody tr {
+            transition: all 0.2s;
+        }
+
+        tbody tr:hover {
+            background: rgba(74, 93, 79, 0.03);
+            cursor: pointer;
+        }
+
+        tbody tr.highlighted {
+            background: rgba(255, 243, 199, 0.5);
+            animation: highlight-fade 2s ease-in-out;
+        }
+
+        @keyframes highlight-fade {
+            0%, 100% { background: rgba(255, 243, 199, 0.5); }
+            50% { background: rgba(255, 230, 138, 0.5); }
+        }
+
+        /* Status Badges - Color Coded */
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-pending {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--admin-warning);
+        }
+
+        .status-contacted {
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--admin-info);
+        }
+
+        .status-completed {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--admin-success);
+        }
+
+        /* Source Badges - Color Coded */
+        .source-badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .source-chatbot {
+            background: rgba(74, 93, 79, 0.1);
+            color: var(--admin-primary);
+        }
+
+        .source-contact_form {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--admin-danger);
+        }
+
+        .source-footer_form {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--admin-info);
+        }
+
+        .source-download_chat {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--admin-success);
+        }
+
+        /* Status Select - Modern */
+        .status-select {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--admin-border-light);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            font-weight: 600;
+            color: var(--admin-text-main);
+        }
+
+        .status-select:hover {
+            border-color: var(--admin-primary);
+        }
+
+        /* Modal - Clean & Professional */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.show {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: var(--admin-surface);
+            border-radius: var(--radius-xl, 24px);
+            padding: 2.5rem;
+            max-width: 900px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--admin-border-light);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--admin-text-secondary);
+            transition: all 0.3s;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .modal-close:hover {
+            color: var(--admin-danger);
+            background: rgba(239, 68, 68, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .modal h3 {
+            margin-top: 0;
+            margin-bottom: 2rem;
+            font-size: 1.75rem;
+            color: var(--admin-primary);
+            font-weight: 800;
+        }
+
+        .detail-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .detail-item {
+            padding: 1.25rem;
+            background: #fafbfc;
+            border-radius: var(--radius-md, 12px);
+            border: 1px solid var(--admin-border-light);
+        }
+
+        .detail-item label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--admin-text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-item .value {
+            color: var(--admin-text-main);
+            font-size: 1rem;
+            word-break: break-word;
+        }
+
+        .conversation-context {
+            background: #f3f4f6;
+            padding: 1.5rem;
+            border-radius: var(--radius-md, 12px);
+            border-left: 4px solid var(--admin-primary);
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            grid-column: 1 / -1;
+        }
+
+        /* Loading & Empty States */
+        .loading {
+            text-align: center;
+            padding: 4rem;
+            color: var(--admin-text-secondary);
+        }
+
+        .spinner {
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid var(--admin-primary);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--admin-text-secondary);
+        }
+
+        .empty-state svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1.5rem;
+            opacity: 0.4;
+            color: var(--admin-primary);
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--admin-primary);
+        }
+
+        .empty-state p {
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Pagination - Modern */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #fafbfc;
+            border-top: 1px solid var(--admin-border-light);
+        }
+
+        .pagination button {
+            padding: 0.75rem 1.25rem;
+            background: var(--admin-surface);
+            border: 2px solid var(--admin-border-light);
+            border-radius: var(--radius-md, 12px);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .pagination button:hover:not(:disabled) {
+            border-color: var(--admin-primary);
+            background: rgba(74, 93, 79, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .pagination button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .pagination .page-info {
+            padding: 0 1.25rem;
+            color: var(--admin-text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body.admin-body {
+                padding: 0;
+            }
+
+            .admin-container {
+                padding: 1rem;
+            }
+
+            .admin-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.75rem 1rem;
+                white-space: nowrap;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .login-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PWLGQNHF');</script>
+<!-- End Google Tag Manager -->
+<body class="admin-body">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWLGQNHF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-card">
+            <h2>🔐 Admin Login</h2>
+            <p class="login-subtitle">Please enter your password to access the dashboard.</p>
+            <div id="loginError" class="error-message" style="display: none;"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required autofocus>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-container" style="display: none;">
+        <!-- Header -->
+        <div class="admin-header">
+            <div class="admin-header-content">
+                <h1>📞 Callback Requests Dashboard</h1>
+                <p class="admin-header-subtitle">Manage and track customer callback requests</p>
+            </div>
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="label">Total Requests</div>
+                <div class="value" id="statTotal">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Pending</div>
+                <div class="value" id="statPending">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Contacted</div>
+                <div class="value" id="statContacted">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Completed</div>
+                <div class="value" id="statCompleted">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Last 7 Days</div>
+                <div class="value" id="statWeek">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Last 30 Days</div>
+                <div class="value" id="statMonth">-</div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-card">
+            <div class="filters-header">
+                <h3>🔍 Filter & Search</h3>
+            </div>
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label for="filterStatus">Status</label>
+                    <select id="filterStatus">
+                        <option value="">All</option>
+                        <option value="pending">Pending</option>
+                        <option value="contacted">Contacted</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterSource">Source</label>
+                    <select id="filterSource">
+                        <option value="">All Sources</option>
+                        <option value="chatbot">AI Chatbot</option>
+                        <option value="contact_form">Contact Form</option>
+                        <option value="footer_form">Footer Form</option>
+                        <option value="download_chat">Download Chat</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterSearch">Search</label>
+                    <input type="text" id="filterSearch" placeholder="Name, email, or phone">
+                </div>
+                <div class="filter-group">
+                    <label for="filterStartDate">Start Date</label>
+                    <input type="date" id="filterStartDate">
+                </div>
+                <div class="filter-group">
+                    <label for="filterEndDate">End Date</label>
+                    <input type="date" id="filterEndDate">
+                </div>
+                <div class="filter-group">
+                    <label>&nbsp;</label>
+                    <button id="applyFilters" class="filter-btn">Apply Filters</button>
+                </div>
+                <div class="filter-group">
+                    <label>&nbsp;</label>
+                    <button id="refreshBtn" class="filter-btn secondary">🔄 Refresh</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-card">
+            <div class="table-header">
+                <h3>📋 Callback Requests</h3>
+            </div>
+            <div id="loadingState" class="loading">
+                <div class="spinner"></div>
+                <div>Loading callback requests...</div>
+            </div>
+
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                </svg>
+                <h3>No callback requests found</h3>
+                <p>Callback requests will appear here when customers request a callback through the AI chat.</p>
+            </div>
+
+            <div id="tableContainer" style="display: none;">
+                <table id="callbacksTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Source</th>
+                            <th>Preferred Method</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="callbacksTableBody">
+                    </tbody>
+                </table>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button id="prevPage">← Previous</button>
+                    <span class="page-info" id="pageInfo">Page 1</span>
+                    <button id="nextPage">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h3>Callback Request Details</h3>
+            <div class="detail-grid" id="detailContent">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class CallbackDashboard {
+            constructor() {
+                this.password = sessionStorage.getItem('adminPassword');
+                this.currentPage = 1;
+                this.currentFilters = {};
+                this.init();
+            }
+
+            init() {
+                if (this.password) {
+                    this.showDashboard();
+                    this.loadData();
+                } else {
+                    this.showLogin();
+                }
+
+                // Event listeners
+                document.getElementById('loginForm').addEventListener('submit', (e) => this.handleLogin(e));
+                document.getElementById('logoutBtn').addEventListener('click', () => this.handleLogout());
+                document.getElementById('applyFilters').addEventListener('click', () => this.applyFilters());
+                document.getElementById('refreshBtn').addEventListener('click', () => this.loadData());
+                document.getElementById('prevPage').addEventListener('click', () => this.changePage(-1));
+                document.getElementById('nextPage').addEventListener('click', () => this.changePage(1));
+                document.getElementById('closeModal').addEventListener('click', () => this.closeModal());
+
+                // Check for URL params (highlight specific callback)
+                const urlParams = new URLSearchParams(window.location.search);
+                const highlightId = urlParams.get('id');
+                if (highlightId) {
+                    this.highlightCallbackId = highlightId;
+                }
+            }
+
+            showLogin() {
+                document.getElementById('loginScreen').style.display = 'block';
+                document.getElementById('adminDashboard').style.display = 'none';
+            }
+
+            showDashboard() {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+            }
+
+            async handleLogin(e) {
+                e.preventDefault();
+                const password = document.getElementById('password').value;
+
+                try {
+                    const response = await fetch('/api/admin/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ password })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        sessionStorage.setItem('adminPassword', password);
+                        this.password = password;
+                        this.showDashboard();
+                        this.loadData();
+                    } else {
+                        this.showError(data.error || 'Invalid password');
+                    }
+                } catch (error) {
+                    this.showError('Login failed. Please try again.');
+                }
+            }
+
+            handleLogout() {
+                sessionStorage.removeItem('adminPassword');
+                this.password = null;
+                this.showLogin();
+            }
+
+            showError(message) {
+                const errorDiv = document.getElementById('loginError');
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+                setTimeout(() => {
+                    errorDiv.style.display = 'none';
+                }, 5000);
+            }
+
+            async loadData() {
+                await Promise.all([
+                    this.loadStats(),
+                    this.loadCallbacks()
+                ]);
+            }
+
+            async loadStats() {
+                try {
+                    const response = await fetch('/api/callbacks-stats', {
+                        headers: { 'x-admin-password': this.password }
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        const stats = data.data;
+                        document.getElementById('statTotal').textContent = stats.total || 0;
+                        document.getElementById('statPending').textContent = stats.pending || 0;
+                        document.getElementById('statContacted').textContent = stats.contacted || 0;
+                        document.getElementById('statCompleted').textContent = stats.completed || 0;
+                        document.getElementById('statWeek').textContent = stats.last_7_days || 0;
+                        document.getElementById('statMonth').textContent = stats.last_30_days || 0;
+                    }
+                } catch (error) {
+                    console.error('Failed to load stats:', error);
+                }
+            }
+
+            async loadCallbacks() {
+                document.getElementById('loadingState').style.display = 'block';
+                document.getElementById('emptyState').style.display = 'none';
+                document.getElementById('tableContainer').style.display = 'none';
+
+                try {
+                    const params = new URLSearchParams({
+                        page: this.currentPage,
+                        limit: 50,
+                        ...this.currentFilters
+                    });
+
+                    const response = await fetch(`/api/callbacks?${params}`, {
+                        headers: { 'x-admin-password': this.password }
+                    });
+
+                    const data = await response.json();
+                    console.log('📊 Callbacks API Response:', data);
+                    console.log('📋 Total callbacks:', data.data ? data.data.length : 0);
+
+                    document.getElementById('loadingState').style.display = 'none';
+
+                    if (data.success && data.data && data.data.length > 0) {
+                        this.renderCallbacks(data.data, data.pagination);
+                        document.getElementById('tableContainer').style.display = 'block';
+                    } else {
+                        document.getElementById('emptyState').style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error('Failed to load callbacks:', error);
+                    document.getElementById('loadingState').style.display = 'none';
+                    document.getElementById('emptyState').style.display = 'block';
+                }
+            }
+
+            renderCallbacks(callbacks, pagination) {
+                const tbody = document.getElementById('callbacksTableBody');
+                tbody.innerHTML = '';
+
+                console.log('🔍 Rendering callbacks:', callbacks);
+                callbacks.forEach((callback, index) => {
+                    console.log(`📞 Callback #${index}:`, callback);
+                    const tr = document.createElement('tr');
+                    if (this.highlightCallbackId == callback.id) {
+                        tr.className = 'highlighted';
+                        setTimeout(() => {
+                            tr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 100);
+                    }
+
+                    const createdDate = new Date(callback.created_at);
+                    const formattedDate = createdDate.toLocaleString('en-AU', {
+                        day: '2-digit',
+                        month: 'short',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+
+                    tr.innerHTML = `
+                        <td><strong>#${callback.id}</strong></td>
+                        <td>${callback.name}</td>
+                        <td>${callback.phone || '-'}</td>
+                        <td>${callback.email || '-'}</td>
+                        <td><span class="source-badge source-${callback.source || 'chatbot'}">${this.formatSource(callback.source || 'chatbot')}</span></td>
+                        <td>${callback.preferred_contact_method || '-'}</td>
+                        <td><span class="status-badge status-${callback.status}">${callback.status}</span></td>
+                        <td>${formattedDate}</td>
+                        <td>
+                            <select class="status-select" data-id="${callback.id}" data-current="${callback.status}">
+                                <option value="pending" ${callback.status === 'pending' ? 'selected' : ''}>Pending</option>
+                                <option value="contacted" ${callback.status === 'contacted' ? 'selected' : ''}>Contacted</option>
+                                <option value="completed" ${callback.status === 'completed' ? 'selected' : ''}>Completed</option>
+                            </select>
+                        </td>
+                    `;
+
+                    tr.addEventListener('click', (e) => {
+                        if (!e.target.classList.contains('status-select')) {
+                            this.showDetails(callback);
+                        }
+                    });
+
+                    tbody.appendChild(tr);
+                });
+
+                // Add event listeners for status selects
+                document.querySelectorAll('.status-select').forEach(select => {
+                    select.addEventListener('change', (e) => {
+                        e.stopPropagation();
+                        this.updateStatus(select.dataset.id, select.value, select.dataset.current);
+                    });
+                });
+
+                // Update pagination
+                document.getElementById('pageInfo').textContent = 
+                    `Page ${pagination.page} of ${pagination.totalPages} (${pagination.total} total)`;
+                document.getElementById('prevPage').disabled = pagination.page === 1;
+                document.getElementById('nextPage').disabled = pagination.page >= pagination.totalPages;
+            }
+
+            showDetails(callback) {
+                const content = document.getElementById('detailContent');
+                content.innerHTML = `
+                    <div class="detail-item">
+                        <label>ID</label>
+                        <div class="value">#${callback.id}</div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Name</label>
+                        <div class="value">${callback.name}</div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Phone</label>
+                        <div class="value">${callback.phone || '-'}</div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Email</label>
+                        <div class="value">${callback.email || '-'}</div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Preferred Contact Method</label>
+                        <div class="value">${callback.preferred_contact_method || '-'}</div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Preferred Time</label>
+                        <div class="value">${callback.preferred_time || '-'}</div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Status</label>
+                        <div class="value"><span class="status-badge status-${callback.status}">${callback.status}</span></div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Message</label>
+                        <div class="value">${callback.message || '-'}</div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Created At</label>
+                        <div class="value">${new Date(callback.created_at).toLocaleString('en-AU')}</div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Updated At</label>
+                        <div class="value">${new Date(callback.updated_at).toLocaleString('en-AU')}</div>
+                    </div>
+                    ${callback.conversation_context ? `
+                        <div class="detail-item" style="grid-column: 1 / -1;">
+                            <label>Conversation Context</label>
+                            <div class="conversation-context">${callback.conversation_context}</div>
+                        </div>
+                    ` : ''}
+                `;
+
+                document.getElementById('detailModal').classList.add('show');
+            }
+
+            closeModal() {
+                document.getElementById('detailModal').classList.remove('show');
+            }
+
+            async updateStatus(id, newStatus, oldStatus) {
+                try {
+                    const response = await fetch(`/api/callbacks/${id}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'x-admin-password': this.password
+                        },
+                        body: JSON.stringify({ status: newStatus })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        // Reload data to update stats and table
+                        await this.loadData();
+                    } else {
+                        alert('Failed to update status: ' + data.error);
+                        // Revert select
+                        document.querySelector(`select[data-id="${id}"]`).value = oldStatus;
+                    }
+                } catch (error) {
+                    console.error('Failed to update status:', error);
+                    alert('Failed to update status');
+                    // Revert select
+                    document.querySelector(`select[data-id="${id}"]`).value = oldStatus;
+                }
+            }
+
+            formatSource(source) {
+                const sourceMap = {
+                    'chatbot': '🤖 AI Chat',
+                    'contact_form': '📝 Contact Form',
+                    'footer_form': '📋 Footer Form',
+                    'download_chat': '💬 Download Chat'
+                };
+                return sourceMap[source] || source;
+            }
+
+            applyFilters() {
+                this.currentFilters = {};
+                this.currentPage = 1;
+
+                const status = document.getElementById('filterStatus').value;
+                const source = document.getElementById('filterSource').value;
+                const search = document.getElementById('filterSearch').value;
+                const startDate = document.getElementById('filterStartDate').value;
+                const endDate = document.getElementById('filterEndDate').value;
+
+                if (status) this.currentFilters.status = status;
+                if (source) this.currentFilters.source = source;
+                if (search) this.currentFilters.search = search;
+                if (startDate) this.currentFilters.startDate = startDate;
+                if (endDate) this.currentFilters.endDate = endDate;
+
+                this.loadData();
+            }
+
+            changePage(direction) {
+                this.currentPage += direction;
+                this.loadCallbacks();
+            }
+        }
+
+        // Initialize dashboard
+        new CallbackDashboard();
+    </script>
+</body>
+</html>

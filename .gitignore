@@ -1,0 +1,67 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+# lockfiles are usually committed (package-lock.json / yarn.lock)
+
+# dotenv
+.env
+.env.local
+.env.*.local
+
+# Build / output
+dist/
+build/
+out/
+coverage/
+.nyc_output/
+public/uploads/
+uploads/
+tmp/
+temp/
+
+# Framework caches
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+
+# Logs
+logs/
+*.log
+pids/
+*.pid
+*.seed
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# SSH / keys / certs
+*.pem
+*.key
+*.crt
+
+# Misc
+coverage/
+*.tgz
+.cache/
+.eslintcache
+.cache-loader
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# Reference apps (not tracked)
+elite_checkup_loaded
+temp_repo/
+

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Affordable, professional websites for Sydney small businesses and tradies. Starting from $600. Mobile-friendly, fast, and transparent pricing.">
+    <meta name="keywords" content="affordable websites sydney, small business website design, tradie websites, cheap website design australia, simple page">
+    <meta name="author" content="Simple Page by Websited">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://websited.au/">
+    <title>Simple Page | Affordable Websites for Sydney Small Businesses</title>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Simple Page | Affordable Websites from $600">
+    <meta property="og:description" content="Professional, mobile-friendly websites for small businesses and tradies. No hidden fees. Get online in under 7 days.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://websited.au/">
+    <meta property="og:site_name" content="Simple Page">
+    <meta property="og:locale" content="en_AU">
+    <meta property="og:image" content="https://websited.au/images/og-image.jpg">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Simple Page | Affordable Websites from $600">
+    <meta name="twitter:description" content="Professional websites for Australian small businesses. Starting from just $600.">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Google Fonts: Outfit (Headings) & Work Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/styles.css?v=2">
+    <link rel="stylesheet" href="/css/mobile.css?v=2">
+    
+    <style>
+        /* Specific overrides for this page pivot */
+        .simple-difference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .difference-card {
+            background: var(--color-bg-surface); /* White */
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .difference-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(74, 93, 79, 0.2); /* Primary color border */
+        }
+        .difference-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1.5rem;
+            color: white;
+            background: var(--color-primary); /* Eucalyptus */
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            box-shadow: 0 5px 15px rgba(74, 93, 79, 0.2);
+            transition: all 0.3s ease;
+        }
+        .difference-card h3 {
+            color: var(--color-primary);
+        }
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .tech-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: var(--border-light);
+            border-left: none;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 3.5rem;
+            z-index: 1;
+        }
+        .tech-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
+            border-color: rgba(37, 99, 235, 0.5);
+        }
+        .pricing-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .pricing-card {
+            background: var(--color-bg-surface); /* White */
+            border: 1px solid rgba(74, 93, 79, 0.2); /* Low opacity primary */
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .pricing-card .badge {
+            background-color: var(--color-accent); /* Gold */
+            color: var(--color-primary); /* Dark Green */
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 700;
+            align-self: flex-start;
+            margin-bottom: 1rem;
+        }
+        .pricing-range {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            color: var(--color-primary); /* Dark Green */
+            margin: 1rem 0;
+        }
+        .pricing-card .btn {
+            background: transparent;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            margin-top: auto; /* Pushes button to bottom */
+            transition: all 0.2s ease-in-out;
+            border-radius: 6px;
+        }
+        .pricing-card .btn:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+       .tech-icon {
+           position: absolute;
+           left: -16px;
+           top: 50%;
+           transform: translateY(-50%);
+           width: 48px;
+           height: 48px;
+           background: var(--gradient-primary);
+           color: white;
+           border-radius: 12px;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+       }
+
+       .difference-card::before,
+       .tech-card::before {
+           content: "";
+           position: absolute;
+           top: 0;
+           left: 0;
+           right: 0;
+           bottom: 0;
+           border-radius: var(--radius-lg);
+           border: 2px solid transparent;
+           background: linear-gradient(120deg, var(--accent-cyan), var(--accent-indigo)) border-box;
+           -webkit-mask:
+               linear-gradient(#fff 0 0) padding-box,
+               linear-gradient(#fff 0 0);
+           -webkit-mask-composite: destination-out;
+           mask-composite: exclude;
+           z-index: -1;
+           opacity: 0;
+           transition: opacity 0.3s ease-in-out;
+           mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+       }
+
+       .difference-card:hover::before,
+       .tech-card:hover::before {
+           opacity: 1;
+       }
+       .tech-card:hover h3, .tech-card:hover p,
+       .difference-card:hover h3, .difference-card:hover p {
+           color: white !important;
+       }
+    </style>
+   <style>
+       .tech-card:hover h3, .tech-card:hover p,
+       .difference-card:hover h3, .difference-card:hover p {
+           color: white !important;
+       }
+   </style>
+
+    <!-- Product Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Simple Page Website Packages",
+        "description": "Affordable website packages for small businesses and tradies",
+        "brand": {
+            "@type": "Brand",
+            "name": "Simple Page"
+        },
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "The One-Pager",
+                "price": "600",
+                "priceCurrency": "AUD",
+                "availability": "https://schema.org/InStock"
+            },
+            {
+                "@type": "Offer",
+                "name": "Business Essentials",
+                "price": "1800",
+                "priceCurrency": "AUD",
+                "availability": "https://schema.org/InStock"
+            },
+            {
+                "@type": "Offer",
+                "name": "E-Commerce Startup",
+                "price": "2500",
+                "priceCurrency": "AUD",
+                "availability": "https://schema.org/InStock"
+            }
+        ]
+    }
+    </script>
+</head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TZ4JQBJ6');</script>
+<!-- End Google Tag Manager -->
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZ4JQBJ6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="container nav-container">
+                <div class="nav-left">
+                    <a href="/" class="nav-logo-link">
+                        <img src="/images/logo_simple.png" alt="Simple Page Logo" class="nav-logo-img">
+                    </a>
+                </div>
+                
+                <div class="nav-center">
+                    <ul class="nav-links">
+                        <li><a href="#difference">The Difference</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#addons">Add-ons</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="/contact/">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-right">
+                    <div class="nav-cta">
+                        <a href="tel:+61289588545" class="btn btn-primary btn-sm">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>(02) 8958 8545</span>
+                        </a>
+                    </div>
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <canvas class="page-hero-canvas"></canvas>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge-top">Websites starting from $600</div>
+                <h1>Affordable Websites for<br>Sydney Small Businesses</h1>
+                <p class="hero-subtitle">Professional, mobile-friendly websites starting from just $600. No hidden fees, no agency bloat. Get online in under 7 days.</p>
+                <div class="hero-buttons">
+                    <a href="#pricing" class="btn btn-primary">
+                        <span>See Pricing</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                    <a href="/contact/" class="btn btn-secondary">Get a Fast Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The 'Simple' Difference Section -->
+    <section id="difference" class="how-it-works">
+        <div class="container">
+            <h2>The 'Simple' Difference</h2>
+            <p class="section-intro">Get a professional website without the $10k agency price tag.</p>
+
+            <div class="simple-difference-grid">
+                <div class="difference-card">
+                    <svg class="difference-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <h3>Rapid Turnaround</h3>
+                    <p>We don't spend months in meetings. We build fast, effective sites so you can start selling sooner.</p>
+                </div>
+
+                <div class="difference-card">
+                    <svg class="difference-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="12" y1="2" x2="12" y2="22"></line>
+                    </svg>
+                    <h3>Transparent Pricing</h3>
+                    <p>Most agencies won't tell you the price until the end. We show you our rates upfront.</p>
+                </div>
+
+                <div class="difference-card">
+                    <svg class="difference-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12" y2="18"></line>
+                    </svg>
+                    <h3>Mobile Perfect</h3>
+                    <p>50% of your customers are on phones. We make sure your site looks perfect on every device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="features-grid-section" style="background-color: var(--bg-secondary); padding: 4rem 0;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--space-lg);">The Right Tech for Your Budget</h2>
+            
+            <div class="tech-stack-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">
+                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                    </div>
+                    <h3>WordPress</h3>
+                    <p>Perfect for businesses that want to edit their own text and keep costs low. Flexible and easy to use.</p>
+                </div>
+
+                <div class="tech-card">
+                   <div class="tech-icon">
+                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                   </div>
+                    <h3>Shopify</h3>
+                    <p>The gold standard for selling products online. Secure, reliable, and built for sales.</p>
+                </div>
+
+                <div class="tech-card">
+                   <div class="tech-icon">
+                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                   </div>
+                    <h3>Next.js / React</h3>
+                    <p>For businesses that need lightning-fast performance and custom features. Modern and scalable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; text-align: center; margin-bottom: var(--space-lg); background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Clear, Affordable Packages</h2>
+            <p class="section-intro">Choose the right fit for your business.</p>
+
+            <div class="pricing-grid-3">
+                <!-- Tier 1 -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-name">THE 'ONE-PAGER'</div>
+                        <div class="pricing-range">$600 - $999</div>
+                        <div class="pricing-ideal">Best For: Tradies, Cafes, Landing Pages</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Single Scrolling Page</li>
+                        <li>Contact Form</li>
+                        <li>Google Maps Integration</li>
+                        <li>Mobile Optimized</li>
+                        <li>Fast Loading</li>
+                        <li>Click-to-Call Buttons</li>
+                    </ul>
+                    <a href="/contact/" class="btn btn-primary">Get a Quote</a>
+                </div>
+
+                <!-- Tier 2 -->
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <div class="pricing-name">BUSINESS ESSENTIALS</div>
+                        <div class="pricing-range">$1,800 - $2,800</div>
+                        <div class="pricing-ideal">Best For: Lawyers, Accountants, Clinics</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>5-Page Site (Home, About, Services, Blog, Contact)</li>
+                        <li>Basic SEO Setup</li>
+                        <li>CMS Training (Edit it yourself)</li>
+                        <li>Mobile Responsive</li>
+                        <li>Social Media Links</li>
+                        <li>Google Analytics</li>
+                    </ul>
+                    <a href="/contact/" class="btn btn-primary">Get a Quote</a>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-name">E-COMMERCE STARTUP</div>
+                        <div class="pricing-range">$2,500 - $4,000</div>
+                        <div class="pricing-ideal">Best For: Online Stores</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Shopify / WooCommerce Setup</li>
+                        <li>Payment Gateway Integration</li>
+                        <li>Product Upload Training</li>
+                        <li>Shopping Cart & Checkout</li>
+                        <li>Inventory Management</li>
+                        <li>Secure Payments</li>
+                    </ul>
+                    <a href="/contact/" class="btn btn-primary">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add-ons Section -->
+    <section id="addons" class="addons-section" style="background-color: var(--bg-surface);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; text-align: center; margin-bottom: var(--space-md);">Optional Add-Ons</h2>
+                <p class="section-subtitle" style="font-size: 1.125rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Need a little extra? We've got you covered.</p>
+            </div>
+
+            <div class="addons-list">
+                <!-- Add-on Item 1 -->
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                    </div>
+                    <div class="addon-content">
+                        <h4 class="addon-title">Logo Design</h4>
+                        <p class="addon-description">A custom logo to represent your brand.</p>
+                    </div>
+                    <div class="addon-price">from $395</div>
+                </div>
+                <!-- Add-on Item 2 -->
+                <div class="addon-card featured">
+                    <div class="addon-icon">
+                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
+                    <div class="addon-content">
+                        <h4 class="addon-title">AI Chatbot</h4>
+                        <p class="addon-description">Engage visitors 24/7 with a smart AI assistant.</p>
+                    </div>
+                    <div class="addon-price">$297</div>
+                </div>
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <div class="addon-content">
+                        <h4 class="addon-title">Content Writing</h4>
+                        <p class="addon-description">Professionally written copy for your pages.</p>
+                    </div>
+                    <div class="addon-price">$0.15/word</div>
+                </div>
+                <!-- Add-on Item 3 -->
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </div>
+                    <div class="addon-content">
+                        <h4 class="addon-title">Social Media Setup</h4>
+                        <p class="addon-description">Branded profiles on major platforms.</p>
+                    </div>
+                    <div class="addon-price">$295</div>
+                </div>
+                <!-- Add-on Item 4 -->
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    </div>
+                    <div class="addon-content">
+                        <h4 class="addon-title">Booking System</h4>
+                        <p class="addon-description">Allow customers to book appointments online.</p>
+                    </div>
+                    <div class="addon-price">from $495</div>
+                </div>
+                <!-- Add-on Item 5 -->
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </div>
+                    <div class="addon-content">
+                        <h4 class="addon-title">Custom Email Setup</h4>
+                        <p class="addon-description">Professional email at your domain (e.g., you@your.com).</p>
+                    </div>
+                    <div class="addon-price">$9/month</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section" style="padding: clamp(4rem, 8vw, 6rem) 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900;">Why We're Better</h2>
+            </div>
+            
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th class="highlight-col">Simple Page</th>
+                            <th>DIY Builders</th>
+                            <th>Big Agencies</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Price</td>
+                            <td class="highlight-col">Affordable Fixed Price</td>
+                            <td>Monthly Fees Forever</td>
+                            <td>Expensive ($5k+)</td>
+                        </tr>
+                        <tr>
+                            <td>Ownership</td>
+                            <td class="highlight-col check">
+                                <div class="cell-content">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"></path></svg>
+                                    <span>You Own It</span>
+                                </div>
+                            </td>
+                            <td class="cross">
+                                <div class="cell-content">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                    <span>Rented</span>
+                                </div>
+                            </td>
+                            <td class="check">
+                                <div class="cell-content">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"></path></svg>
+                                    <span>You Own It</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Turnaround</td>
+                            <td class="highlight-col">Under 7 Days</td>
+                            <td>Your Weekend?</td>
+                            <td>6-12 Weeks</td>
+                        </tr>
+                        <tr>
+                            <td>Support</td>
+                            <td class="highlight-col check">
+                                <div class="cell-content">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"></path></svg>
+                                    <span>Local Aussie Team</span>
+                                </div>
+                            </td>
+                            <td class="cross">
+                                <div class="cell-content">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                    <span>No Support</span>
+                                </div>
+                            </td>
+                            <td class="check">
+                                <div class="cell-content">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"></path></svg>
+                                    <span>Account Managers</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="how-it-works">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p class="section-intro">Honest answers to common questions.</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Why are you cheaper than other agencies?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We cut the "agency bloat"—no expensive offices or unnecessary middle-management. You pay for the code and the design, nothing else.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can I update the website myself?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! If you choose our WordPress or Shopify packages, we give you a training video on how to edit text and images yourself.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How long does it take?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Simple one-pagers can be done in 3-5 days. Full 5-page sites usually take 2 weeks.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Do you do SEO?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, all our sites are built with SEO best practices (speed, mobile-friendly, meta tags). For ongoing ranking campaigns, we have separate services.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="about-cta-section">
+        <div class="about-cta-bg"></div>
+        <div class="container">
+            <div class="about-cta-content">
+                <span class="about-cta-badge">🚀 Let's Grow Together</span>
+                <h2 class="about-cta-title">Ready to grow?</h2>
+                <p class="about-cta-description">Stop losing customers to competitors with better websites.</p>
+                
+                <div class="about-cta-buttons">
+                    <a href="/contact/" class="btn btn-primary btn-lg">
+                        <span>Book a Free 15-Min Chat</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <img src="/images/logo_simple.png" alt="Simple Page Logo">
+                    <p>Simple Page by Websited. Affordable, professional websites for Australian small businesses.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>Email: <a href="mailto:hello@simplepage.com.au" class="footer-link">hello@simplepage.com.au</a></p>
+                    <p>2 Martin Place, Sydney, NSW 2000</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Simple Page. All Rights Reserved.</p>
+                <div class="australian-owned">
+                    <span>Proudly Australian Owned & Operated</span>
+                </div>
+                <div class="social-links">
+                    <!-- Social media links can be added here if needed -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chat Widget -->
+    <div id="aiChatWidget" class="ai-chat-widget">
+        <button id="chatToggle" class="chat-toggle" aria-label="Open chat">
+            <span class="chat-icon"></span>
+        </button>
+        <div id="chatWindow" class="chat-window hidden">
+            <div class="chat-header">
+                <h3>Chat with Simple Page</h3>
+                <div class="chat-header-actions">
+                    <button id="chatEmail" class="chat-email" aria-label="Save chat transcript" title="Save chat transcript">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </button>
+                    <button id="chatReset" class="chat-reset" aria-label="Reset chat" title="Start new conversation">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="1 4 1 10 7 10"></polyline>
+                            <polyline points="23 20 23 14 17 14"></polyline>
+                            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                        </svg>
+                    </button>
+                    <button id="chatClose" class="chat-close" aria-label="Close chat">&times;</button>
+                </div>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <form id="chatForm" class="chat-form">
+                <input type="text" id="chatInput" placeholder="Ask about our packages..." autocomplete="off" required>
+                <button type="submit" aria-label="Send message">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/formHandler.js"></script>
+    <script src="/js/pageHero.js"></script>
+    <script src="/js/aiChat.js"></script>
+    <script src="/js/main.js"></script>
+
+    <!-- AI Chat Initializer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const aiChatInstance = new AIChat();
+            aiChatInstance.init();
+        });
+    </script>
+
+    <!-- FAQ Accordion Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.closest('.faq-item');
+                    const answer = faqItem.querySelector('.faq-answer');
+                    const isOpen = this.getAttribute('aria-expanded') === 'true';
+
+                    // Close all other FAQs
+                    document.querySelectorAll('.faq-question').forEach(q => {
+                        if (q !== this) {
+                            q.setAttribute('aria-expanded', 'false');
+                            const otherItem = q.closest('.faq-item');
+                            const otherAnswer = otherItem.querySelector('.faq-answer');
+                            if (otherAnswer) {
+                                otherAnswer.classList.remove('open');
+                            }
+                        }
+                    });
+
+                    // Toggle current FAQ
+                    if (isOpen) {
+                        this.setAttribute('aria-expanded', 'false');
+                        answer.classList.remove('open');
+                    } else {
+                        this.setAttribute('aria-expanded', 'true');
+                        answer.classList.add('open');
+                    }
+                });
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

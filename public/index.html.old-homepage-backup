@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dominate your market with AI-powered marketing. Websited delivers cutting-edge digital solutions: AI automation, website development, SEO, social growth & CRM. 25+ years experience. Serving Sydney, Melbourne, Brisbane & all Australia.">
+    <meta name="keywords" content="AI marketing, digital marketing Sydney, SEO services Australia, website development, AI assistants, CRM automation, social media marketing, business growth">
+    <meta name="author" content="Websited Digital Marketing">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://websited.org/">
+    <title>Websited - AI-Powered Digital Marketing | Grow Your Business Faster</title>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Websited - AI-Powered Digital Marketing | Grow Your Business Faster">
+    <meta property="og:description" content="Dominate your market with AI-powered marketing. Websited delivers cutting-edge digital solutions: AI automation, website development, SEO, social growth & CRM. 25+ years experience.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://websited.org/">
+    <meta property="og:site_name" content="Websited Digital Marketing">
+    <meta property="og:locale" content="en_AU">
+    <meta property="og:image" content="https://websited.org/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Websited - AI-Powered Digital Marketing">
+    <meta name="twitter:description" content="Dominate your market with AI-powered marketing. 25+ years experience. AI automation, websites, SEO & more.">
+    <meta name="twitter:image" content="https://websited.org/images/twitter-card.jpg">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/mobile.css">
+
+    <!-- LocalBusiness Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://websited.org/#localbusiness",
+        "name": "Websited Digital Marketing",
+        "image": "https://websited.org/images/logo.png",
+        "url": "https://websited.org",
+        "telephone": "",
+        "email": "hello@websited.org",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "2 Martin Place",
+            "addressLocality": "Sydney",
+            "addressRegion": "NSW",
+            "postalCode": "2000",
+            "addressCountry": "AU"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -33.8688,
+            "longitude": 151.2093
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "17:00"
+        },
+        "priceRange": "$$",
+        "areaServed": [
+            {
+                "@type": "City",
+                "name": "Sydney"
+            },
+            {
+                "@type": "City",
+                "name": "Melbourne"
+            },
+            {
+                "@type": "City",
+                "name": "Brisbane"
+            },
+            {
+                "@type": "Country",
+                "name": "Australia"
+            }
+        ],
+        "serviceType": ["Digital Marketing", "AI Automation", "SEO", "Website Development", "CRM Solutions"]
+    }
+    </script>
+
+    <!-- Organization Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://websited.org/#organization",
+        "name": "Websited Digital Marketing",
+        "url": "https://websited.org",
+        "logo": "https://websited.org/images/logo.png",
+        "sameAs": [
+            "https://instagram.com/websited",
+            "https://facebook.com/websited"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "hello@websited.org",
+            "contactType": "customer service",
+            "areaServed": "AU",
+            "availableLanguage": "English"
+        },
+        "founder": {
+            "@type": "Person",
+            "name": "Websited Team"
+        },
+        "foundingDate": "2000",
+        "numberOfEmployees": {
+            "@type": "QuantitativeValue",
+            "minValue": 2,
+            "maxValue": 10
+        }
+    }
+    </script>
+
+    <!-- WebSite Schema with SearchAction -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://websited.org/#website",
+        "url": "https://websited.org",
+        "name": "Websited Digital Marketing",
+        "description": "AI-powered digital marketing solutions helping businesses achieve unprecedented growth",
+        "publisher": {
+            "@id": "https://websited.org/#organization"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://websited.org/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <!-- FAQPage Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What services does Websited offer?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Websited offers comprehensive digital marketing services including AI-powered automation and chatbots, website design and development, SEO and local SEO, social media growth strategies, CRM and sales funnel automation, and data-driven growth strategy consulting. We provide end-to-end solutions tailored to your business needs."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much do your digital marketing services cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our pricing varies based on your specific needs, business size, and goals. We offer flexible packages starting from small business solutions to enterprise-level implementations. Every engagement begins with a free consultation where we assess your requirements and provide a custom quote. We focus on delivering ROI-positive solutions regardless of budget size."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long until I see results from your marketing services?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Results timeline varies by service. PPC and social media ads can generate leads within days. AI chatbot implementations typically show ROI within the first month. SEO results generally take 3-6 months to see significant improvements. We set realistic expectations and provide regular progress reports so you can track improvements from day one."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you work with small businesses?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely! We work with businesses of all sizes, from solo entrepreneurs to large enterprises. We have scalable solutions designed specifically for small businesses that deliver enterprise-level results at accessible price points. Many of our most successful case studies come from small businesses that have achieved remarkable growth with our help."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What industries does Websited specialise in?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We have deep expertise across multiple industries including healthcare and medical practices, real estate, professional services (lawyers, accountants, consultants), home services (plumbers, electricians, HVAC), e-commerce and retail, hospitality, technology, and construction. Our strategies are customised to address the unique challenges and opportunities in each industry."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do your AI assistants work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our AI assistants are powered by advanced language models like GPT and Claude. They can handle customer inquiries 24/7, qualify leads, answer frequently asked questions, book appointments, and even assist with sales conversations. They're trained on your specific business information and integrate seamlessly with your website and CRM. The AI learns and improves over time, providing increasingly accurate and helpful responses."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you offer ongoing support after project completion?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we offer comprehensive ongoing support and maintenance packages. This includes regular performance monitoring, updates, optimisation, monthly strategy sessions, and priority support. We believe in building long-term partnerships with our clients, not just completing one-off projects. Most of our clients continue working with us as their growth partners."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What's included in a free consultation?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our free 45-minute consultation includes a thorough assessment of your current digital presence, identification of growth opportunities, competitor analysis insights, and a custom roadmap with specific recommendations. You'll receive actionable advice you can implement immediately, whether or not you choose to work with us. There's no obligation and no pressure - just expert insights tailored to your business."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="container nav-container">
+                <div class="nav-logo">
+                    <a href="/" class="nav-logo-link">
+                        <img src="/images/blue_site.png" alt="Websited" class="nav-logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="/offers/">Offers ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/offers/simple-websites/">Simple Websites</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item-dropdown">
+                        <a href="/service/">Services ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/service/ai-assistants/">AI Assistants</a></li>
+                            <li><a href="/service/website-development/">Website Development</a></li>
+                            <li><a href="/service/seo-local-seo/">SEO & Local SEO</a></li>
+                            <li><a href="/service/social-growth/">Social Growth</a></li>
+                            <li><a href="/service/crm-sales-funnel/">CRM & Sales Funnel</a></li>
+                            <li><a href="/service/growth-strategy-analytics/">Growth Strategy</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+                <div class="nav-cta">
+                    <a href="tel:+61289588545" class="nav-phone">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <span>(02) 8958 8545</span>
+                    </a>
+                    <a href="/contact/" class="btn btn-primary btn-sm">Get Started</a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">AI-Powered Growth Since 2000</div>
+                <h1>Dominate Your Market with <br><span class="text-gradient">AI-Powered Marketing</span></h1>
+                <p class="hero-subtitle">Strategic Digital Solutions That Actually Drive Results</p>
+                <p class="hero-description">We combine 25+ years of marketing mastery with cutting-edge AI automation to transform businesses. Drive targeted traffic, skyrocket conversions, and dominate your competition.</p>
+                <div class="hero-buttons">
+                    <a href="#consultation-form" class="btn btn-primary">
+                        <span>Get Your Growth Strategy</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                    <a href="#services" class="btn btn-secondary">See What We Do</a>
+                </div>
+                <div class="hero-trust">
+                    <div class="trust-item">
+                        <div class="trust-value">25+</div>
+                        <div class="trust-label">Years Dominating Digital</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-value">AI-First</div>
+                        <div class="trust-label">Automation & Scale</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-value">ROI</div>
+                        <div class="trust-label">Driven Growth</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual"></div>
+        </div>
+    </section>
+
+    <!-- Consultation Form Section -->
+    <section id="consultation-form" class="quote-section">
+        <div class="container">
+            <div class="quote-wrapper">
+                <div class="quote-intro">
+                    <h2>Let's Accelerate Your Growth</h2>
+                    <p>Book a free strategy session with our growth experts. We'll analyse your business and create a custom roadmap to dominate your market.</p>
+                    <div class="quote-features">
+                        <div class="quote-feature">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Free 45-min strategy consultation</span>
+                        </div>
+                        <div class="quote-feature">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Custom growth roadmap & recommendations</span>
+                        </div>
+                        <div class="quote-feature">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Zero obligation - just expert insights</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-form-container">
+                    <form id="quoteForm" class="quote-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" placeholder="John Smith" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="0412 345 678" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="serviceType">Service Interest *</label>
+                                <select id="serviceType" name="service" required>
+                                    <option value="">Select service</option>
+                                    <option value="ai-assistants">AI Assistants</option>
+                                    <option value="website-development">Website Development</option>
+                                    <option value="seo">SEO & Local SEO</option>
+                                    <option value="social-growth">Social Media Growth</option>
+                                    <option value="crm-automation">CRM & Sales Funnel Automation</option>
+                                    <option value="growth-strategy">Growth Strategy & Analytics</option>
+                                    <option value="full-package">Complete Digital Package</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="companyName">Company/Business Name</label>
+                                <input type="text" id="companyName" name="company" placeholder="Your Business">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="industry">Industry</label>
+                                <select id="industry" name="industry">
+                                    <option value="">Select industry</option>
+                                    <option value="retail">Retail & E-commerce</option>
+                                    <option value="professional">Professional Services</option>
+                                    <option value="hospitality">Hospitality & Tourism</option>
+                                    <option value="health">Health & Wellness</option>
+                                    <option value="real-estate">Real Estate</option>
+                                    <option value="technology">Technology & Software</option>
+                                    <option value="construction">Construction & Trades</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Tell Us About Your Goals (Optional)</label>
+                            <textarea id="notes" name="message" rows="3" placeholder="What are your biggest growth challenges? What revenue goals do you have?"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <span>Book My Free Strategy Session</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                        <div id="formStatus" class="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2>Weaponise Your Marketing</h2>
+            <p class="section-intro">Full-stack digital solutions powered by AI. Each service is designed to compound your growth and dominate your competition.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI Automation</h3>
+                    <p>Deploy intelligent AI assistants that handle customer inquiries, qualify leads, and close sales 24/7. Scale your business without scaling your team.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>High-Converting Websites</h3>
+                    <p>Lightning-fast, conversion-optimised websites that turn visitors into customers. Modern design meets psychological selling principles.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>SEO Domination</h3>
+                    <p>Own page 1 of Google. Advanced SEO strategies that drive organic traffic, crush competition, and establish market authority.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Social Media Engine</h3>
+                    <p>Build engaged communities that convert. Strategic content, paid campaigns, and community management that drives real business results.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Revenue Automation</h3>
+                    <p>Build self-running sales machines. Intelligent CRM systems that capture, nurture, and convert leads on autopilot while you sleep.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Data-Driven Strategy</h3>
+                    <p>Make decisions with confidence. Advanced analytics, growth modeling, and strategic consulting that eliminates guesswork from your marketing.</p>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="#consultation-form" class="btn btn-primary">Start Your Growth Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose-us" class="services-section">
+        <div class="container">
+            <h2>Why Choose Websited?</h2>
+            <p class="section-intro">We combine decades of expertise with cutting-edge AI technology to deliver measurable results that transform businesses.</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-small">25+</div>
+                    <h4>Years of Experience</h4>
+                    <p>Industry veterans who've seen it all. We've navigated every digital trend and economic shift, giving us unique insights into what actually works for sustainable growth.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-small">AI</div>
+                    <h4>Cutting-Edge Technology</h4>
+                    <p>We leverage the latest AI and automation tools to give your business an unfair advantage. From chatbots to predictive analytics, we implement solutions that scale.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-small">ROI</div>
+                    <h4>Results-Driven Approach</h4>
+                    <p>Every strategy is built around one goal: maximizing your return on investment. We track, measure, and optimise constantly to ensure you're getting real results.</p>
+                </div>
+            </div>
+
+            <div class="quote-section quote-section-features">
+                <h3>Streamlining Success with Smart Solutions</h3>
+                <ul class="service-features">
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Proven track record with diverse industries and business sizes
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        End-to-end solutions from strategy to execution
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Data-driven decision making backed by advanced analytics
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Scalable systems that grow with your business
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Transparent reporting and regular strategy sessions
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Dedicated account management and ongoing support
+                    </li>
+                </ul>
+                <p class="note text-secondary-mt">Our integrated approach means all your marketing channels work together seamlessly, creating compound growth effects you can't achieve with isolated tactics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Solutions Section -->
+    <section id="industry-solutions" class="services-section">
+        <div class="container">
+            <h2>Industry-Specific Solutions</h2>
+            <p class="section-intro">We understand that every industry has unique challenges and opportunities. Our tailored strategies deliver results across diverse sectors.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3>Healthcare & Medical</h3>
+                    <p>Help patients find and book your services with HIPAA-compliant digital marketing. We specialise in medical practice SEO, patient acquisition funnels, and AI-powered appointment scheduling that reduces no-shows. Our healthcare clients see an average 40% increase in new patient inquiries within 90 days.</p>
+                    <a href="#healthcare" class="btn btn-sm btn-secondary">Learn more</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Real Estate</h3>
+                    <p>Stand out in a competitive market with stunning property websites, automated lead nurturing, and hyper-local SEO strategies. We help real estate agents and agencies generate qualified buyer and seller leads through targeted campaigns. Our CRM automations ensure no lead goes cold while you focus on closing deals.</p>
+                    <a href="#real-estate" class="btn btn-sm btn-secondary">Learn more</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3>Professional Services</h3>
+                    <p>Establish authority and attract high-value clients for your law firm, accounting practice, or consulting business. We create thought leadership content strategies, optimise for high-intent keywords, and build referral systems that generate consistent leads. Our professional services clients typically see 3x return on their marketing investment.</p>
+                    <a href="#professional-services" class="btn btn-sm btn-secondary">Learn more</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Home Services</h3>
+                    <p>Dominate local search results and keep your phone ringing with calls from homeowners in your service area. Whether you're a plumber, electrician, HVAC technician, or landscaper, we'll help you build a consistent flow of jobs. Our local SEO and Google Ads strategies are specifically designed for service-area businesses.</p>
+                    <a href="#home-services" class="btn btn-sm btn-secondary">Learn more</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛒</div>
+                    <h3>E-commerce & Retail</h3>
+                    <p>Drive sales and maximise customer lifetime value with conversion-optimised online stores and strategic paid advertising. We help e-commerce brands scale profitably with data-driven product page optimisation, abandoned cart recovery, and customer retention campaigns. Our clients average 25% improvement in conversion rates.</p>
+                    <a href="#ecommerce" class="btn btn-sm btn-secondary">Learn more</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏨</div>
+                    <h3>Hospitality & Tourism</h3>
+                    <p>Fill rooms and tables with targeted campaigns that reach travelers and locals at the right moment. We specialise in reputation management, local SEO, and social media strategies that showcase your unique experience. Our hospitality clients see significant increases in direct bookings, reducing dependency on third-party platforms.</p>
+                    <a href="#hospitality" class="btn btn-sm btn-secondary">Learn more</a>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="#consultation-form" class="btn btn-primary">Get Industry-Specific Strategy</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section id="technology-stack" class="services-section">
+        <div class="container">
+            <h2>Our Technology Stack</h2>
+            <p class="section-intro">We leverage best-in-class tools and platforms to deliver exceptional results. Here's the technology powering your growth.</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-small">AI</div>
+                    <h4>AI & Machine Learning</h4>
+                    <p><strong>GPT-4 & Claude:</strong> Power our intelligent chatbots and content generation systems that engage customers 24/7 with human-like conversations and create compelling marketing copy at scale.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-small">Web</div>
+                    <h4>Web Development</h4>
+                    <p><strong>React, Next.js, WordPress & Webflow:</strong> We build lightning-fast, SEO-optimised websites using modern frameworks. From custom web applications to content-managed sites, we choose the right tool for your needs.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-small">Data</div>
+                    <h4>Analytics & Tracking</h4>
+                    <p><strong>GA4 & Mixpanel:</strong> Advanced analytics setups that track every meaningful interaction. We configure custom events, conversion funnels, and attribution models so you understand exactly what's driving results.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-small">CRM</div>
+                    <h4>CRM & Automation</h4>
+                    <p><strong>GoHighLevel & HubSpot:</strong> Powerful CRM platforms that automate your entire customer journey. From lead capture to nurture sequences to sales pipeline management, we build systems that convert.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-small">Ads</div>
+                    <h4>Paid Advertising</h4>
+                    <p><strong>Google Ads & Meta Ads:</strong> Strategic paid media campaigns that reach your ideal customers at scale. We manage everything from search and display to social advertising with continuous optimisation for ROAS.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-small">SEO</div>
+                    <h4>SEO Tools</h4>
+                    <p><strong>Ahrefs, SEMrush & Screaming Frog:</strong> Enterprise-grade SEO tools for comprehensive keyword research, competitor analysis, technical audits, and backlink monitoring to dominate search rankings.</p>
+                </div>
+            </div>
+
+            <div class="quote-section quote-section-features">
+                <h3>Platform Agnostic, Results Focused</h3>
+                <p class="text-secondary">We're not tied to any single platform or technology. We select the best tools based on your specific requirements, budget, and goals. Whether you need a simple WordPress site or a complex custom application, we have the expertise to deliver.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="services-section">
+        <div class="container">
+            <h2>Our Proven Growth Process</h2>
+            <p class="section-intro">From discovery to domination, we follow a strategic process that delivers consistent results.</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-small">1</div>
+                    <h4>Discovery & Audit</h4>
+                    <p>We analyse your current digital presence, identify gaps, and uncover opportunities. Deep-dive into your industry, competitors, and target audience to build a solid foundation.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-small">2</div>
+                    <h4>Strategy Development</h4>
+                    <p>Custom roadmap tailored to your goals and budget. We prioritise high-impact initiatives and create a timeline that balances quick wins with long-term growth.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-small">3</div>
+                    <h4>Implementation</h4>
+                    <p>Our expert team executes the strategy with precision. From website optimisation to AI integration, we handle the technical heavy lifting while keeping you informed every step of the way.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-small">4</div>
+                    <h4>Optimisation</h4>
+                    <p>Continuous testing and refinement based on real data. We monitor performance metrics and make data-driven adjustments to maximise your ROI and improve results over time.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-small">5</div>
+                    <h4>Scale & Grow</h4>
+                    <p>Once we've proven what works, we scale successful strategies and expand into new channels. Sustainable growth that compounds month over month.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-small">6</div>
+                    <h4>Reporting & Analysis</h4>
+                    <p>Transparent monthly reporting with clear metrics and insights. Regular strategy sessions ensure we're always aligned with your evolving business objectives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="services-section">
+        <div class="container">
+            <div class="text-center mb-xl">
+                <div class="stars stars-emerald">★★★★★</div>
+                <h2>What Is Everyone Saying?</h2>
+                <p class="section-intro">Real feedback from businesses we've helped grow</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">★★★★★</div>
+                    <p class="testimonial-text">"Websited has been a game-changer for our online presence. Their website design and development team took our vision and turned it into a stunning reality. The results speak for themselves - our website has never looked better and our conversion rate doubled."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">GK</div>
+                        <div class="author-info">
+                            <h4>Goladria Kim</h4>
+                            <p>Fashion Designer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">★★★★★</div>
+                    <p class="testimonial-text">"Super & reliable service! Websited truly understands the importance of user experience. Our website was transformed into a user-friendly, visually appealing platform that has significantly improved our engagement metrics. They are our digital partners."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">KH</div>
+                        <div class="author-info">
+                            <h4>Karen Hills</h4>
+                            <p>E-commerce Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">★★★★★</div>
+                    <p class="testimonial-text">"Fully satisfied with the service! The AI assistant they implemented has revolutionised our customer service. We're now available 24/7 and our team can focus on high-value tasks. ROI was positive within the first month."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MS</div>
+                        <div class="author-info">
+                            <h4>Michael Stevens</h4>
+                            <p>SaaS Founder</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">★★★★★</div>
+                    <p class="testimonial-text">"Best service I ever got! Their SEO strategy took us from page 5 to page 1 in just 4 months. Our organic traffic is up 300% and we're getting quality leads every single day. The team is knowledgeable, responsive, and results-focused."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">GF</div>
+                        <div class="author-info">
+                            <h4>Gomatica Fanades</h4>
+                            <p>Professional Services</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">★★★★★</div>
+                    <p class="testimonial-text">"The CRM automation they set up has transformed how we handle leads. Nothing falls through the cracks anymore, and our sales team closes deals faster. We've seen a 40% increase in conversion rates since implementation."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DM</div>
+                        <div class="author-info">
+                            <h4>David Martinez</h4>
+                            <p>Real Estate Agency</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="services-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p class="section-intro">Get answers to common questions about our services and how we can help your business grow.</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What services does Websited offer?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Websited offers comprehensive digital marketing services including AI-powered automation and chatbots, website design and development, SEO and local SEO, social media growth strategies, CRM and sales funnel automation, and data-driven growth strategy consulting. We provide end-to-end solutions tailored to your business needs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How much do your digital marketing services cost?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our pricing varies based on your specific needs, business size, and goals. We offer flexible packages starting from small business solutions to enterprise-level implementations. Every engagement begins with a free consultation where we assess your requirements and provide a custom quote. We focus on delivering ROI-positive solutions regardless of budget size.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How long until I see results from your marketing services?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Results timeline varies by service. PPC and social media ads can generate leads within days. AI chatbot implementations typically show ROI within the first month. SEO results generally take 3-6 months to see significant improvements. We set realistic expectations and provide regular progress reports so you can track improvements from day one.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Do you work with small businesses?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! We work with businesses of all sizes, from solo entrepreneurs to large enterprises. We have scalable solutions designed specifically for small businesses that deliver enterprise-level results at accessible price points. Many of our most successful case studies come from small businesses that have achieved remarkable growth with our help.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What industries does Websited specialise in?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We have deep expertise across multiple industries including healthcare and medical practices, real estate, professional services (lawyers, accountants, consultants), home services (plumbers, electricians, HVAC), e-commerce and retail, hospitality, technology, and construction. Our strategies are customised to address the unique challenges and opportunities in each industry.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How do your AI assistants work?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our AI assistants are powered by advanced language models like GPT and Claude. They can handle customer inquiries 24/7, qualify leads, answer frequently asked questions, book appointments, and even assist with sales conversations. They're trained on your specific business information and integrate seamlessly with your website and CRM. The AI learns and improves over time, providing increasingly accurate and helpful responses.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Do you offer ongoing support after project completion?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, we offer comprehensive ongoing support and maintenance packages. This includes regular performance monitoring, updates, optimisation, monthly strategy sessions, and priority support. We believe in building long-term partnerships with our clients, not just completing one-off projects. Most of our clients continue working with us as their growth partners.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What's included in a free consultation?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our free 45-minute consultation includes a thorough assessment of your current digital presence, identification of growth opportunities, competitor analysis insights, and a custom roadmap with specific recommendations. You'll receive actionable advice you can implement immediately, whether or not you choose to work with us. There's no obligation and no pressure - just expert insights tailored to your business.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="quote-section">
+        <div class="container text-center">
+            <h2>Ready to Dominate Your Market?</h2>
+            <p class="section-intro">Join the businesses that are winning with AI-powered marketing. Let's create your custom growth strategy and start seeing real results.</p>
+            <div class="cta-buttons">
+                <a href="#consultation-form" class="btn btn-primary">Get My Free Strategy Session</a>
+                <a href="#services" class="btn btn-secondary">Explore All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="services-section">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="quote-wrapper">
+                <div class="quote-intro">
+                    <h3>Contact Information</h3>
+                    <div class="quote-features">
+                        <div class="quote-feature">
+                            <span class="feature-icon-small">📍</span>
+                            <div>
+                                <strong>Address</strong>
+                                <p>2 Martin Place, Sydney, Australia</p>
+                            </div>
+                        </div>
+                        <div class="quote-feature">
+                            <span class="feature-icon-small">✉️</span>
+                            <div>
+                                <strong>Email</strong>
+                                <p><a href="mailto:hello@websited.org" class="link-white">hello@websited.org</a></p>
+                            </div>
+                        </div>
+                        <div class="quote-feature">
+                            <span class="feature-icon-small">🌐</span>
+                            <div>
+                                <strong>Website</strong>
+                                <p><a href="https://websited.org" target="_blank" rel="noopener" class="link-white">websited.org</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links mt-2">
+                        <a href="https://instagram.com/websited" target="_blank" rel="noopener" class="btn btn-sm btn-secondary">Instagram</a>
+                        <a href="https://facebook.com/websited" target="_blank" rel="noopener" class="btn btn-sm btn-secondary">Facebook</a>
+                    </div>
+                </div>
+
+                <div class="quote-form-container">
+                    <h3>Ready for Unprecedented Growth?</h3>
+                    <p class="text-secondary-mb">Book your free strategy consultation today. No obligation, no pressure-just expert advice and a clear roadmap to achieving your business goals.</p>
+                    <a href="#consultation-form" class="btn btn-primary btn-block">Book Free Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- CTA Section -->
+    <section class="about-cta-section">
+        <div class="about-cta-bg"></div>
+        <div class="container">
+            <div class="about-cta-content">
+                <span class="about-cta-badge">🚀 Let's Grow Together</span>
+                <h2 class="about-cta-title">Ready to Dominate Your Market?</h2>
+                <p class="about-cta-description">Join 500+ Australian businesses that have transformed their digital presence with Websited. Get a free strategy session and discover untapped growth opportunities.</p>
+                
+                <div class="about-cta-features">
+                    <div class="about-cta-feature">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Free 30-Min Strategy Call</span>
+                    </div>
+                    <div class="about-cta-feature">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Custom Growth Roadmap</span>
+                    </div>
+                    <div class="about-cta-feature">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>No Obligation Quote</span>
+                    </div>
+                </div>
+                
+                <div class="about-cta-buttons">
+                    <a href="/contact/" class="btn btn-primary btn-lg">
+                        <span>Book Your Free Strategy Call</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                    <a href="tel:+61280001234" class="btn btn-secondary-outline btn-lg">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <span>Call Us Now</span>
+                    </a>
+                </div>
+                
+                <p class="about-cta-trust">
+                    <span class="stars">★★★★★</span>
+                    Trusted by 500+ businesses · 25+ years experience · 100% Australian
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <img src="/images/blue_site.png" alt="Websited Logo">
+                                        <p>AI-powered digital marketing solutions helping businesses achieve unprecedented growth. 25+ years of expertise.</p>
+                    <p class="trading-info"><strong>Websited Digital Marketing</strong></p>
+                    <p class="trading-info">ABN: 47 442 019 725</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#industry-solutions">Industries</a></li>
+                        <li><a href="#why-choose-us">Why Choose Us</a></li>
+                        <li><a href="#process">Our Process</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="/service/ai-assistants/">AI Assistants</a></li>
+                        <li><a href="/service/website-development/">Website Development</a></li>
+                        <li><a href="/service/seo-local-seo/">SEO & Local SEO</a></li>
+                        <li><a href="/service/social-growth/">Social Media Growth</a></li>
+                        <li><a href="/service/crm-sales-funnel/">CRM Automation</a></li>
+                        <li><a href="/service/growth-strategy-analytics/">Growth Strategy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" itemscope itemtype="https://schema.org/LocalBusiness">
+                    <h4>Contact</h4>
+                    <p>Email: <a href="mailto:hello@websited.org" class="footer-link" itemprop="email">hello@websited.org</a></p>
+                    <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                        <p>
+                            <span itemprop="streetAddress">2 Martin Place</span>,
+                            <span itemprop="addressLocality">Sydney</span>,
+                            <span itemprop="addressRegion">NSW</span>
+                            <span itemprop="postalCode">2000</span>,
+                            <span itemprop="addressCountry">Australia</span>
+                        </p>
+                    </div>
+                    <div class="footer-hours">
+                        <strong>Follow Us:</strong>
+                        <div class="social-links mt-05">
+                            <a href="https://instagram.com/websited" target="_blank" rel="noopener">Instagram</a>
+                            <a href="https://facebook.com/websited" target="_blank" rel="noopener">Facebook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Websited. All rights reserved.</p>
+                <p class="service-areas"><strong>Serving Sydney, Melbourne, Brisbane & All Australia</strong></p>
+                <p class="disclaimer">Websited is a digital marketing agency specializing in AI-powered growth solutions. Results may vary based on industry, competition, and implementation factors.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chat Widget -->
+    <div id="aiChatWidget" class="ai-chat-widget">
+        <button id="chatToggle" class="chat-toggle" aria-label="Open chat">
+            <span class="chat-icon"></span>
+        </button>
+        <div id="chatWindow" class="chat-window hidden">
+            <div class="chat-header">
+                <h3>Chat with Websited</h3>
+                <div class="chat-header-actions">
+                    <button id="chatEmail" class="chat-email" aria-label="Save chat transcript" title="Save chat transcript">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </button>
+                    <button id="chatReset" class="chat-reset" aria-label="Reset chat" title="Start new conversation">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                        </svg>
+                    </button>
+                    <button id="chatClose" class="chat-close" aria-label="Close chat">&times;</button>
+                </div>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <form id="chatForm" class="chat-form">
+                <input type="text" id="chatInput" placeholder="Ask about growing your business..." autocomplete="off" required>
+                <button type="submit" aria-label="Send message">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/formHandler.js"></script>
+    <script src="js/aiChat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

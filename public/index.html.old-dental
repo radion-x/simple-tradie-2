@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Transform your smile with Invisalign clear aligners at Elite Dentistry, Neutral Bay. Nearly invisible, removable, comfortable. From $90/week. Book your free consultation today. Call (02) 8350 5840.">
+    <title>Invisalign Clear Aligners Neutral Bay | Elite Dentistry Sydney</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="container nav-container">
+                <div class="logo">
+                    <img src="images/elite_logo_blue.png" alt="Elite Dentistry Logo" class="logo-image">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#treatment-journey">Treatment Journey</a></li>
+                    <li><a href="#why-choose-us">Why Choose Us</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#faqs">FAQs</a></li>
+                </ul>
+                <div class="nav-cta">
+                    <a href="tel:0283505840" class="phone-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <span>(02) 8350 5840</span>
+                    </a>
+                    <a href="#consultation-form" class="btn btn-primary btn-sm">Book Free Consult</a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge-top">Certified Invisalign Provider</div>
+                <h1>Transform Your Smile with Invisalign Clear Aligners</h1>
+                <p class="hero-subtitle">Nearly Invisible • Removable • Comfortable | Starting from $90/week</p>
+                <p class="hero-description">Straighten your teeth discreetly with Invisalign clear aligners at Elite Dentistry, Neutral Bay. Expert care, advanced 3D scanning, flexible payment plans. Your perfect smile awaits.</p>
+                <div class="hero-buttons">
+                    <a href="tel:0283505840" class="btn btn-primary">
+                        <span class="btn-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </span>
+                        Call (02) 8350 5840
+                    </a>
+                    <a href="#consultation-form" class="btn btn-secondary">Book Free Consultation</a>
+                </div>
+                <div class="hero-trust">
+                    <div class="trust-item">
+                        <div class="trust-value">5.0★</div>
+                        <div class="trust-label">Google Rating</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-value">1000+</div>
+                        <div class="trust-label">Happy Patients</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-value">Free Consult</div>
+                        <div class="trust-label">No Obligation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Form Section -->
+    <section id="consultation-form" class="quote-section">
+        <div class="container">
+            <div class="quote-wrapper">
+                <div class="quote-intro">
+                    <h2>Book Your Free Consultation</h2>
+                    <p>Take the first step toward your perfect smile. Fill out the form and we'll contact you within 24 hours to confirm your appointment.</p>
+                    <div class="quote-features">
+                        <div class="quote-feature">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Completely free, no obligation</span>
+                        </div>
+                        <div class="quote-feature">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>3D iTero scan included</span>
+                        </div>
+                        <div class="quote-feature">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>See your results before you start</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-form-container">
+                    <form id="quoteForm" class="quote-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" placeholder="John Smith" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="0412 345 678" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="serviceType">Service Interest *</label>
+                                <select id="serviceType" name="service" required>
+                                    <option value="">Select service</option>
+                                    <option value="invisalign">Invisalign Clear Aligners</option>
+                                    <option value="veneers">Veneers</option>
+                                    <option value="implants">Dental Implants</option>
+                                    <option value="general">General Consultation</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="preferredDate">Preferred Appointment Date</label>
+                                <input type="date" id="preferredDate" name="preferredDate">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="preferredTime">Preferred Time</label>
+                                <select id="preferredTime" name="preferredTime">
+                                    <option value="">Select time</option>
+                                    <option value="morning">Morning (8am-12pm)</option>
+                                    <option value="afternoon">Afternoon (12pm-3pm)</option>
+                                    <option value="evening">Evening (3pm-5pm)</option>
+                                    <option value="flexible">Flexible</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Additional Notes (Optional)</label>
+                            <textarea id="notes" name="message" rows="3" placeholder="Tell us about your smile goals or any questions you have..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <span>Book Free Consultation</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                        <div id="formStatus" class="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Journey Section -->
+    <section id="treatment-journey" class="how-it-works">
+        <div class="container">
+            <h2>Your Invisalign Journey at Elite Dentistry</h2>
+            <p class="section-intro">From your first consultation to your final smile reveal, we're with you every step of the way. Here's what to expect:</p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Free Consultation & 3D Scan</h3>
+                    <p>Visit us for a comprehensive consultation. We'll use our advanced iTero 3D scanner to create a digital model of your teeth—no messy impressions! See what your new smile will look like before you even start.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Custom Treatment Plan</h3>
+                    <p>Receive your personalized set of clear aligners, custom-made for your unique smile. We'll explain your treatment timeline, answer all your questions, and set up your flexible payment plan.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Track Your Progress</h3>
+                    <p>Wear your aligners 20-22 hours a day and change them every 1-2 weeks. Visit us for regular check-ups to monitor your progress. We'll provide refinement aligners if needed and celebrate your smile transformation!</p>
+                </div>
+            </div>
+
+            <div class="when-you-need">
+                <h3>What Invisalign Can Treat:</h3>
+                <ul>
+                    <li>✓ Crowded or overlapping teeth</li>
+                    <li>✓ Gaps between teeth</li>
+                    <li>✓ Overbites and underbites</li>
+                    <li>✓ Crossbites and open bites</li>
+                    <li>✓ General teeth straightening for teens and adults</li>
+                </ul>
+                <p class="note">💡 Treatment typically takes 6-24 months depending on your case complexity. Most patients see results in 12-18 months.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose-us" class="services">
+        <div class="container">
+            <h2>Why Choose Elite Dentistry for Invisalign?</h2>
+            <p class="section-intro">We combine expert care, advanced technology, and flexible options to make your smile transformation seamless and affordable.</p>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">🦷</div>
+                    <h3>Certified Invisalign Providers</h3>
+                    <p>Our experienced dental team has successfully completed over 1,000 Invisalign cases with proven, beautiful results.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3>Advanced iTero 3D Scanning</h3>
+                    <p>Say goodbye to messy impressions! Our state-of-the-art iTero scanner creates a precise digital model, and you can preview your new smile instantly.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💳</div>
+                    <h3>Flexible Payment Plans</h3>
+                    <p>Starting from just $90 per week with 0% interest options available. We accept health fund rebates and Medicare Child Dental Benefits.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👁️</div>
+                    <h3>Virtually Invisible</h3>
+                    <p>Straighten your teeth without metal braces. Invisalign aligners are clear, discreet, and barely noticeable—perfect for professionals and teens.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🍕</div>
+                    <h3>Removable & Comfortable</h3>
+                    <p>Eat what you want, brush and floss normally, and remove your aligners for special occasions. No food restrictions, no brackets poking your mouth.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Proven Results</h3>
+                    <p>Join over 1,000 satisfied patients who have transformed their smiles with us. We're committed to your outcome with progress monitoring and refinements.</p>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="tel:0283505840" class="btn btn-primary">Call (02) 8350 5840</a>
+                <a href="#consultation-form" class="btn btn-secondary">Book Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas Section -->
+    <section id="service-areas" class="service-areas">
+        <div class="container">
+            <h2>Proudly Serving Neutral Bay & Sydney's North Shore</h2>
+            <p class="section-intro">Conveniently located in the heart of Neutral Bay, we welcome patients from across Sydney's North Shore and Lower North Shore.</p>
+
+            <div class="suburbs-grid">
+                <div class="suburb">Neutral Bay</div>
+                <div class="suburb">Cremorne</div>
+                <div class="suburb">Mosman</div>
+                <div class="suburb">Cammeray</div>
+                <div class="suburb">North Sydney</div>
+                <div class="suburb">Kirribilli</div>
+                <div class="suburb">Crows Nest</div>
+                <div class="suburb">St Leonards</div>
+                <div class="suburb">Waverton</div>
+                <div class="suburb">Milsons Point</div>
+                <div class="suburb">McMahons Point</div>
+                <div class="suburb">Lavender Bay</div>
+                <div class="suburb">Clifton Gardens</div>
+                <div class="suburb">Balmoral</div>
+                <div class="suburb">Naremburn</div>
+                <div class="suburb">Artarmon</div>
+                <div class="suburb">Chatswood</div>
+                <div class="suburb">Lane Cove</div>
+                <div class="suburb">Willoughby</div>
+                <div class="suburb">Wollstonecraft</div>
+            </div>
+
+            <div class="suburbs-footer">
+                <p><strong>Looking for Invisalign near you?</strong><br>
+                Elite Dentistry is located at 20 Young Street, Neutral Bay—easily accessible from all North Shore suburbs.<br>
+                Not sure if we serve your area? Call us on <a href="tel:0283505840" class="phone-link">(02) 8350 5840</a> and we'll be happy to help.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Transparent Invisalign Pricing</h2>
+
+            <div class="pricing-wrapper">
+                <div class="pricing-card">
+                    <h3>Flexible Payment Options</h3>
+                    <div class="price">From $90/week</div>
+                    <p class="price-subtitle">or $6,500 - $9,000 total treatment cost</p>
+                    <p>Your investment includes everything: free consultation, iTero 3D scan, custom aligners, progress monitoring, attachments, refinements, retainers, and our outcome guarantee. We offer 0% interest payment plans and accept all major health funds.</p>
+                    <a href="tel:0283505840" class="btn btn-primary">Get Your Quote Now</a>
+                </div>
+
+                <div class="requirements-card">
+                    <h3>What's Included</h3>
+                    <div class="requirement-item">
+                        <span class="req-icon">✓</span>
+                        <div>
+                            <strong>Free Initial Consultation</strong>
+                            <p>Comprehensive assessment with no obligation</p>
+                        </div>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="req-icon">✓</span>
+                        <div>
+                            <strong>iTero 3D Scanning</strong>
+                            <p>Advanced digital impressions and smile preview</p>
+                        </div>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="req-icon">✓</span>
+                        <div>
+                            <strong>Custom Clear Aligners</strong>
+                            <p>Personalized treatment with progress monitoring</p>
+                        </div>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="req-icon">✓</span>
+                        <div>
+                            <strong>Complete Care Package</strong>
+                            <p>Attachments, refinements, retainers, and emergency appointments</p>
+                        </div>
+                    </div>
+                    <p class="note">💡 Health fund rebates accepted. Ask about Medicare Child Dental Benefits Scheme eligibility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faqs" class="faqs">
+        <div class="container">
+            <h2>Invisalign FAQs</h2>
+            <p class="section-intro">Everything you need to know about Invisalign clear aligner treatment</p>
+
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>How long does Invisalign treatment take?</summary>
+                    <p>Treatment time varies based on case complexity, but most patients complete their Invisalign journey in 12-18 months. Simple cases may take as little as 6 months, while more complex cases can take up to 24 months. During your free consultation, we'll provide a personalized treatment timeline based on your specific needs.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Am I a good candidate for Invisalign?</summary>
+                    <p>Invisalign is suitable for most teens and adults who want to straighten their teeth. It can treat crowded teeth, gaps, overbites, underbites, crossbites, and open bites. The best way to find out if you're a candidate is to book a free consultation where we'll assess your teeth and discuss your goals.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Does Invisalign hurt?</summary>
+                    <p>Most patients experience mild pressure when they start wearing new aligners, which is a sign that treatment is working. This discomfort typically lasts only a day or two and is much less than traditional braces. There are no metal brackets or wires to cause mouth irritation.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>How often do I need to wear my aligners?</summary>
+                    <p>For best results, you should wear your Invisalign aligners 20-22 hours per day. You can remove them for eating, drinking (except water), brushing, and flossing. The more consistently you wear them, the faster you'll see results.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Can I eat and drink with Invisalign?</summary>
+                    <p>You should remove your aligners when eating or drinking anything except water. This means no food restrictions—eat whatever you like! Just remember to brush your teeth before putting your aligners back in to maintain good oral hygiene.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>How much does Invisalign cost?</summary>
+                    <p>Treatment costs range from $6,500 to $9,000 depending on case complexity. We offer flexible payment plans starting from just $90 per week with 0% interest options. Health fund rebates are accepted, and some patients may be eligible for Medicare Child Dental Benefits. Contact us for a personalized quote.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Do you offer payment plans?</summary>
+                    <p>Yes! We offer flexible payment plans to make Invisalign affordable for everyone. Options include weekly or monthly payments with 0% interest financing available. We accept all major health funds and can help you maximize your rebates. Discuss payment options during your free consultation.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>What's the difference between Invisalign and braces?</summary>
+                    <p>Invisalign aligners are nearly invisible, removable, and more comfortable than traditional metal braces. There are no dietary restrictions, easier oral hygiene, fewer office visits, and no metal brackets or wires. However, both options are effective—we'll help you choose the best treatment for your needs.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Is Invisalign covered by health insurance?</summary>
+                    <p>Most private health insurance plans with orthodontic coverage will provide rebates for Invisalign treatment, similar to traditional braces. We accept all major health funds and can help you understand your coverage. Bring your health fund details to your consultation.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>What happens after my treatment is complete?</summary>
+                    <p>Once you've achieved your perfect smile, we'll provide retainers to maintain your results. You'll need to wear retainers as directed (typically at night) to prevent your teeth from shifting back. We include retainers in your treatment package and offer follow-up appointments to ensure lasting results.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="testimonials-header">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h2>Real Patient Transformations</h2>
+                <p>Hear from our happy Invisalign patients</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"I was self-conscious about my smile for years. Elite Dentistry made the Invisalign process so easy and comfortable. My treatment only took 14 months and the results are amazing! No one even noticed I was wearing aligners."</p>
+                    <div class="testimonial-author">
+                        <strong>Sarah M.</strong>
+                        <span>Neutral Bay</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"The iTero 3D scanner was incredible—I could see my new smile before I even started! The payment plan made it affordable, and the staff were supportive every step of the way. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <strong>Michael T.</strong>
+                        <span>Mosman</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"As a professional, I needed something discreet. Invisalign was perfect—none of my clients noticed! The team at Elite Dentistry were professional, friendly, and my results exceeded expectations."</p>
+                    <div class="testimonial-author">
+                        <strong>Jessica L.</strong>
+                        <span>Cremorne</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"My teenage daughter was nervous about getting braces, but Invisalign changed everything. She loves how invisible they are and her confidence has soared. Thank you Elite Dentistry!"</p>
+                    <div class="testimonial-author">
+                        <strong>David & Emma P.</strong>
+                        <span>North Sydney</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"I thought I was too old to fix my teeth, but the team showed me it's never too late. The whole process was smooth, painless, and my smile looks 20 years younger. Best decision I've made!"</p>
+                    <div class="testimonial-author">
+                        <strong>Robert K.</strong>
+                        <span>Cammeray</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Smile?</h2>
+            <p class="section-intro">Book your free, no-obligation consultation today. Let's discuss your smile goals and create a personalized Invisalign treatment plan just for you.</p>
+            <div class="cta-buttons">
+                <a href="tel:0283505840" class="btn btn-primary">Call (02) 8350 5840</a>
+                <a href="#consultation-form" class="btn btn-secondary">Book Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Visit Elite Dentistry</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <div>
+                            <strong>Phone</strong>
+                            <p><a href="tel:0283505840" class="phone-link">(02) 8350 5840</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <div>
+                            <strong>Email</strong>
+                            <p>reception@elitedentistry.com.au</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <div>
+                            <strong>Address</strong>
+                            <p>20 Young Street<br>Neutral Bay NSW 2089</p>
+                        </div>
+                    </div>
+                    <div class="business-hours">
+                        <strong>Hours</strong>
+                        <p>Monday: 8:00 am – 5:00 pm</p>
+                        <p>Tuesday: 8:00 am – 5:00 pm</p>
+                        <p>Wednesday: 8:00 am – 5:00 pm</p>
+                        <p>Thursday: 8:00 am – 5:00 pm</p>
+                        <p>Friday: 8:00 am – 5:00 pm</p>
+                        <p>Saturday: Closed</p>
+                        <p>Sunday: Closed</p>
+                    </div>
+                </div>
+
+                <div class="contact-cta">
+                    <h3>Ready for Your Perfect Smile?</h3>
+                    <p>Book your free Invisalign consultation today. No obligation, no pressure—just expert advice and a clear path to your dream smile.</p>
+                    <div class="cta-buttons">
+                        <a href="#consultation-form" class="btn btn-primary">Book Free Consult</a>
+                        <a href="tel:0283505840" class="btn btn-secondary">Call Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/elite_logo_white.png" alt="Elite Dentistry Logo" class="footer-logo">
+                    <h4>Elite Dentistry</h4>
+                    <p>Certified Invisalign providers offering advanced dental care in Neutral Bay, Sydney.</p>
+                    <p class="trading-info"><strong>Elite Dentistry Neutral Bay</strong></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#treatment-journey">Treatment Journey</a></li>
+                        <li><a href="#why-choose-us">Why Choose Us</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#faqs">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Phone: <a href="tel:0283505840" class="footer-link">(02) 8350 5840</a></p>
+                    <p>Email: <a href="mailto:reception@elitedentistry.com.au" class="footer-link">reception@elitedentistry.com.au</a></p>
+                    <p>20 Young Street, Neutral Bay NSW 2089</p>
+                    <div class="footer-hours">
+                        <strong>Hours:</strong>
+                        <p>Mon–Fri: 8:00 am – 5:00 pm<br>Sat–Sun: Closed</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Elite Dentistry. All rights reserved.</p>
+                <p class="disclaimer">Elite Dentistry is a certified Invisalign provider. Invisalign® is a registered trademark of Align Technology, Inc. We are an independent dental practice and not directly affiliated with Align Technology.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chat Widget -->
+    <div id="aiChatWidget" class="ai-chat-widget">
+        <button id="chatToggle" class="chat-toggle" aria-label="Open chat">
+            <span class="chat-icon"></span>
+        </button>
+        <div id="chatWindow" class="chat-window hidden">
+            <div class="chat-header">
+                <h3>Chat with Elite Dentistry</h3>
+                <button id="chatClose" class="chat-close" aria-label="Close chat">&times;</button>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <form id="chatForm" class="chat-form">
+                <input type="text" id="chatInput" placeholder="Ask about Invisalign..." autocomplete="off" required>
+                <button type="submit" aria-label="Send message">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/formHandler.js"></script>
+    <script src="js/aiChat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

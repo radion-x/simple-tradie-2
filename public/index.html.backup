@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blue Slip Sydney - Transport for NSW approved Blue Slip inspections in St Peters. Same day mobile service, no call out fee. Call (02) 9516 3366 for a free quote.">
+    <title>Blue Slip Sydney - Mobile Blue Slip Inspections St Peters NSW</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="container">
+                <div class="logo">Blue Slip Sydney</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#why-choose-us">Why Choose Us</a></li>
+                    <li><a href="#service-areas">Service Areas</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#faqs">FAQs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Blue Slip Sydney</h1>
+            <p class="hero-subtitle">Same-Day Service</p>
+            <p class="hero-description">Fast, compliant AUVIS inspections by certified professionals. Get your unregistered vehicle on the road with zero hassle.</p>
+            <div class="hero-buttons">
+                <a href="tel:0295163366" class="btn btn-primary">Call (02) 9516 3366</a>
+                <a href="sms:+61412785767?&body=Hi%2C%20I%20need%20a%20blue%20slip%20quote.%20My%20suburb%20is%3A%20" class="btn btn-secondary">SMS for Quick Quote</a>
+            </div>
+            <div class="hero-badges">
+                <div class="badge">⭐ 4.7/5 from local drivers</div>
+                <div class="badge">✓ AUVIS authorised</div>
+                <div class="badge">📍 Sydney-wide</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">�</div>
+                    <h3>Mobile Blue Slip Inspections</h3>
+                    <p>Transport for NSW approved Blue Slip inspections at your location. Same day service available across Sydney. We come to you - no need to leave your vehicle at a workshop.</p>
+                    <a href="#contact" class="service-link">Get a Quote →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Pre-Purchase Inspections</h3>
+                    <p>Comprehensive mobile pre-purchase vehicle inspections. Get peace of mind before buying a used car with our thorough inspection service.</p>
+                    <a href="#contact" class="service-link">Book Now →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Mobile Mechanical Repairs</h3>
+                    <p>All mechanical repairs completed at your location. We beat any written repair quote and never charge a call out fee for quoted repairs.</p>
+                    <a href="#contact" class="service-link">Get a Quote →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Why Choose Blue Slip Sydney?</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Blue Slip Sydney is a fully Transport for NSW licensed mobile inspection service specialising in Blue Slip inspections, mobile vehicle inspections, and mobile mechanical repairs across Sydney and NSW.</p>
+                    <p>We understand that taking your vehicle to a workshop can be inconvenient. That's why we bring our expert services directly to you - whether at home, work, or anywhere in Sydney. Our mobile mechanics offer a 'stay where you are' service, so you never lose control of your vehicle.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <strong>No Call Out Fee</strong>
+                                <p>We never charge call out fees for quoted repairs</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <strong>Same Day Service</strong>
+                                <p>Fast response time across Sydney</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <strong>Beat Any Written Quote</strong>
+                                <p>We guarantee to beat any written repair quote</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <strong>TfNSW Approved</strong>
+                                <p>Fully licensed Transport for NSW inspectors</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <div>
+                            <strong>Phone</strong>
+                            <p><a href="tel:0295163366" class="phone-link">(02) 9516 3366</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <div>
+                            <strong>Email</strong>
+                            <p>info@blueslipsydney.com.au</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <div>
+                            <strong>Address</strong>
+                            <p>63-65 Campbell St<br>St Peters NSW 2044</p>
+                        </div>
+                    </div>
+                    <div class="business-hours">
+                        <strong>Business Hours</strong>
+                        <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                        <p>Saturday: 9:00 AM - 4:00 PM</p>
+                        <p>Sunday: By Appointment</p>
+                    </div>
+                    <div class="info-banner">
+                        <strong>🚗 Same Day Service Available</strong>
+                        <p>Call now for fast response across Sydney</p>
+                    </div>
+                </div>
+                
+                <form id="contactForm" class="contact-form">
+                    <h3>Request a Free Quote</h3>
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(02) XXXX XXXX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service Required</label>
+                        <select id="service" name="service">
+                            <option value="">Select a service</option>
+                            <option value="blue-slip">Blue Slip Inspection</option>
+                            <option value="pre-purchase">Pre-Purchase Inspection</option>
+                            <option value="mechanical">Mechanical Repairs</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your vehicle and inspection requirements..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Blue Slip Sydney</h4>
+                    <p>Transport for NSW approved mobile Blue Slip inspections across Sydney</p>
+                    <p><strong>No Call Out Fee • Same Day Service</strong></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Phone: <a href="tel:0295163366" class="footer-link">(02) 9516 3366</a></p>
+                    <p>Email: info@blueslipsydney.com.au</p>
+                    <p>63-65 Campbell St, St Peters NSW 2044</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Blue Slip Sydney. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chat Widget -->
+    <div id="aiChatWidget" class="ai-chat-widget">
+        <button id="chatToggle" class="chat-toggle" aria-label="Open chat">
+            <span class="chat-icon">💬</span>
+        </button>
+        <div id="chatWindow" class="chat-window hidden">
+            <div class="chat-header">
+                <h3>Chat with Blue Slip Sydney</h3>
+                <button id="chatClose" class="chat-close" aria-label="Close chat">&times;</button>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <form id="chatForm" class="chat-form">
+                <input type="text" id="chatInput" placeholder="Type your message..." autocomplete="off" required>
+                <button type="submit" aria-label="Send message">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/formHandler.js"></script>
+    <script src="js/aiChat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

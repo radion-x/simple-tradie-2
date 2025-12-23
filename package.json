@@ -1,0 +1,37 @@
+{
+  "name": "website-template-with-ai",
+  "version": "1.0.0",
+  "description": "Reusable website template with email forms and AI chat widget",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "db:setup": "node scripts/setup-db.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "website",
+    "template",
+    "ai-chat",
+    "contact-form",
+    "mailgun",
+    "openrouter"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mailgun-js": "^0.22.0",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

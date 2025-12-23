@@ -1,0 +1,3 @@
+{
+  "watch": ["*.js", "public/css/*.css", "public/*.html"]
+}
