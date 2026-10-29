@@ -1,0 +1,121 @@
+{
+  "evaluated_at": "2026-10-29T01:31:45.615Z",
+  "max_test_cost_usd": 0.05,
+  "observed_cost_usd": 0.00711365,
+  "initial_cost_usd": 0.0043799,
+  "results": [
+    {
+      "model": "openai/gpt-5.4-mini",
+      "case": "package-and-unknowns",
+      "elapsed_ms": 1276,
+      "usage": {
+        "prompt_tokens": 715,
+        "completion_tokens": 102,
+        "total_tokens": 817,
+        "cost": 0.00099525,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00099525,
+          "upstream_inference_prompt_cost": 0.00053625,
+          "upstream_inference_completions_cost": 0.000459
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "reply": {
+        "content": "Our published offer is $997 setup plus $30 per month for hosting and AI.\n\nIt includes 3 custom pages, mobile-friendly design, enquiry form, click-to-call, an information assistant, callback requests, and a lead dashboard.\n\nUnder the agreed project terms, you own the delivered website. Domain costs, third-party software, transfer details and payment conditions need team confirmation.\n\nI can’t guarantee it will be live this Friday. If you want, I can help with the next step."
+      },
+      "input_usd_per_million": 0.75,
+      "output_usd_per_million": 4.5
+    },
+    {
+      "model": "openai/gpt-5.4-mini",
+      "case": "discount-and-fit",
+      "elapsed_ms": 1197,
+      "usage": {
+        "prompt_tokens": 711,
+        "completion_tokens": 88,
+        "total_tokens": 799,
+        "cost": 0.00092925,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00092925,
+          "upstream_inference_prompt_cost": 0.00053325,
+          "upstream_inference_completions_cost": 0.000396
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "reply": {
+        "content": "I can’t promise a lower price or guarantee 10 jobs a week.\n\nIf you want a website update, I’d need:\n1. Your trade and service area\n2. Your Facebook page link\n3. A few photos of your work\n4. The main jobs you want to win\n5. Any existing website details, if you have one\n\nWant me to outline the best fit for your roofing business?"
+      },
+      "input_usd_per_million": 0.75,
+      "output_usd_per_million": 4.5
+    },
+    {
+      "model": "openai/gpt-5.4-mini",
+      "case": "callback-tool",
+      "elapsed_ms": 1152,
+      "usage": {
+        "prompt_tokens": 719,
+        "completion_tokens": 60,
+        "total_tokens": 779,
+        "cost": 0.00080925,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00080925,
+          "upstream_inference_prompt_cost": 0.00053925,
+          "upstream_inference_completions_cost": 0.00027
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "finish_reason": "tool_calls",
+      "reply": {
+        "content": null,
+        "tool_calls": [
+          {
+            "type": "function",
+            "index": 0,
+            "id": "call_hMf1NNMlQqvVgjmJ3nemec2G",
+            "function": {
+              "name": "request_callback",
+              "arguments": "{\"name\":\"Test Tradie\",\"email\":\"synthetic@example.invalid\",\"preferred_contact_method\":\"email\",\"preferred_time\":\"after 4pm on weekdays\",\"message\":\"Callback request about a website. User consented to saving callback request.\"}"
+            }
+          }
+        ]
+      },
+      "input_usd_per_million": 0.75,
+      "output_usd_per_million": 4.5
+    }
+  ]
+}

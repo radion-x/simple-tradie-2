@@ -3,307 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Callback Requests - Admin Dashboard | Websited</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <style>
+    <title>Simple Page Enquiries | Team Dashboard</title>
+    <link rel="stylesheet" href="/css/fonts.css"><link rel="icon" href="/favicon.svg"><meta name="robots" content="noindex"><style>
         :root {
-            --admin-bg: var(--color-bg-body, #F7F5F0);
-            --admin-surface: var(--color-bg-surface, #FFFFFF);
-            --admin-primary: var(--color-primary, #4A5D4F);
-            --admin-accent: var(--color-accent, #EBC944);
-            --admin-text-main: var(--color-text-main, #2C352E);
-            --admin-text-secondary: var(--text-secondary, #4a5a50);
-            --admin-border-light: #e0e0e0;
-            --admin-success: #10B981;
-            --admin-warning: #F59E0B;
-            --admin-danger: #EF4444;
-            --admin-info: #06B6D4;
+            --primary: #ed3f39;
+            --primary-dark: #bd302b;
+            --primary-light: #f06c67;
+            --gradient-primary: linear-gradient(135deg, #071320, #172b3d);
         }
 
-        /* Base Styles */
-        body.admin-body {
-            background-color: var(--admin-bg);
-            min-height: 100vh;
-            margin: 0;
-            padding: 0;
-            font-family: var(--font-body, sans-serif);
-            color: var(--admin-text-main);
-            line-height: 1.6;
-        }
-
-        /* Login Screen - Simplified Centering */
-        .login-screen {
-            display: grid;
-            place-items: center;
-            min-height: 100vh;
-            width: 100%;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(74, 93, 79, 0.05) 0%, rgba(235, 201, 68, 0.03) 100%);
-        }
-
-        .login-card {
-            background: var(--admin-surface);
-            border-radius: var(--radius-xl, 32px);
-            padding: 3rem;
-            max-width: 450px;
-            width: 100%;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(74, 93, 79, 0.1);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .login-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-primary);
-        }
-
-        .login-card h2 {
-            font-family: var(--font-heading, sans-serif);
-            color: var(--admin-primary);
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 800;
-        }
-        
-        .login-card .login-subtitle {
-            color: var(--admin-text-secondary);
-            margin-bottom: 2.5rem;
-            font-size: 1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.75rem;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-            color: var(--admin-text-main);
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 1rem 1.25rem;
-            border: 2px solid var(--admin-border-light);
-            border-radius: var(--radius-md, 12px);
-            font-size: 1rem;
-            transition: all 0.3s;
+        * {
             box-sizing: border-box;
-            background: #fafbfc;
         }
 
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--admin-primary);
-            box-shadow: 0 0 0 4px rgba(74, 93, 79, 0.15);
-            background: white;
+        body {
+            background: linear-gradient(135deg, #071320, #172b3d);
+            min-height: 100vh;
+            padding: 20px;
+            font-family: Manrope, sans-serif;
+            margin: 0;
         }
 
-        .submit-btn {
-            width: 100%;
-            padding: 1.25rem;
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            border-radius: var(--radius-md, 12px);
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(74, 93, 79, 0.2);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(74, 93, 79, 0.3);
-        }
-
-        .error-message {
-            background: rgba(239, 68, 68, 0.1);
-            color: #991b1b;
-            padding: 1.25rem;
-            border-radius: var(--radius-md, 12px);
-            margin-bottom: 1.5rem;
-            text-align: center;
-            border-left: 4px solid var(--admin-danger);
-            animation: slideIn 0.3s ease-out;
-        }
-        
-        /* Admin Dashboard - Professional Layout */
         .admin-container {
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem;
         }
 
         .admin-header {
-            background: var(--admin-surface);
-            border-radius: var(--radius-xl, 24px);
-            padding: 2rem 2.5rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-md);
+            background: white;
+            border-radius: 12px;
+            padding: 20px 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            border: 1px solid var(--admin-border-light);
-        }
-
-        .admin-header-content {
-            flex: 1;
-            min-width: 300px;
         }
 
         .admin-header h1 {
             margin: 0;
-            font-size: 2rem;
-            color: var(--admin-primary);
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            font-size: 24px;
+            color: var(--primary-dark);
+            font-weight: 700;
         }
 
-        .admin-header-subtitle {
-            margin: 0.5rem 0 0;
-            color: var(--admin-text-secondary);
-            font-size: 0.95rem;
+        .header-subtitle {
+            margin: 4px 0 0 0;
+            color: #6b7280;
+            font-size: 14px;
         }
 
         .logout-btn {
-            background: var(--admin-danger);
+            background: #dc2626;
             color: white;
             border: none;
-            padding: 0.875rem 1.5rem;
-            border-radius: var(--radius-md, 12px);
+            padding: 10px 20px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: 14px;
             font-weight: 600;
-            transition: all 0.3s;
-            white-space: nowrap;
+            transition: all 0.2s;
         }
 
         .logout-btn:hover {
-            background: #dc2626;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(239, 68, 68, 0.3);
+            background: #b91c1c;
         }
-        
-        /* Stats Grid - Modern Cards */
+
+        .login-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 360px;
+            margin: 80px auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .login-card h2 {
+            text-align: center;
+            margin-bottom: 28px;
+            color: var(--primary-dark);
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(89, 144, 174, 0.15);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        .error-message {
+            background: #fef2f2;
+            color: #991b1b;
+            padding: 12px 14px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-left: 3px solid #dc2626;
+            font-size: 14px;
+        }
+
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
         }
 
         .stat-card {
-            background: var(--admin-surface);
-            border-radius: var(--radius-lg, 20px);
-            padding: 1.75rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--admin-border-light);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gradient-primary);
-            transform: scaleY(0);
-            transform-origin: bottom;
-            transition: transform 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(74, 93, 79, 0.2);
-        }
-
-        .stat-card:hover::before {
-            transform: scaleY(1);
+            background: white;
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .stat-card .label {
-            font-size: 0.875rem;
-            color: var(--admin-text-secondary);
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 6px;
         }
 
         .stat-card .value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--admin-primary);
-            line-height: 1;
-        }
-        
-        .stat-card .value.pending {
-            color: var(--admin-warning);
-        }
-        
-        .stat-card .value.contacted {
-            color: var(--admin-info);
-        }
-        
-        .stat-card .value.completed {
-            color: var(--admin-success);
-        }
-        
-        /* Filters Section - Clean & Organized */
-        .filters-card {
-            background: var(--admin-surface);
-            border-radius: var(--radius-xl, 24px);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--admin-border-light);
-        }
-
-        .filters-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .filters-header h3 {
-            margin: 0;
-            font-size: 1.25rem;
-            color: var(--admin-primary);
+            font-size: 28px;
             font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .filters-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .filters-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
             align-items: end;
         }
 
@@ -313,83 +188,57 @@
         }
 
         .filter-group label {
-            font-size: 0.875rem;
+            font-size: 13px;
             font-weight: 600;
-            color: var(--admin-text-main);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            color: #374151;
+            margin-bottom: 5px;
         }
 
         .filter-group input,
         .filter-group select {
-            padding: 0.875rem 1rem;
-            border: 2px solid var(--admin-border-light);
-            border-radius: var(--radius-md, 12px);
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            background: #fafbfc;
-            font-family: var(--font-body);
+            padding: 9px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.2s;
         }
 
         .filter-group input:focus,
         .filter-group select:focus {
             outline: none;
-            border-color: var(--admin-primary);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(74, 93, 79, 0.1);
+            border-color: var(--primary);
         }
 
         .filter-btn {
-            background: var(--gradient-primary);
+            background: var(--primary);
             color: white;
             border: none;
-            padding: 0.875rem 1.5rem;
-            border-radius: var(--radius-md, 12px);
+            padding: 10px 18px;
+            border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 14px;
+            transition: all 0.2s;
         }
 
         .filter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(74, 93, 79, 0.3);
+            background: var(--primary-dark);
         }
 
-        .filter-btn.secondary {
-            background: var(--admin-accent);
-            color: var(--admin-primary);
+        .refresh-btn {
+            background: #6BA89E;
         }
 
-        .filter-btn.secondary:hover {
-            background: #d4b53a;
-            box-shadow: 0 6px 16px rgba(235, 201, 68, 0.3);
+        .refresh-btn:hover {
+            background: #5A9488;
         }
-        
-        /* Table - Modern & Readable */
+
         .table-card {
-            background: var(--admin-surface);
-            border-radius: var(--radius-xl, 24px);
-            padding: 0;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--admin-border-light);
-            overflow: hidden;
-        }
-
-        .table-header {
-            padding: 1.5rem 2rem;
-            background: #f7f5f0;
-            border-bottom: 1px solid var(--admin-border-light);
-        }
-
-        .table-header h3 {
-            margin: 0;
-            font-size: 1.25rem;
-            color: var(--admin-primary);
-            font-weight: 700;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            overflow-x: auto;
         }
 
         table {
@@ -398,120 +247,113 @@
         }
 
         thead {
-            background: #f7f5f0;
+            background: #f8fafc;
         }
 
-        thead th {
+        th {
             text-align: left;
-            padding: 1rem 1.5rem;
-            font-weight: 700;
-            color: var(--admin-primary) !important;
-            border-bottom: 2px solid var(--admin-border-light);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            padding: 12px 14px;
+            font-weight: 600;
+            color: #374151 !important;
+            border-bottom: 2px solid #e5e7eb;
+            font-size: 13px;
+        }
+
+        table thead th {
+            color: #374151 !important;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #f3f4f6;
+            color: #1f2937 !important;
+            font-size: 14px;
         }
 
         tbody td {
-            padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid var(--admin-border-light);
-            color: var(--admin-text-main) !important;
-            vertical-align: middle;
+            color: #1f2937 !important;
         }
 
-        tbody tr {
-            transition: all 0.2s;
-        }
-
-        tbody tr:hover {
-            background: rgba(74, 93, 79, 0.03);
+        tr:hover {
+            background: #f8fafc;
             cursor: pointer;
         }
 
-        tbody tr.highlighted {
-            background: rgba(255, 243, 199, 0.5);
+        tr.highlighted {
+            background: #e0f2fe;
             animation: highlight-fade 2s ease-in-out;
         }
 
         @keyframes highlight-fade {
-            0%, 100% { background: rgba(255, 243, 199, 0.5); }
-            50% { background: rgba(255, 230, 138, 0.5); }
+            0%, 100% { background: #e0f2fe; }
+            50% { background: #bae6fd; }
         }
 
-        /* Status Badges - Color Coded */
         .status-badge {
             display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .status-pending {
-            background: rgba(245, 158, 11, 0.15);
-            color: var(--admin-warning);
+            background: #fef3c7;
+            color: #92400e;
         }
 
         .status-contacted {
-            background: rgba(6, 182, 212, 0.15);
-            color: var(--admin-info);
+            background: #dbeafe;
+            color: #1e40af;
         }
 
         .status-completed {
-            background: rgba(16, 185, 129, 0.15);
-            color: var(--admin-success);
+            background: #d1fae5;
+            color: #065f46;
         }
 
-        /* Source Badges - Color Coded */
         .source-badge {
             display: inline-block;
-            padding: 0.4rem 0.8rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
             font-weight: 600;
-            text-transform: uppercase;
         }
 
         .source-chatbot {
-            background: rgba(74, 93, 79, 0.1);
-            color: var(--admin-primary);
+            background: #e0f2fe;
+            color: #0369a1;
         }
 
         .source-contact_form {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--admin-danger);
+            background: #dcfce7;
+            color: #166534;
         }
 
         .source-footer_form {
-            background: rgba(6, 182, 212, 0.1);
-            color: var(--admin-info);
+            background: #f3e8ff;
+            color: #7c3aed;
         }
 
         .source-download_chat {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--admin-success);
+            background: #e0f2fe;
+            color: #0369a1;
         }
 
-        /* Status Select - Modern */
         .status-select {
-            padding: 0.5rem 1rem;
-            border: 2px solid var(--admin-border-light);
-            border-radius: 8px;
-            font-size: 0.85rem;
+            padding: 6px 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 13px;
             cursor: pointer;
-            transition: all 0.3s;
-            background: white;
-            font-weight: 600;
-            color: var(--admin-text-main);
+            transition: all 0.2s;
         }
 
         .status-select:hover {
-            border-color: var(--admin-primary);
+            border-color: var(--primary);
         }
 
-        /* Modal - Clean & Professional */
         .modal {
             display: none;
             position: fixed;
@@ -524,118 +366,98 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            -webkit-backdrop-filter: blur(4px);
-            backdrop-filter: blur(4px);
         }
 
         .modal.show {
             display: flex;
-            animation: fadeIn 0.3s ease-out;
         }
 
         .modal-content {
-            background: var(--admin-surface);
-            border-radius: var(--radius-xl, 24px);
-            padding: 2.5rem;
-            max-width: 900px;
+            background: white;
+            border-radius: 12px;
+            padding: 28px;
+            max-width: 700px;
             width: 100%;
-            max-height: 85vh;
+            max-height: 80vh;
             overflow-y: auto;
             position: relative;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--admin-border-light);
         }
 
         .modal-close {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
+            top: 14px;
+            right: 14px;
             background: none;
             border: none;
-            font-size: 2rem;
+            font-size: 24px;
             cursor: pointer;
-            color: var(--admin-text-secondary);
-            transition: all 0.3s;
-            width: 2rem;
-            height: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
+            color: #6b7280;
+            transition: color 0.2s;
         }
 
         .modal-close:hover {
-            color: var(--admin-danger);
-            background: rgba(239, 68, 68, 0.1);
-            transform: rotate(90deg);
+            color: #1f2937;
         }
 
         .modal h3 {
             margin-top: 0;
-            margin-bottom: 2rem;
-            font-size: 1.75rem;
-            color: var(--admin-primary);
-            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            font-size: 20px;
         }
 
         .detail-grid {
             display: grid;
-            gap: 1.5rem;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 14px;
         }
 
         .detail-item {
-            padding: 1.25rem;
-            background: #fafbfc;
-            border-radius: var(--radius-md, 12px);
-            border: 1px solid var(--admin-border-light);
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 8px;
         }
 
         .detail-item label {
             display: block;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--admin-text-secondary);
-            margin-bottom: 0.5rem;
+            font-size: 12px;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 4px;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .detail-item .value {
-            color: var(--admin-text-main);
-            font-size: 1rem;
-            word-break: break-word;
+            color: #1f2937;
+            font-size: 14px;
         }
 
         .conversation-context {
-            background: #f3f4f6;
-            padding: 1.5rem;
-            border-radius: var(--radius-md, 12px);
-            border-left: 4px solid var(--admin-primary);
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 6px;
+            border-left: 3px solid var(--primary);
             max-height: 300px;
             overflow-y: auto;
             font-family: monospace;
-            font-size: 0.85rem;
+            font-size: 13px;
             line-height: 1.6;
             white-space: pre-wrap;
-            grid-column: 1 / -1;
         }
 
-        /* Loading & Empty States */
         .loading {
             text-align: center;
-            padding: 4rem;
-            color: var(--admin-text-secondary);
+            padding: 40px;
+            color: #6b7280;
         }
 
         .spinner {
-            border: 3px solid #f3f4f6;
-            border-top: 3px solid var(--admin-primary);
+            border: 3px solid #e5e7eb;
+            border-top: 3px solid var(--primary);
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 36px;
+            height: 36px;
             animation: spin 1s linear infinite;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 16px;
         }
 
         @keyframes spin {
@@ -645,95 +467,55 @@
 
         .empty-state {
             text-align: center;
-            padding: 4rem 2rem;
-            color: var(--admin-text-secondary);
+            padding: 60px 20px;
+            color: #6b7280;
         }
 
         .empty-state svg {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 1.5rem;
-            opacity: 0.4;
-            color: var(--admin-primary);
+            width: 80px;
+            height: 80px;
+            margin-bottom: 16px;
+            opacity: 0.5;
         }
 
-        .empty-state h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: var(--admin-primary);
-        }
-
-        .empty-state p {
-            font-size: 1rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* Pagination - Modern */
         .pagination {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 0.75rem;
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: #fafbfc;
-            border-top: 1px solid var(--admin-border-light);
+            gap: 8px;
+            margin-top: 20px;
         }
 
         .pagination button {
-            padding: 0.75rem 1.25rem;
-            background: var(--admin-surface);
-            border: 2px solid var(--admin-border-light);
-            border-radius: var(--radius-md, 12px);
+            padding: 8px 14px;
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            font-size: 0.9rem;
+            transition: all 0.2s;
+            font-size: 14px;
         }
 
         .pagination button:hover:not(:disabled) {
-            border-color: var(--admin-primary);
-            background: rgba(74, 93, 79, 0.05);
-            transform: translateY(-2px);
+            border-color: var(--primary);
+            background: #f8fafc;
         }
 
         .pagination button:disabled {
-            opacity: 0.4;
+            opacity: 0.5;
             cursor: not-allowed;
         }
 
         .pagination .page-info {
-            padding: 0 1.25rem;
-            color: var(--admin-text-secondary);
-            font-size: 0.9rem;
-            font-weight: 600;
+            padding: 0 16px;
+            color: #6b7280;
+            font-size: 14px;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            body.admin-body {
-                padding: 0;
-            }
-
-            .admin-container {
-                padding: 1rem;
-            }
-
             .admin-header {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 16px;
                 text-align: center;
             }
 
@@ -746,59 +528,29 @@
             }
 
             table {
-                font-size: 0.9rem;
+                font-size: 14px;
             }
 
             th, td {
-                padding: 0.75rem 1rem;
-                white-space: nowrap;
-            }
-
-            .modal-content {
-                padding: 1.5rem;
-                margin: 1rem;
-            }
-
-            .detail-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .login-card {
-                padding: 2rem 1.5rem;
+                padding: 12px 8px;
             }
         }
     </style>
 </head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PWLGQNHF');</script>
-<!-- End Google Tag Manager -->
-<body class="admin-body">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWLGQNHF"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<body>
     <!-- Login Screen -->
     <div id="loginScreen" class="login-screen">
         <div class="login-card">
-            <h2>🔐 Admin Login</h2>
-            <p class="login-subtitle">Please enter your password to access the dashboard.</p>
+            <h2>Admin sign in</h2>
+            <p style="color:#6b7280;line-height:1.5;text-align:center;margin:-12px 0 24px;">Enter an authorised email address and we’ll send you a one-time sign-in link.</p>
             <div id="loginError" class="error-message" style="display: none;"></div>
+            <div id="loginSuccess" class="error-message" style="display:none;background:#ecfdf5;color:#065f46;"></div>
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required autofocus>
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" autocomplete="email" required autofocus>
                 </div>
-                <button type="submit" class="submit-btn">Login</button>
+                <button type="submit" class="submit-btn">Email me a sign-in link</button>
             </form>
         </div>
     </div>
@@ -807,9 +559,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="adminDashboard" class="admin-container" style="display: none;">
         <!-- Header -->
         <div class="admin-header">
-            <div class="admin-header-content">
-                <h1>📞 Callback Requests Dashboard</h1>
-                <p class="admin-header-subtitle">Manage and track customer callback requests</p>
+            <div>
+                <h1>Simple Page Website Enquiries</h1>
+                <p class="header-subtitle">Manage callback, offer enquiry and chat leads</p>
             </div>
             <button id="logoutBtn" class="logout-btn">Logout</button>
         </div>
@@ -844,9 +596,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <!-- Filters -->
         <div class="filters-card">
-            <div class="filters-header">
-                <h3>🔍 Filter & Search</h3>
-            </div>
             <div class="filters-grid">
                 <div class="filter-group">
                     <label for="filterStatus">Status</label>
@@ -865,6 +614,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <option value="contact_form">Contact Form</option>
                         <option value="footer_form">Footer Form</option>
                         <option value="download_chat">Download Chat</option>
+                        <option value="chat_booking">Chat Callback</option>
+                        <option value="assessment">Project brief</option>
                     </select>
                 </div>
                 <div class="filter-group">
@@ -885,16 +636,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 <div class="filter-group">
                     <label>&nbsp;</label>
-                    <button id="refreshBtn" class="filter-btn secondary">🔄 Refresh</button>
+                    <button id="refreshBtn" class="filter-btn refresh-btn">Refresh</button>
                 </div>
             </div>
         </div>
 
         <!-- Table -->
         <div class="table-card">
-            <div class="table-header">
-                <h3>📋 Callback Requests</h3>
-            </div>
             <div id="loadingState" class="loading">
                 <div class="spinner"></div>
                 <div>Loading callback requests...</div>
@@ -950,19 +698,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <script>
         class CallbackDashboard {
+            escapeHtml(value) {
+                return String(value ?? '').replace(/[&<>"']/g, character => ({
+                    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+                })[character]);
+            }
             constructor() {
-                this.password = sessionStorage.getItem('adminPassword');
                 this.currentPage = 1;
                 this.currentFilters = {};
                 this.init();
             }
 
-            init() {
-                if (this.password) {
-                    this.showDashboard();
-                    this.loadData();
-                } else {
+            async init() {
+                const authResult = new URLSearchParams(window.location.search).get('auth');
+                if (authResult === 'invalid') this.showError('That sign-in link is invalid, expired, or has already been used.');
+
+                try {
+                    const response = await fetch('/api/admin/session');
+                    if (response.ok) {
+                        this.showDashboard();
+                        this.loadData();
+                        if (authResult) history.replaceState({}, '', window.location.pathname);
+                    } else {
+                        this.showLogin();
+                    }
+                } catch (error) {
                     this.showLogin();
+                    this.showError('Unable to check your session. Please try again.');
                 }
 
                 // Event listeners
@@ -994,34 +756,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             async handleLogin(e) {
                 e.preventDefault();
-                const password = document.getElementById('password').value;
+                const email = document.getElementById('email').value.trim();
+                const button = e.currentTarget.querySelector('button[type="submit"]');
+                button.disabled = true;
+                button.textContent = 'Sending link…';
 
                 try {
-                    const response = await fetch('/api/admin/login', {
+                    const response = await fetch('/api/admin/magic-link', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ password })
+                        body: JSON.stringify({ email })
                     });
 
                     const data = await response.json();
 
                     if (data.success) {
-                        sessionStorage.setItem('adminPassword', password);
-                        this.password = password;
-                        this.showDashboard();
-                        this.loadData();
+                        document.getElementById('loginForm').reset();
+                        this.showSuccess(data.message);
                     } else {
-                        this.showError(data.error || 'Invalid password');
+                        this.showError(data.error || 'Unable to send sign-in link');
                     }
                 } catch (error) {
-                    this.showError('Login failed. Please try again.');
+                    this.showError('Unable to send sign-in link. Please try again.');
+                } finally {
+                    button.disabled = false;
+                    button.textContent = 'Email me a sign-in link';
                 }
             }
 
-            handleLogout() {
-                sessionStorage.removeItem('adminPassword');
-                this.password = null;
+            async handleLogout() {
+                await fetch('/api/admin/logout', { method: 'POST' });
                 this.showLogin();
+            }
+
+            showSuccess(message) {
+                const successDiv = document.getElementById('loginSuccess');
+                successDiv.textContent = message;
+                successDiv.style.display = 'block';
             }
 
             showError(message) {
@@ -1043,8 +814,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             async loadStats() {
                 try {
                     const response = await fetch('/api/callbacks-stats', {
-                        headers: { 'x-admin-password': this.password }
+                        headers: { 'Accept': 'application/json' }
                     });
+
+                    if (response.status === 401) return this.showLogin();
 
                     const data = await response.json();
                     if (data.success) {
@@ -1073,13 +846,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         ...this.currentFilters
                     });
 
-                    const response = await fetch(`/api/callbacks?${params}`, {
-                        headers: { 'x-admin-password': this.password }
-                    });
+                    const response = await fetch(`/api/callbacks?${params}`);
+
+                    if (response.status === 401) {
+                        document.getElementById('loadingState').style.display = 'none';
+                        return this.showLogin();
+                    }
 
                     const data = await response.json();
-                    console.log('📊 Callbacks API Response:', data);
-                    console.log('📋 Total callbacks:', data.data ? data.data.length : 0);
 
                     document.getElementById('loadingState').style.display = 'none';
 
@@ -1100,9 +874,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 const tbody = document.getElementById('callbacksTableBody');
                 tbody.innerHTML = '';
 
-                console.log('🔍 Rendering callbacks:', callbacks);
                 callbacks.forEach((callback, index) => {
-                    console.log(`📞 Callback #${index}:`, callback);
                     const tr = document.createElement('tr');
                     if (this.highlightCallbackId == callback.id) {
                         tr.className = 'highlighted';
@@ -1122,11 +894,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                     tr.innerHTML = `
                         <td><strong>#${callback.id}</strong></td>
-                        <td>${callback.name}</td>
-                        <td>${callback.phone || '-'}</td>
-                        <td>${callback.email || '-'}</td>
-                        <td><span class="source-badge source-${callback.source || 'chatbot'}">${this.formatSource(callback.source || 'chatbot')}</span></td>
-                        <td>${callback.preferred_contact_method || '-'}</td>
+                        <td>${this.escapeHtml(callback.name)}</td>
+                        <td>${this.escapeHtml(callback.phone || '-')}</td>
+                        <td>${this.escapeHtml(callback.email || '-')}</td>
+                        <td><span class="source-badge source-${this.escapeHtml(callback.source || 'chatbot')}">${this.escapeHtml(this.formatSource(callback.source || 'chatbot'))}</span></td>
+                        <td>${this.escapeHtml(callback.preferred_contact_method || '-')}</td>
                         <td><span class="status-badge status-${callback.status}">${callback.status}</span></td>
                         <td>${formattedDate}</td>
                         <td>
@@ -1162,7 +934,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 document.getElementById('nextPage').disabled = pagination.page >= pagination.totalPages;
             }
 
-            showDetails(callback) {
+            async showDetails(callback) {
                 const content = document.getElementById('detailContent');
                 content.innerHTML = `
                     <div class="detail-item">
@@ -1171,23 +943,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div class="detail-item">
                         <label>Name</label>
-                        <div class="value">${callback.name}</div>
+                        <div class="value">${this.escapeHtml(callback.name)}</div>
                     </div>
                     <div class="detail-item">
                         <label>Phone</label>
-                        <div class="value">${callback.phone || '-'}</div>
+                        <div class="value">${this.escapeHtml(callback.phone || '-')}</div>
                     </div>
                     <div class="detail-item">
                         <label>Email</label>
-                        <div class="value">${callback.email || '-'}</div>
+                        <div class="value">${this.escapeHtml(callback.email || '-')}</div>
                     </div>
                     <div class="detail-item">
-                        <label>Preferred Contact Method</label>
-                        <div class="value">${callback.preferred_contact_method || '-'}</div>
+                        <label>Trade / business</label><div class="value">${this.escapeHtml(callback.service || "-")}</div></div><div class="detail-item"><label>Preferred Contact Method</label>
+                        <div class="value">${this.escapeHtml(callback.preferred_contact_method || '-')}</div>
                     </div>
                     <div class="detail-item">
                         <label>Preferred Time</label>
-                        <div class="value">${callback.preferred_time || '-'}</div>
+                        <div class="value">${this.escapeHtml(callback.preferred_time || '-')}</div>
                     </div>
                     <div class="detail-item">
                         <label>Status</label>
@@ -1195,7 +967,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div class="detail-item">
                         <label>Message</label>
-                        <div class="value">${callback.message || '-'}</div>
+                        <div class="value">${this.escapeHtml(callback.message || '-')}</div>
                     </div>
                     <div class="detail-item">
                         <label>Created At</label>
@@ -1208,12 +980,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     ${callback.conversation_context ? `
                         <div class="detail-item" style="grid-column: 1 / -1;">
                             <label>Conversation Context</label>
-                            <div class="conversation-context">${callback.conversation_context}</div>
+                            <div class="conversation-context">${this.escapeHtml(callback.conversation_context)}</div>
                         </div>
                     ` : ''}
                 `;
 
                 document.getElementById('detailModal').classList.add('show');
+                if (callback.quote_details || callback.notification_status) {
+                    const details = document.createElement('div');
+                    details.className = 'detail-item'; details.style.gridColumn = '1 / -1';
+                    details.innerHTML = (callback.source === 'assessment' ? '<label>Project details</label><div class="value">' + this.escapeHtml(callback.message || '') + '</div>' : '') + '<label>Notification</label><div class="value">' + this.escapeHtml(callback.notification_status || 'pending') + '</div>';
+                    content.append(details);
+                    const photos = document.createElement('div'); photos.className = 'detail-item'; photos.style.gridColumn = '1 / -1'; photos.textContent = 'Loading damage photos…'; content.append(photos);
+                    try {
+                        const response = await fetch(`/api/quotes/${callback.id}/photos`);
+                        if (!response.ok) throw new Error('Photos unavailable');
+                        const files = await response.json(); photos.textContent = files.length ? 'Damage photos' : 'No photos uploaded.';
+                        files.forEach(file => { const link = document.createElement('a'); link.href = `/api/quotes/${callback.id}/photos/${file.id}`; link.target = '_blank'; link.rel = 'noopener'; const image = document.createElement('img'); image.src = link.href; image.alt = file.filename; image.style.cssText = 'width:120px;height:90px;object-fit:cover;border-radius:6px;display:inline-block;margin:12px 12px 0 0'; link.append(image); photos.append(link); });
+                    } catch (error) { photos.textContent = 'Photos could not be loaded. Please refresh and try again.'; }
+                }
+
             }
 
             closeModal() {
@@ -1225,8 +1011,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     const response = await fetch(`/api/callbacks/${id}`, {
                         method: 'PATCH',
                         headers: {
-                            'Content-Type': 'application/json',
-                            'x-admin-password': this.password
+                            'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({ status: newStatus })
                     });
@@ -1254,7 +1039,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     'chatbot': '🤖 AI Chat',
                     'contact_form': '📝 Contact Form',
                     'footer_form': '📋 Footer Form',
-                    'download_chat': '💬 Download Chat'
+                    'download_chat': '💬 Download Chat',
+                    'chat_booking': '📞 Chat Callback',
+                    'assessment': '📝 Project brief'
                 };
                 return sourceMap[source] || source;
             }

@@ -1,0 +1,18 @@
+{
+  "shared_base_tests": 12,
+  "tradie_integration_tests": 17,
+  "tests_passed": true,
+  "unique_html_ids": true,
+  "local_links_and_assets": true,
+  "visible_copy_em_dashes": 0,
+  "browser_checked": [
+    "desktop whole page",
+    "390px mobile layout",
+    "simulated chat success and failure",
+    "callback saved to preview database",
+    "transcript saved to preview database",
+    "primary enquiry saved to preview database"
+  ],
+  "real_provider_test": "GPT streamed callback through app, email simulated",
+  "live_release": false
+}

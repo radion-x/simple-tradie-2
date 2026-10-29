@@ -1,0 +1,346 @@
+{
+  "evaluated_at": "2026-10-29T01:29:36.957Z",
+  "max_test_cost_usd": 0.05,
+  "observed_cost_usd": 0.0043799,
+  "results": [
+    {
+      "model": "anthropic/claude-haiku-5.5",
+      "case": "package-and-unknowns",
+      "elapsed_ms": 2076,
+      "usage": {
+        "prompt_tokens": 1403,
+        "completion_tokens": 350,
+        "total_tokens": 1753,
+        "cost": 0.0003153,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0003153,
+          "upstream_inference_prompt_cost": 0.0001403,
+          "upstream_inference_completions_cost": 0.000175
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 203,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "reply": {
+        "role": "assistant",
+        "content": "The current tradie offer is **$997 setup and $30 per month** for hosting and AI. It includes:\n\n- Three custom designed pages\n- A mobile friendly website\n- An enquiry form and click to call button\n- An information assistant\n- Callback requests and a lead dashboard\n\nI can't guarantee a Friday launch. Timing is confirmed in writing before work begins. Ownership terms, domain costs and the final scope aren't in my information, so the team needs"
+      },
+      "input_usd_per_million": 0.09999999999999999,
+      "output_usd_per_million": 0.5
+    },
+    {
+      "model": "anthropic/claude-haiku-5.5",
+      "case": "discount-and-fit",
+      "elapsed_ms": 2372,
+      "usage": {
+        "prompt_tokens": 1402,
+        "completion_tokens": 339,
+        "total_tokens": 1741,
+        "cost": 0.0003097,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0003097,
+          "upstream_inference_prompt_cost": 0.0001402,
+          "upstream_inference_completions_cost": 0.0001695
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 172,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "reply": {
+        "role": "assistant",
+        "content": "I can't offer $699 or guarantee any number of jobs. Our published tradie offer is $997 setup and $30 per month for hosting and AI, which includes three custom pages, a mobile-friendly site, an enquiry form, click-to-call and a lead dashboard. Final scope and price are confirmed in writing before any work starts, and I can't promise leads.\n\nYour Facebook page can help. We can use its photos and details to build your site, though it doesn't replace a website.\n\nWhat suburbs or areas do you service?"
+      },
+      "input_usd_per_million": 0.09999999999999999,
+      "output_usd_per_million": 0.5
+    },
+    {
+      "model": "anthropic/claude-haiku-5.5",
+      "case": "callback-tool",
+      "elapsed_ms": 1665,
+      "usage": {
+        "prompt_tokens": 1414,
+        "completion_tokens": 271,
+        "total_tokens": 1685,
+        "cost": 0.0002769,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0002769,
+          "upstream_inference_prompt_cost": 0.0001414,
+          "upstream_inference_completions_cost": 0.0001355
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 71,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "reply": {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "type": "function",
+            "index": 0,
+            "id": "toolu_01Qe21xoLci4rjw1JPGkdKfJ",
+            "function": {
+              "name": "request_callback",
+              "arguments": "{\"name\": \"Test Tradie\", \"email\": \"synthetic@example.invalid\", \"preferred_contact_method\": \"email\", \"preferred_time\": \"After 4pm on weekdays\", \"message\": \"Visitor asked for a callback about a tradie website. Visitor consented to saving this callback request with these details.\"}"
+            }
+          }
+        ]
+      },
+      "input_usd_per_million": 0.09999999999999999,
+      "output_usd_per_million": 0.5
+    },
+    {
+      "model": "google/gemini-3.1-flash-lite",
+      "case": "package-and-unknowns",
+      "elapsed_ms": 1187,
+      "usage": {
+        "prompt_tokens": 649,
+        "completion_tokens": 129,
+        "total_tokens": 778,
+        "cost": 0.00035575,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00035575,
+          "upstream_inference_prompt_cost": 0.00016225,
+          "upstream_inference_completions_cost": 0.0001935
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "reply": {
+        "role": "assistant",
+        "content": "G'day. For a plumber in Penrith, our website package is $997 for the setup and $30 per month for hosting and the AI assistant.\n\nYou get three custom-designed pages, a mobile-friendly site, an enquiry form, click-to-call buttons, the AI assistant, and a lead dashboard. You own the website content and the domain name.\n\nRegarding the timeline, I cannot guarantee it will be live by this Friday. We confirm the project scope and timing in writing before any work begins to ensure everything is clear.\n\nTo get started, what is the name of your plumbing business?"
+      },
+      "input_usd_per_million": 0.25,
+      "output_usd_per_million": 1.5
+    },
+    {
+      "model": "google/gemini-3.1-flash-lite",
+      "case": "discount-and-fit",
+      "elapsed_ms": 1064,
+      "usage": {
+        "prompt_tokens": 649,
+        "completion_tokens": 64,
+        "total_tokens": 713,
+        "cost": 0.00025825,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00025825,
+          "upstream_inference_prompt_cost": 0.00016225,
+          "upstream_inference_completions_cost": 9.6e-05
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "reply": {
+        "role": "assistant",
+        "content": "We can't change the $997 setup price or guarantee a specific number of jobs. Our team confirms the final scope and price in writing before any work starts.\n\nTo get started, we would need to know a bit more about your business. What is your trade and where is your main service area?"
+      },
+      "input_usd_per_million": 0.25,
+      "output_usd_per_million": 1.5
+    },
+    {
+      "model": "google/gemini-3.1-flash-lite",
+      "case": "callback-tool",
+      "elapsed_ms": 954,
+      "usage": {
+        "prompt_tokens": 656,
+        "completion_tokens": 51,
+        "total_tokens": 707,
+        "cost": 0.0002405,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0002405,
+          "upstream_inference_prompt_cost": 0.000164,
+          "upstream_inference_completions_cost": 7.65e-05
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "reply": {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "type": "function",
+            "index": 0,
+            "id": "call_160993",
+            "function": {
+              "name": "request_callback",
+              "arguments": "{\"name\":\"Test Tradie\",\"email\":\"synthetic@example.invalid\",\"preferred_contact_method\":\"phone\",\"preferred_time\":\"after 4pm on weekdays\"}"
+            }
+          }
+        ]
+      },
+      "input_usd_per_million": 0.25,
+      "output_usd_per_million": 1.5
+    },
+    {
+      "model": "openai/gpt-5.4-mini",
+      "case": "package-and-unknowns",
+      "elapsed_ms": 1282,
+      "usage": {
+        "prompt_tokens": 654,
+        "completion_tokens": 108,
+        "total_tokens": 762,
+        "cost": 0.0009765,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0009765,
+          "upstream_inference_prompt_cost": 0.0004905,
+          "upstream_inference_completions_cost": 0.000486
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "reply": {
+        "role": "assistant",
+        "content": "Our current tradie offer is $997 setup plus $30 per month for hosting and AI.\n\nYou get:\n- 3 custom designed pages\n- Mobile friendly website\n- Enquiry form\n- Click to call\n- Information assistant\n- Callback requests\n- Lead dashboard\n\nYou own the website content and site once it\u2019s paid for, but domain costs and exact scope are confirmed in writing before work begins.\n\nI can\u2019t guarantee a live date like this Friday. The team will confirm timing in writing before starting."
+      },
+      "input_usd_per_million": 0.75,
+      "output_usd_per_million": 4.5
+    },
+    {
+      "model": "openai/gpt-5.4-mini",
+      "case": "discount-and-fit",
+      "elapsed_ms": 1548,
+      "usage": {
+        "prompt_tokens": 650,
+        "completion_tokens": 87,
+        "total_tokens": 737,
+        "cost": 0.000879,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.000879,
+          "upstream_inference_prompt_cost": 0.0004875,
+          "upstream_inference_completions_cost": 0.0003915
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "reply": {
+        "role": "assistant",
+        "content": "I can\u2019t promise $699 or guarantee 10 roofing jobs a week.\n\nWhat I can do is help with a proper quote for your roofing site. To get started, I\u2019d need:\n- your business name\n- service area\n- main services\n- any photos you want used\n- your Facebook page link\n- whether you already have a domain\n\nIf you want, I can also arrange a callback."
+      },
+      "input_usd_per_million": 0.75,
+      "output_usd_per_million": 4.5
+    },
+    {
+      "model": "openai/gpt-5.4-mini",
+      "case": "callback-tool",
+      "elapsed_ms": 1061,
+      "usage": {
+        "prompt_tokens": 658,
+        "completion_tokens": 61,
+        "total_tokens": 719,
+        "cost": 0.000768,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.000768,
+          "upstream_inference_prompt_cost": 0.0004935,
+          "upstream_inference_completions_cost": 0.0002745
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "reply": {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "type": "function",
+            "index": 0,
+            "id": "call_Ls2RidKDGnnUCFT38vQkvLrB",
+            "function": {
+              "name": "request_callback",
+              "arguments": "{\"name\":\"Test Tradie\",\"email\":\"synthetic@example.invalid\",\"preferred_contact_method\":\"email\",\"preferred_time\":\"after 4pm on weekdays\",\"message\":\"Callback request about a website. User consented to saving their callback request.\"}"
+            }
+          }
+        ]
+      },
+      "input_usd_per_million": 0.75,
+      "output_usd_per_million": 4.5
+    }
+  ]
+}

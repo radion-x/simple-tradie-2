@@ -1,0 +1,17 @@
+{
+  "name": "Tradie Simple Page Production",
+  "site": "https://tradie.simplepage.com.au",
+  "limit_usd": 5,
+  "limit_reset": "monthly",
+  "include_byok_in_limit": true,
+  "model": "openai/gpt-5.4-mini",
+  "other_model_blocked": true,
+  "provider_reply": "ready",
+  "verification_cost_usd": 3e-05,
+  "stored_in": "macOS Keychain",
+  "installed_in_deployment": true,
+  "restriction_verification": "A different model returned 404: Model blocked by guardrail",
+  "configuration_verified": true,
+  "activation_pending": true,
+  "activation_blocked_reason": "Automatic approval review requires explicit production restart approval"
+}

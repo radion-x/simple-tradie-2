@@ -8,9 +8,13 @@ const { Client } = require('pg');
  */
 async function setupDatabase() {
     // Parse DATABASE_URL to extract database name
-    const databaseUrl = process.env.DATABASE_URL || 'postgresql://localhost:5432/websited_dev';
+    const databaseUrl = process.env.DATABASE_URL || 'postgresql://localhost:5432/simple_page_tradie_dev';
     const match = databaseUrl.match(/\/([^/?]+)(\?|$)/);
-    const dbName = match ? match[1] : 'websited_dev';
+    const dbName = match ? match[1] : 'simple_page_tradie_dev';
+
+    if (!/^[A-Za-z0-9_-]+$/.test(dbName)) {
+        throw new Error('DATABASE_URL contains an invalid database name');
+    }
     
     // Connect to postgres database (default) to create our database
     const defaultUrl = databaseUrl.replace(`/${dbName}`, '/postgres');
@@ -33,12 +37,12 @@ async function setupDatabase() {
             console.log(`✅ Database "${dbName}" already exists`);
         } else {
             // Create database
-            await client.query(`CREATE DATABASE ${dbName}`);
+            await client.query(`CREATE DATABASE "${dbName}"`);
             console.log(`✅ Database "${dbName}" created successfully`);
         }
         
         console.log('\n🎉 Database setup complete!');
-        console.log(`📝 Run "npm start" or "npm run dev" to initialize tables\n`);
+        console.log('📝 Run "npm run db:migrate" to initialize or upgrade tables\n');
         
     } catch (error) {
         console.error('❌ Database setup failed:', error.message);

@@ -1,79 +1,88 @@
-const pool = require('./pool');
 const fs = require('fs');
 const path = require('path');
+const pool = require('./pool');
 
-/**
- * Initialize database by running schema migrations
- */
-async function initDatabase() {
+const schemaPath = path.join(__dirname, 'schema.sql');
+const migrationsDirectory = path.join(__dirname, '..', 'migrations');
+
+function getMigrationFiles() {
+    if (!fs.existsSync(migrationsDirectory)) {
+        return [];
+    }
+
+    return fs.readdirSync(migrationsDirectory)
+        .filter((fileName) => /^\d+_.+\.sql$/.test(fileName))
+        .sort((left, right) => left.localeCompare(right));
+}
+
+async function applyMigration(client, fileName) {
+    const migrationPath = path.join(migrationsDirectory, fileName);
+    const migrationSql = fs.readFileSync(migrationPath, 'utf8');
+
+    await client.query('BEGIN');
     try {
-        console.log('🔄 Initializing database schema...');
-        
-        // First, try to run migrations on existing tables
-        console.log('🔄 Running migrations (if table exists)...');
-        try {
-            await pool.query(`
-                ALTER TABLE IF EXISTS callback_requests 
-                ADD COLUMN IF NOT EXISTS source VARCHAR(20) 
-                DEFAULT 'chatbot';
-            `);
-            
-            await pool.query(`
-                ALTER TABLE IF EXISTS callback_requests 
-                ADD COLUMN IF NOT EXISTS service VARCHAR(255);
-            `);
-            
-            await pool.query(`
-                DO $$ 
-                BEGIN
-                    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'callback_requests') THEN
-                        -- Drop old constraint if exists
-                        ALTER TABLE callback_requests DROP CONSTRAINT IF EXISTS callback_requests_source_check;
-                        
-                        -- Add updated constraint with download_chat included
-                        ALTER TABLE callback_requests 
-                        ADD CONSTRAINT callback_requests_source_check 
-                        CHECK (source IN ('chatbot', 'contact_form', 'footer_form', 'download_chat'));
-                    END IF;
-                END $$;
-            `);
-            
-            await pool.query(`
-                CREATE INDEX IF NOT EXISTS idx_callback_source ON callback_requests(source);
-            `);
-            
-            console.log('✅ Migrations completed successfully');
-        } catch (migrationError) {
-            console.warn('⚠️ Migration warning:', migrationError.message);
+        await client.query(migrationSql);
+        await client.query(
+            'INSERT INTO schema_migrations (name) VALUES ($1)',
+            [fileName]
+        );
+        await client.query('COMMIT');
+    } catch (error) {
+        await client.query('ROLLBACK');
+        throw error;
+    }
+}
+
+async function initDatabase() {
+    const client = await pool.connect();
+
+    try {
+        const schemaSql = fs.readFileSync(schemaPath, 'utf8');
+        await client.query(schemaSql);
+
+        await client.query(`
+            CREATE TABLE IF NOT EXISTS schema_migrations (
+                name TEXT PRIMARY KEY,
+                applied_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+            )
+        `);
+
+        const appliedResult = await client.query('SELECT name FROM schema_migrations');
+        const appliedMigrations = new Set(appliedResult.rows.map((row) => row.name));
+        const migrationFiles = getMigrationFiles();
+        const newlyApplied = [];
+
+        for (const fileName of migrationFiles) {
+            if (appliedMigrations.has(fileName)) {
+                continue;
+            }
+
+            await applyMigration(client, fileName);
+            newlyApplied.push(fileName);
         }
-        
-        // Read schema file
-        const schemaPath = path.join(__dirname, 'schema.sql');
-        const schema = fs.readFileSync(schemaPath, 'utf8');
-        
-        // Execute schema (will skip if tables exist)
-        await pool.query(schema);
-        
-        console.log('✅ Database schema initialized successfully');
-        
-        // Check if tables exist
-        const tablesCheck = await pool.query(`
-            SELECT table_name 
-            FROM information_schema.tables 
-            WHERE table_schema = 'public' 
-            AND table_name IN ('callback_requests', 'search_queries')
+
+        const tablesResult = await client.query(`
+            SELECT table_name
+            FROM information_schema.tables
+            WHERE table_schema = 'public'
+              AND table_name IN (
+                  'admin_magic_links',
+                  'admin_sessions',
+                  'callback_requests',
+                  'search_queries',
+                  'schema_migrations'
+              )
             ORDER BY table_name
         `);
-        
-        console.log(`📊 Active tables: ${tablesCheck.rows.map(r => r.table_name).join(', ')}`);
-        
-    } catch (error) {
-        console.error('❌ Database initialization failed:', error.message);
-        if (error.message.includes('does not exist')) {
-            console.error('💡 Hint: Run "npm run db:setup" to create the database first');
-        }
-        // Don't throw - allow server to start even if DB init fails
+
+        return {
+            appliedMigrations: newlyApplied,
+            tables: tablesResult.rows.map((row) => row.table_name)
+        };
+    } finally {
+        client.release();
     }
 }
 
 module.exports = initDatabase;
+module.exports.getMigrationFiles = getMigrationFiles;

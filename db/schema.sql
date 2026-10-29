@@ -1,5 +1,5 @@
 -- ============================================
--- WEBSITED DATABASE SCHEMA
+-- SIMPLE PAGE DATABASE SCHEMA
 -- ============================================
 
 -- Callback Requests Table (unified for chatbot and form submissions)
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS callback_requests (
     preferred_time VARCHAR(255),
     message TEXT,
     conversation_context TEXT,
-    source VARCHAR(20) DEFAULT 'chatbot' CHECK (source IN ('chatbot', 'contact_form', 'footer_form', 'download_chat')),
+    source VARCHAR(20) DEFAULT 'chatbot' CHECK (source IN ('chatbot', 'contact_form', 'footer_form', 'download_chat', 'chat_booking', 'assessment')),
     service VARCHAR(255),
     status VARCHAR(20) DEFAULT 'pending' CHECK (status IN ('pending', 'contacted', 'completed')),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
