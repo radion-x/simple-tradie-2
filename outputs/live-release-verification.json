@@ -288,5 +288,60 @@
     "backup_status": "success",
     "backup_bytes": 13162,
     "backup_location": "Coolify local server backup; no offsite copy verified"
+  },
+  "email_placement_followup": {
+    "checked_date": "2026-10-29",
+    "jack6nimble@gmail.com": {
+      "staff_notifications": [
+        "SP-8",
+        "SP-10",
+        "SP-11"
+      ],
+      "actual_placement": "INBOX",
+      "magic_link_actual_placement": "INBOX",
+      "method": "Existing authenticated integrated-browser account, narrow search showing exactly four Simple Page tests"
+    },
+    "hello@simplepage.com.au": {
+      "route": "Cloudflare Email Routing forwards to radion@websited.org",
+      "staff_notification_copies": 3,
+      "actual_destination_placement": "SPAM",
+      "forwarding_headers_verified": true,
+      "gmail_dkim": "pass",
+      "gmail_spf": "pass",
+      "gmail_arc": "pass"
+    },
+    "radion@websited.org": {
+      "direct_customer_receipts": [
+        "SP-8",
+        "SP-10",
+        "SP-11"
+      ],
+      "actual_placement": "SPAM",
+      "gmail_dkim": "pass",
+      "gmail_spf": "pass"
+    },
+    "sender": "Simple Page <noreply@mgun.websited.org>",
+    "from_spf_dkim_domains_aligned": true,
+    "staff_reply_to": "Submitted customer email when supplied",
+    "customer_reply_to": "hello@simplepage.com.au",
+    "mailgun_domain_state": "active, custom, not disabled",
+    "new_sends": 0,
+    "production_configuration_changes": 0,
+    "conclusion": "Staff delivery to Jack Inbox is confirmed. Rad direct and forwarded copies were classified as spam. Cause is not proven. No site-specific sender or Reply-To defect found; no speculative changes, account-wide filters, DNS changes or new email blasts.",
+    "operational_fallback": {
+      "url": "https://tradie.simplepage.com.au/admin/callbacks.html",
+      "existing_allowed_logins": [
+        "jack6nimble@gmail.com",
+        "hello@simplepage.com.au"
+      ],
+      "session_hours": 8,
+      "magic_link_minutes": 15,
+      "routine": "Bookmark dashboard, sign in with an existing allowed address, retrieve link from Spam if needed, select Pending and Refresh at the start and end of the working day. Saved enquiries persist independently of email notification; record follow-up stages separately from paid jobs."
+    },
+    "next_owner_actions": [
+      "Rad can mark these known, expected test messages Not spam manually in his own mailbox. This is mailbox feedback, not evidence of a general delivery fix.",
+      "Review sending-domain DMARC separately with the domain owner. It is absent, but SPF/DKIM alignment already passes and this does not establish the spam cause.",
+      "If genuine transactional messages continue to be classified as spam, contact Mailgun support with the existing Message-IDs, sender domain, sending IP 159.135.228.4 and authentication results. Do not send customer data beyond necessary delivery identifiers."
+    ]
   }
 }
