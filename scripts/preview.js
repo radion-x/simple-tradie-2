@@ -35,7 +35,7 @@ require("axios").post = async (url, body) => {
         {
           message: {
             content:
-              "The published tradie package is $997 setup plus $30 per month for hosting and AI. It includes three custom pages, an enquiry form, click to call, an information assistant and a lead dashboard. We confirm scope, ongoing inclusions and timing in writing. Use Request a callback to discuss your website. (Simulated preview reply.)",
+              "The published tradie package is $997 setup plus $30 per month for hosting and AI. Both prices include GST. It includes three custom pages, an enquiry form, click to call, an information assistant and a lead dashboard. We confirm scope, ongoing inclusions and timing in writing. Use Request a callback to discuss your website. (Simulated preview reply.)",
           },
         },
       ],

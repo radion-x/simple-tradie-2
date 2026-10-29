@@ -28,12 +28,12 @@ These are usability and message improvements to validate with real traffic. They
 ## Exact offer and ad alignment
 
 - Service: websites for Sydney tradies. The completed Gumtree title is “Websites for Sydney Tradies | $997 + $30/month”.
-- Price: $997 build plus $30/month for hosting and AI. Keep both together in the ad and artwork.
+- Price: $997 build plus $30/month for hosting and AI. Both prices include GST, confirmed by Rad on 29 October 2026. Keep both together in the ad and artwork.
 - Scope: three custom pages, mobile layout, services/work/contact information, enquiry form, click to call, approved-information assistant, callback capture and private enquiry dashboard. Agree the actual content and scope before work begins.
 - Website primary CTA: “Discuss my website”. Form action: “Send my website enquiry”.
 - Gumtree CTA: “Message your trade and suburb”. Then establish whether they need a first website or an update. A Gumtree message can qualify the lead directly; a website visit is not mandatory.
 - Proof: actual portfolio work. Do not imply portfolio results, enquiry counts or testimonials that have not been verified.
-- The current separately owned deliverables/primary-ad.txt was read and was not edited. It is aligned: both charges are clear; it describes a private lead dashboard and callback requests; it makes no ownership, cancellation, GST or completion-time promise. Its primary CTA is “Message your trade and suburb”. The earlier draft is superseded.
+- The current separately owned deliverables/primary-ad.txt was read and was not edited. It is aligned: both charges are clear; it describes a private lead dashboard and callback requests; it makes no ownership, cancellation or completion-time promise. GST was subsequently confirmed by Rad as included in both prices. Its primary CTA is “Message your trade and suburb”. The earlier draft is superseded.
 - Use the platform's dedicated website-link field only when applicable and approved. A proposed tagged destination is `https://tradie.simplepage.com.au/?utm_source=gumtree&utm_medium=classified&utm_campaign=tradie_997&utm_content=jack_free`. Do not publish it in a description contrary to the platform's rules. Record enquiries that stay inside Gumtree manually.
 
 ## Minimal measurement and follow-up
@@ -64,7 +64,7 @@ Required skill rubric scores are subjective diagnostics, not measured performanc
 
 ## Remaining business decisions
 
-Confirm GST treatment; domain registration and professional-email costs; included changes/support and any AI usage limits; cancellation, ownership handover and transfer terms; and who monitors enquiries with a response window they can actually honour. Do not invent these in the page or ad. Confirm that two extra weekly projects fit delivery capacity and margin before increasing acquisition activity.
+Confirm domain registration and professional-email costs; included changes/support and any AI usage limits; cancellation, ownership handover and transfer terms; and who monitors enquiries with a response window they can actually honour. Do not invent these in the page or ad. Confirm that two extra weekly projects fit delivery capacity and margin before increasing acquisition activity.
 
 ## Production acceptance update
 

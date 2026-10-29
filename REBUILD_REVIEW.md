@@ -18,7 +18,7 @@ Adaptations are specific to this deployment: Simple Page facts, prices, contact 
 
 ## Changes and checks
 
-The new page uses the existing Simple Page portfolio assets for River City Handyman, Harbour Town Handyman and VIP Roofing Supplies. The live published Tradie offer is retained: $997 setup plus $30/month, including three pages. The old ad's $600 price and illustrative $699 discussion are not substituted. GST, domain costs, final scope, timing and ongoing terms need written confirmation with each customer.
+The new page uses the existing Simple Page portfolio assets for River City Handyman, Harbour Town Handyman and VIP Roofing Supplies. The live published Tradie offer is retained: $997 setup plus $30/month, including three pages. The old ad's $600 price and illustrative $699 discussion are not substituted. Rad confirmed on 29 October 2026 that both prices include GST. Domain costs, final scope, timing and ongoing terms still need written confirmation with each customer.
 
 Removed unsupported launch, lead, ranking and competitor-cost claims. Corrected canonical metadata to the actual Tradie hostname. The short enquiry path accepts a phone number or email and records contact consent. Useful old entry URLs redirect to the current page; stale template backups are blocked. Desktop and 390px phone layouts, chat success and failure, callback and transcript forms, primary enquiry and actual saved test records were inspected in the integrated browser.
 
@@ -63,3 +63,7 @@ Operational handover: bookmark https://tradie.simplepage.com.au/admin/callbacks.
 Rad may manually mark the known expected test messages Not spam in his own mailbox. This provides feedback for that mailbox and does not prove a general deliverability fix. If real transactional messages continue to be filtered, the next concrete escalation is Mailgun support with existing Message-IDs, sender domain, sending IP 159.135.228.4 and passing authentication results. A sending-domain DMARC review is also appropriate, but the shared domain's policy was not changed under this site release. No inbox guarantee is made.
 
 References: [Google sender guidelines](https://support.google.com/mail/answer/81126?hl=en), [Mailgun reputation guidance](https://documentation.mailgun.com/docs/mailgun/email-best-practices/reputation), [Mailgun IP guidance](https://documentation.mailgun.com/docs/mailgun/email-best-practices/ip_address).
+
+## GST clarification, 29 October 2026
+
+Rad confirmed the $997 build and $30/month hosting and AI prices both include GST. The page hero, package card, monthly FAQ, enquiry introduction, metadata and authoritative assistant prompt now state this. Totals and other terms are unchanged. Receipts do not quote package prices, so no receipt change is required.
