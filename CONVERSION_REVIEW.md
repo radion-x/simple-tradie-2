@@ -6,7 +6,7 @@ Aim: two additional paying website projects a week, within actual delivery capac
 
 Evidence available: the expired general Gumtree ad had 29 visits and zero Gumtree replies. Jack's earlier tradie ad produced three preserved enquiry conversations and, by Rad's confirmation, no paid jobs. There is no measured website conversion baseline, reliable historical promotion cost or evidence supporting an uplift forecast. Two of the preserved conversations had no visible Gumtree reply; follow-up elsewhere is unknown. Follow-up deserves at least as much attention as the page.
 
-The shared Matraville application core remains in place. No production restart, deployment, migration, advertising spend or prospect communication occurred during this review.
+The shared Matraville application core remains in place. The approved production release is now live at https://tradie.simplepage.com.au, revision b5e08d7. See REBUILD_REVIEW.md and outputs/live-release-verification.json for backup, migration and real-service acceptance evidence. No advertising spend or prospect communication occurred. Gmail spam placement remains unresolved despite successful remote delivery and passing SPF/DKIM.
 
 ## Implemented changes
 
@@ -60,8 +60,12 @@ Media-only acquisition cost is attributable promotion spend divided by new payin
 
 Integrated-browser checks cover desktop and 390px phone layouts, a minimal phone enquiry, invalid phone recovery, storage failure, notification failure, sticky panel exit, preserved draft, reopening, Escape/focus and the staff notification view. Screenshots are in outputs/conversion-*.jpg and outputs/chat-back-mobile.jpg.
 
-Required skill rubric scores are subjective diagnostics, not measured performance: initial form health 78/100 (usable with friction); initial measurement readiness 49/100 (insufficient for acquisition decisions). The changes remediate those findings. No numeric uplift or guaranteed “high-performing” claim is made. Actual measurement readiness remains incomplete until production release, delivery verification and an approved analytics destination are checked.
+Required skill rubric scores are subjective diagnostics, not measured performance: initial form health 78/100 (usable with friction); initial measurement readiness 49/100 (insufficient for acquisition decisions). The changes remediate those findings. No numeric uplift or guaranteed “high-performing” claim is made. Production release and remote email delivery are verified. Measurement readiness remains incomplete until an approved analytics destination is connected, and Gmail inbox placement still needs attention.
 
 ## Remaining business decisions
 
 Confirm GST treatment; domain registration and professional-email costs; included changes/support and any AI usage limits; cancellation, ownership handover and transfer terms; and who monitors enquiries with a response window they can actually honour. Do not invent these in the page or ad. Confirm that two extra weekly projects fit delivery capacity and margin before increasing acquisition activity.
+
+## Production acceptance update
+
+The reviewed changes are live. Original seven enquiries are preserved. Controlled form, GPT callback and transcript enquiries were saved with attribution, notified and closed as tests. Staff authentication and mobile Back to chat passed. Email delivery to remote servers passed; inspected Gmail copies landed in SPAM, so inbox success is not claimed.

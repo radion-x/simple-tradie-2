@@ -1,0 +1,292 @@
+{
+  "run": "release-20261029-2ec00c",
+  "site": "https://tradie.simplepage.com.au",
+  "checked_at": "2026-10-29T02:58:18.135Z",
+  "revision": "b5e08d798f40e91a237b7523c4d2a280c30c5106",
+  "test_recipient": "radion@websited.org",
+  "results": {
+    "page": {
+      "reviewed_page": true,
+      "preview_banner_absent": true
+    },
+    "health": {
+      "status": "ok"
+    },
+    "chat_config": {
+      "status": 200,
+      "available": true,
+      "model": "openai/gpt-5.4-mini",
+      "maxTokens": 1000,
+      "suggestedQuestions": [
+        "What does the package include?",
+        "Can you improve my existing website?",
+        "What does the monthly fee cover?"
+      ],
+      "webSearchEnabled": false,
+      "callbacksEnabled": true
+    },
+    "direct": {
+      "status": 200,
+      "success": true,
+      "id": 8,
+      "reference": 8,
+      "referenceId": "SP-8",
+      "notification_sent": true,
+      "confirmation_sent": true
+    },
+    "direct_retry": {
+      "status": 200,
+      "success": true,
+      "id": 8,
+      "reference": 8,
+      "referenceId": "SP-8",
+      "notification_sent": true,
+      "duplicate": true
+    },
+    "chat_information": {
+      "status": 200,
+      "streamed": true,
+      "answer": "For Sydney plumbers, the current offer is $997 setup plus $30 per month for hosting and AI. It includes 3 custom pages, mobile-friendly design, enquiry form, click-to-call, information assistant, callback requests and a lead dashboard.\n\nI can\u2019t guarantee a Friday launch. The team confirms scope, timing and payment conditions in writing before work begins.",
+      "errors": []
+    },
+    "chat_callback": {
+      "status": 200,
+      "streamed": true,
+      "answer": "Done. Your callback request is saved as reference SP-10. The team will contact you by email to discuss your website. This is not a confirmed appointment or booking.",
+      "tool": {
+        "success": true,
+        "id": 10,
+        "reference": 10,
+        "referenceId": "SP-10",
+        "notification_sent": true,
+        "confirmation_sent": true,
+        "message": "Callback request received. This is not a confirmed appointment. Reference: SP-10"
+      },
+      "errors": []
+    },
+    "transcript": {
+      "status": 200,
+      "success": true,
+      "id": 11,
+      "reference": 11,
+      "referenceId": "SP-11",
+      "notification_sent": true,
+      "confirmation_sent": true
+    },
+    "admin_unauthenticated": {
+      "status": 401,
+      "success": false,
+      "error": "Authentication required"
+    },
+    "admin_magic_link": {
+      "status": 200,
+      "success": true,
+      "message": "If that address is authorised, a sign-in link has been sent."
+    }
+  },
+  "mailgun_delivery_events": [
+    {
+      "event": "accepted",
+      "recipient": "jack6nimble@gmail.com",
+      "subject": "Simple Page contact enquiry | CONTROLLED OWNER TEST release-20261029-2ec00c direct | SP-8",
+      "code": null,
+      "time": 1793242699.746413
+    },
+    {
+      "event": "accepted",
+      "recipient": "hello@simplepage.com.au",
+      "subject": "Simple Page contact enquiry | CONTROLLED OWNER TEST release-20261029-2ec00c direct | SP-8",
+      "code": null,
+      "time": 1793242699.746413
+    },
+    {
+      "event": "accepted",
+      "recipient": "radion@websited.org",
+      "subject": "Your enquiry | Simple Page | SP-8",
+      "code": null,
+      "time": 1793242700.0792599
+    },
+    {
+      "event": "delivered",
+      "recipient": "jack6nimble@gmail.com",
+      "subject": "Simple Page contact enquiry | CONTROLLED OWNER TEST release-20261029-2ec00c direct | SP-8",
+      "code": 250,
+      "time": 1793242700.4924417
+    },
+    {
+      "event": "delivered",
+      "recipient": "radion@websited.org",
+      "subject": "Your enquiry | Simple Page | SP-8",
+      "code": 250,
+      "time": 1793242700.923788
+    },
+    {
+      "event": "accepted",
+      "recipient": "jack6nimble@gmail.com",
+      "subject": "Simple Page callback request | CONTROLLED OWNER TEST release-20261029-2ec00c callback | SP-10",
+      "code": null,
+      "time": 1793242703.6171591
+    },
+    {
+      "event": "accepted",
+      "recipient": "hello@simplepage.com.au",
+      "subject": "Simple Page callback request | CONTROLLED OWNER TEST release-20261029-2ec00c callback | SP-10",
+      "code": null,
+      "time": 1793242703.6171591
+    },
+    {
+      "event": "delivered",
+      "recipient": "hello@simplepage.com.au",
+      "subject": "Simple Page contact enquiry | CONTROLLED OWNER TEST release-20261029-2ec00c direct | SP-8",
+      "code": 250,
+      "time": 1793242703.920759
+    },
+    {
+      "event": "accepted",
+      "recipient": "radion@websited.org",
+      "subject": "Your callback request | Simple Page | SP-10",
+      "code": null,
+      "time": 1793242703.9522448
+    },
+    {
+      "event": "delivered",
+      "recipient": "jack6nimble@gmail.com",
+      "subject": "Simple Page callback request | CONTROLLED OWNER TEST release-20261029-2ec00c callback | SP-10",
+      "code": 250,
+      "time": 1793242704.2016358
+    },
+    {
+      "event": "delivered",
+      "recipient": "radion@websited.org",
+      "subject": "Your callback request | Simple Page | SP-10",
+      "code": 250,
+      "time": 1793242705.1237004
+    },
+    {
+      "event": "accepted",
+      "recipient": "jack6nimble@gmail.com",
+      "subject": "Simple Page contact enquiry | CONTROLLED OWNER TEST release-20261029-2ec00c transcript | SP-11",
+      "code": null,
+      "time": 1793242705.3317997
+    },
+    {
+      "event": "accepted",
+      "recipient": "hello@simplepage.com.au",
+      "subject": "Simple Page contact enquiry | CONTROLLED OWNER TEST release-20261029-2ec00c transcript | SP-11",
+      "code": null,
+      "time": 1793242705.3317997
+    },
+    {
+      "event": "accepted",
+      "recipient": "radion@websited.org",
+      "subject": "Your enquiry | Simple Page | SP-11",
+      "code": null,
+      "time": 1793242705.6583734
+    },
+    {
+      "event": "delivered",
+      "recipient": "jack6nimble@gmail.com",
+      "subject": "Simple Page contact enquiry | CONTROLLED OWNER TEST release-20261029-2ec00c transcript | SP-11",
+      "code": 250,
+      "time": 1793242705.888756
+    },
+    {
+      "event": "delivered",
+      "recipient": "hello@simplepage.com.au",
+      "subject": "Simple Page callback request | CONTROLLED OWNER TEST release-20261029-2ec00c callback | SP-10",
+      "code": 250,
+      "time": 1793242705.925891
+    },
+    {
+      "event": "accepted",
+      "recipient": "jack6nimble@gmail.com",
+      "subject": "Your admin sign-in link | Simple Page",
+      "code": null,
+      "time": 1793242706.0396812
+    },
+    {
+      "event": "delivered",
+      "recipient": "radion@websited.org",
+      "subject": "Your enquiry | Simple Page | SP-11",
+      "code": 250,
+      "time": 1793242706.1726947
+    },
+    {
+      "event": "delivered",
+      "recipient": "jack6nimble@gmail.com",
+      "subject": "Your admin sign-in link | Simple Page",
+      "code": 250,
+      "time": 1793242706.677913
+    },
+    {
+      "event": "delivered",
+      "recipient": "hello@simplepage.com.au",
+      "subject": "Simple Page contact enquiry | CONTROLLED OWNER TEST release-20261029-2ec00c transcript | SP-11",
+      "code": 250,
+      "time": 1793242707.204384
+    }
+  ],
+  "staff_acceptance": {
+    "staff_login": true,
+    "session_verified": true,
+    "single_use_link": true,
+    "logout_revoked": true,
+    "approved_model_active": true,
+    "existing_seven_preserved": true,
+    "controlled_records": [
+      {
+        "id": 11,
+        "source": "download_chat",
+        "notification_status": "sent",
+        "utm_source": "release_verification",
+        "utm_campaign": "release-20261029-2ec00c",
+        "conversation_characters": 1047
+      },
+      {
+        "id": 10,
+        "source": "chat_booking",
+        "notification_status": "sent",
+        "utm_source": "release_verification",
+        "utm_campaign": "release-20261029-2ec00c",
+        "conversation_characters": 838
+      },
+      {
+        "id": 8,
+        "source": "contact_form",
+        "notification_status": "sent",
+        "utm_source": "release_verification",
+        "utm_campaign": "release-20261029-2ec00c",
+        "conversation_characters": 0
+      }
+    ],
+    "controlled_records_closed": true,
+    "approved_key_check": "Configured dedicated key independently matched against Keychain in memory; task hash assertion was not supplied."
+  },
+  "email_inbox_check": {
+    "mailgun_remote_delivery": "250 delivered for all staff notifications, receipts and magic-link test",
+    "gmail_inspected_messages": 6,
+    "gmail_labels": [
+      "SPAM"
+    ],
+    "spf": "pass",
+    "dkim": "pass",
+    "dmarc_record_found": false,
+    "inbox_placement_verified": false,
+    "remaining_issue": "Gmail spam placement. Authentication passes; exact classification cause is unproven. No mailbox allowlisting or DNS policy changes were made."
+  },
+  "production_state": {
+    "coolify": "running:healthy",
+    "gpt_monthly_limit_usd": 5,
+    "gpt_limit_reset": "monthly",
+    "configured_dedicated_key_match": true,
+    "original_seven_leads_preserved": true,
+    "controlled_test_records_closed": true,
+    "desktop_and_390px_mobile_checked": true,
+    "back_to_chat_verified": true,
+    "temporary_release_task": "disabled",
+    "backup_execution": "fpxemslytnbvy8j3ygqfnz0e",
+    "backup_status": "success",
+    "backup_bytes": 13162,
+    "backup_location": "Coolify local server backup; no offsite copy verified"
+  }
+}

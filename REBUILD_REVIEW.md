@@ -36,15 +36,16 @@ The initial small comparison cost US$0.0043799. It exposed ownership wording gap
 
 `outputs/provider-app-verification.json` records a genuine GPT streamed callback through the reused app, with a saved test lead and confirmation wording. Email in that check was simulated. Synthetic prompts contain no customer data. Real traffic, longer histories and tool follow-ups change costs. A cap is a ceiling, not a recurring flat fee.
 
-## Release status and remaining verification
+## Live release, 29 October 2026
 
-The review server is http://localhost:3150. Its banner identifies simulated AI/email. Screenshots are in `outputs/`. No public website release has been made as part of preparing the review. The approved dedicated key and GPT configuration have been saved and privately verified in the actual Tradie Coolify application, but are not active in the running container. Automatic approval review rejected the production restart because activation can briefly interrupt the live site and was not included in the key-configuration approval. Explicit restart approval is required. No alternate activation was attempted.
+Explicit approval to deploy and activate GPT was received. Live URL: https://tradie.simplepage.com.au. Coolify deployment `ozfedqtnte9yep0xjfuioekh` finished at 02:57 UTC with revision `b5e08d798f40e91a237b7523c4d2a280c30c5106`. Final state is `running:healthy`, with `/health` enabled. The first deployment failed because a literal multiline environment override was invalid; a single-line fallback corrected it. The reviewed versioned prompt remains active.
 
-Before release:
+Before migration, native database backup `fpxemslytnbvy8j3ygqfnz0e` succeeded (13,162 bytes). It is a local Coolify backup, with no offsite copy verified. All nine additive migrations succeeded. The seven original enquiries remained byte-equivalent under the recorded field fingerprint, both after migration and after acceptance. The disabled one-off release task and disabled backup configuration are retained for audit; neither runs on a schedule.
 
-1. Confirm the dedicated key and GPT model are in the verified Tradie server configuration, without copying another site's service keys.
-2. Verify the existing Tradie database and notification recipients privately. Back up the actual target database, then run the reviewed migrations on that database. Do not replace it with any source app database.
-3. Release the reviewed branch using the existing Coolify deployment convention. Pushing main automatically deploys, so do not use main for staging.
-4. Smoke-test production chat and a controlled owner enquiry, then verify the stored lead, staff notification, customer receipt and Mailgun delivery events. Adapter acceptance alone does not prove inbox arrival.
+GPT-5.4 Mini is active. The dedicated key matches secure Keychain configuration and has a US$5 monthly cap. The prior AO Contracting key was not changed. The broken legacy Mailgun credentials were replaced with a dedicated sending-only key for verified `mgun.websited.org`. Existing staff recipients Jack and hello@simplepage.com.au are preserved; the stale alternative recipient setting was corrected.
 
-Production notification delivery and the actual upgraded production database remain unverified until those release checks. The original live site is still separate from the local review.
+Controlled live owner tests saved SP-8 (form), SP-10 (GPT callback tool) and SP-11 (transcript), with campaign attribution and notification status. Retrying SP-8 returned the same reference. GPT streamed the reviewed offer and declined to promise a launch date. Staff session creation, link replay denial, authorised record reads and logout passed through actual server routes. The emailed magic link was delivered separately; the authentication test consumed a privately issued test link inside the container. All three labelled test records are closed, with no change to real customer stages.
+
+Mailgun recorded remote 250 delivery for all staff notifications and customer receipts, plus the staff magic link. Six test copies inspected in the connected owner Gmail mailbox carried the SPAM label. SPF and DKIM pass. No DMARC TXT record was found at the sending subdomain or organisational domain. The cause of Gmail classification is not proven, and inbox placement remains unresolved. No personal allowlisting or DNS policy changes were made. Do not describe remote delivery as inbox success.
+
+Live desktop and 390px mobile visuals passed, including the sticky callback return button. No local review banner appears in production. The isolated preview remains simulated and separate. `outputs/live-release-verification.json` contains the release evidence, with live screenshots alongside it. No Gumtree publication or advertising spend occurred. Analytics events remain local `dataLayer` events without a connected reporting destination.
