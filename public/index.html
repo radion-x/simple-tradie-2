@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Websites for tradies | Simple Page</title>
+    <title>Website Design for Sydney Tradies | Simple Page</title>
     <meta
       name="description"
       content="A clear, mobile friendly website for your trade business. Three custom pages, enquiry forms and an AI assistant. $997 setup plus $30 per month. Discuss your website with Simple Page."
     />
     <link rel="canonical" href="https://tradie.simplepage.com.au/" />
-    <meta property="og:title" content="Websites for tradies | Simple Page" />
+    <meta
+      property="og:title"
+      content="Website Design for Sydney Tradies | Simple Page"
+    />
     <meta
       property="og:description"
       content="Show your work. Explain your services. Give customers a clear way to enquire."
@@ -24,6 +27,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/tradie.css" />
+    <script src="/js/funnel.js" defer></script>
     <script src="/js/tradie.js" defer></script>
     <script src="/js/chat.js" defer></script>
   </head>
@@ -42,16 +46,22 @@
     <main id="main">
       <section class="hero wrap">
         <div class="hero-copy">
-          <p class="eyebrow">FOR THE BUSINESS YOU’VE BUILT</p>
-          <h1>Good on the tools.<br />Look the part online.</h1>
+          <p class="eyebrow">FIRST WEBSITE OR TIME FOR AN UPDATE?</p>
+          <h1>Websites for<br />Sydney tradies.</h1>
           <p class="lead">
-            Show your work, explain your services and give customers a clear way
-            to ask for a quote.
+            Show your services and completed work, with a clear way for
+            customers to call or request a quote.
           </p>
           <a class="button" href="#contact"
             >Discuss my website <span aria-hidden="true">↗</span></a
           >
-          <p class="price-note">$997 setup + $30/month for hosting &amp; AI</p>
+          <p class="price-note">
+            <strong>$997 build</strong> + <strong>$30/month</strong> hosting
+            &amp; AI<br /><span
+              >Three custom pages. Scope agreed before work starts.</span
+            >
+          </p>
+          <a class="proof-link" href="#work">See trade website examples ↓</a>
         </div>
         <figure class="hero-work">
           <div class="browser-bar">
@@ -65,8 +75,13 @@
             fetchpriority="high"
           />
           <figcaption>
-            Real work from our portfolio. Your site is designed around your
-            trade.
+            From the Simple Page portfolio.
+            <a
+              href="https://rivercityhandyman.com.au/"
+              target="_blank"
+              rel="noopener"
+              >View River City Handyman ↗</a
+            >
           </figcaption>
         </figure>
       </section>
@@ -131,7 +146,7 @@
           <div class="work-grid">
             <figure>
               <a
-                href="/images/work/harbourtown-handyman.png"
+                href="https://harbourtownhandyman.com.au/"
                 target="_blank"
                 rel="noopener"
                 ><img
@@ -143,7 +158,7 @@
               /></a>
               <figcaption>
                 <strong>Harbour Town Handyman</strong
-                ><span>Home maintenance</span>
+                ><span>View live website ↗</span>
               </figcaption>
             </figure>
             <figure>
@@ -291,9 +306,13 @@
             <p class="eyebrow">LET’S TALK ABOUT YOUR SITE</p>
             <h2>What work do you<br />want more of?</h2>
             <p>
-              Tell us your trade, where you work and what you need. We’ll
-              contact you to discuss whether the package fits.
+              Leave your name and one way to reach you. We’ll discuss your
+              trade, service area and whether the $997 build plus $30/month
+              package fits. You can add the details when we speak.
             </p>
+            <button class="assistant-link" type="button" data-open-assistant>
+              Have a package question? Ask the assistant ↗
+            </button>
             <a class="contact-phone" href="tel:+61289588545">(02) 8958 8545</a
             ><a href="mailto:hello@simplepage.com.au"
               >hello@simplepage.com.au</a
@@ -308,38 +327,44 @@
                   maxlength="120"
                   autocomplete="name" /></label
               ><label
-                >Trade / business<input
+                >Trade and service area <small>(optional)</small
+                ><input
                   name="service"
                   maxlength="160"
                   autocomplete="organization"
                   placeholder="e.g. Plumbing, Western Sydney"
               /></label>
             </div>
-            <div class="field-pair">
-              <label
-                >Phone<input
-                  type="tel"
-                  name="phone"
-                  maxlength="40"
-                  autocomplete="tel" /></label
-              ><label
-                >Email<input
-                  type="email"
-                  name="email"
-                  maxlength="254"
-                  autocomplete="email"
-              /></label>
-            </div>
-            <p class="form-hint">
-              Add a phone number or email so we can get back to you.
-            </p>
+            <fieldset class="contact-fields">
+              <legend>How can we contact you?</legend>
+              <p id="contactHelp" class="form-hint">
+                Phone or email. One is enough.
+              </p>
+              <div class="field-pair">
+                <label
+                  >Phone<input
+                    type="tel"
+                    name="phone"
+                    aria-describedby="contactHelp"
+                    maxlength="30"
+                    autocomplete="tel" /></label
+                ><label
+                  >Email<input
+                    type="email"
+                    name="email"
+                    aria-describedby="contactHelp"
+                    maxlength="254"
+                    autocomplete="email"
+                /></label>
+              </div>
+            </fieldset>
             <label
-              >What would you like help with?<textarea
+              >Existing website or what you need <small>(optional)</small
+              ><textarea
                 name="message"
                 rows="4"
                 maxlength="3000"
-                required
-                placeholder="Your services, area, current website or what needs fixing"
+                placeholder="e.g. I’m an electrician in Parramatta. I need a first website."
               ></textarea></label
             ><label class="consent"
               ><input type="checkbox" name="consent" required /><span
@@ -347,12 +372,13 @@
                 <a href="/privacy-policy-2/">Privacy policy</a>.</span
               ></label
             ><button class="button" type="submit">
-              Send my enquiry <span aria-hidden="true">↗</span>
+              Send my website enquiry <span aria-hidden="true">↗</span>
             </button>
             <p class="form-status" role="status" aria-live="polite"></p>
             <p class="small">
-              This starts a conversation. It does not confirm a booking or
-              commit you to a website.
+              Next: we discuss what you need, then confirm the scope, costs and
+              timing before you decide. No website purchase is made by sending
+              this form.
             </p>
           </form>
         </div>
@@ -415,6 +441,9 @@
       </form>
       <details class="chat-callback">
         <summary>Request a callback <span aria-hidden="true">↗</span></summary>
+        <div class="panel-toolbar">
+          <button type="button" data-panel-close>← Back to chat</button>
+        </div>
         <form
           id="callbackForm"
           class="lead-form"
@@ -496,6 +525,9 @@
       </details>
       <details class="chat-transcript">
         <summary>Email this conversation</summary>
+        <div class="panel-toolbar">
+          <button type="button" data-panel-close>← Back to chat</button>
+        </div>
         <form id="transcriptForm">
           <label class="sr-only" for="transcriptEmail"
             >Email for transcript</label

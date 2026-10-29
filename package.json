@@ -8,7 +8,7 @@
     "dev": "nodemon server.js",
     "db:setup": "node scripts/setup-db.js && node scripts/migrate.js",
     "db:migrate": "node scripts/migrate.js",
-    "check": "node --check server.js && node --check routes/ai.js && node --check routes/email.js && node --check routes/callbacks.js && node --check services/leadCapture.js && node --check public/js/tradie.js && node --check public/js/chat.js && node --check middleware/htmlInjection.js",
+    "check": "node --check server.js && node --check routes/ai.js && node --check routes/email.js && node --check routes/callbacks.js && node --check services/leadCapture.js && node --check public/js/tradie.js && node --check public/js/chat.js && node --check middleware/htmlInjection.js && node --check public/js/funnel.js",
     "test": "npm run check && node --test test/*.test.js"
   },
   "keywords": [

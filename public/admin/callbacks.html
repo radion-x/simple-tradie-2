@@ -1,942 +1,1035 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Page Enquiries | Team Dashboard</title>
-    <link rel="stylesheet" href="/css/fonts.css"><link rel="icon" href="/favicon.svg"><meta name="robots" content="noindex"><style>
-        :root {
-            --primary: #ed3f39;
-            --primary-dark: #bd302b;
-            --primary-light: #f06c67;
-            --gradient-primary: linear-gradient(135deg, #071320, #172b3d);
-        }
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="icon" href="/favicon.svg" />
+    <meta name="robots" content="noindex" />
+    <style>
+      :root {
+        --primary: #ed3f39;
+        --primary-dark: #bd302b;
+        --primary-light: #f06c67;
+        --gradient-primary: linear-gradient(135deg, #071320, #172b3d);
+      }
 
-        * {
-            box-sizing: border-box;
-        }
+      * {
+        box-sizing: border-box;
+      }
 
-        body {
-            background: linear-gradient(135deg, #071320, #172b3d);
-            min-height: 100vh;
-            padding: 20px;
-            font-family: Manrope, sans-serif;
-            margin: 0;
-        }
+      body {
+        background: linear-gradient(135deg, #071320, #172b3d);
+        min-height: 100vh;
+        padding: 20px;
+        font-family: Manrope, sans-serif;
+        margin: 0;
+      }
 
-        .admin-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+      .admin-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
 
+      .admin-header {
+        background: white;
+        border-radius: 12px;
+        padding: 20px 28px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .admin-header h1 {
+        margin: 0;
+        font-size: 24px;
+        color: var(--primary-dark);
+        font-weight: 700;
+      }
+
+      .header-subtitle {
+        margin: 4px 0 0 0;
+        color: #6b7280;
+        font-size: 14px;
+      }
+
+      .logout-btn {
+        background: #dc2626;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+
+      .logout-btn:hover {
+        background: #b91c1c;
+      }
+
+      .login-card {
+        background: white;
+        border-radius: 12px;
+        padding: 40px;
+        max-width: 360px;
+        margin: 80px auto;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+      }
+
+      .login-card h2 {
+        text-align: center;
+        margin-bottom: 28px;
+        color: var(--primary-dark);
+        font-size: 22px;
+        font-weight: 700;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+        color: #374151;
+        font-size: 14px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 15px;
+        transition: all 0.2s;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(89, 144, 174, 0.15);
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 12px;
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .submit-btn:hover {
+        opacity: 0.9;
+      }
+
+      .error-message {
+        background: #fef2f2;
+        color: #991b1b;
+        padding: 12px 14px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        text-align: center;
+        border-left: 3px solid #dc2626;
+        font-size: 14px;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .stat-card {
+        background: white;
+        border-radius: 10px;
+        padding: 18px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .stat-card .label {
+        font-size: 13px;
+        color: #6b7280;
+        margin-bottom: 6px;
+      }
+
+      .stat-card .value {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary-dark);
+      }
+
+      .filters-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .filters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 14px;
+        align-items: end;
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .filter-group label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 5px;
+      }
+
+      .filter-group input,
+      .filter-group select {
+        padding: 9px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: all 0.2s;
+      }
+
+      .filter-group input:focus,
+      .filter-group select:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      .filter-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s;
+      }
+
+      .filter-btn:hover {
+        background: var(--primary-dark);
+      }
+
+      .refresh-btn {
+        background: #6ba89e;
+      }
+
+      .refresh-btn:hover {
+        background: #5a9488;
+      }
+
+      .table-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        background: #f8fafc;
+      }
+
+      th {
+        text-align: left;
+        padding: 12px 14px;
+        font-weight: 600;
+        color: #374151 !important;
+        border-bottom: 2px solid #e5e7eb;
+        font-size: 13px;
+      }
+
+      table thead th {
+        color: #374151 !important;
+      }
+
+      td {
+        padding: 14px;
+        border-bottom: 1px solid #f3f4f6;
+        color: #1f2937 !important;
+        font-size: 14px;
+      }
+
+      tbody td {
+        color: #1f2937 !important;
+      }
+
+      tr:hover {
+        background: #f8fafc;
+        cursor: pointer;
+      }
+
+      tr.highlighted {
+        background: #e0f2fe;
+        animation: highlight-fade 2s ease-in-out;
+      }
+
+      @keyframes highlight-fade {
+        0%,
+        100% {
+          background: #e0f2fe;
+        }
+        50% {
+          background: #bae6fd;
+        }
+      }
+
+      .status-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .status-pending {
+        background: #fef3c7;
+        color: #92400e;
+      }
+
+      .status-contacted {
+        background: #dbeafe;
+        color: #1e40af;
+      }
+
+      .status-completed {
+        background: #d1fae5;
+        color: #065f46;
+      }
+
+      .source-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      .source-chatbot {
+        background: #e0f2fe;
+        color: #0369a1;
+      }
+
+      .source-contact_form {
+        background: #dcfce7;
+        color: #166534;
+      }
+
+      .source-footer_form {
+        background: #f3e8ff;
+        color: #7c3aed;
+      }
+
+      .source-download_chat {
+        background: #e0f2fe;
+        color: #0369a1;
+      }
+
+      .status-select {
+        padding: 6px 10px;
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .status-select:hover {
+        border-color: var(--primary);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .modal.show {
+        display: flex;
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 12px;
+        padding: 28px;
+        max-width: 700px;
+        width: 100%;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: relative;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #6b7280;
+        transition: color 0.2s;
+      }
+
+      .modal-close:hover {
+        color: #1f2937;
+      }
+
+      .modal h3 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: var(--primary-dark);
+        font-size: 20px;
+      }
+
+      .detail-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .detail-item {
+        padding: 12px;
+        background: #f9fafb;
+        border-radius: 8px;
+      }
+
+      .detail-item label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: #6b7280;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+      }
+
+      .detail-item .value {
+        color: #1f2937;
+        font-size: 14px;
+      }
+
+      .conversation-context {
+        background: #f8fafc;
+        padding: 16px;
+        border-radius: 6px;
+        border-left: 3px solid var(--primary);
+        max-height: 300px;
+        overflow-y: auto;
+        font-family: monospace;
+        font-size: 13px;
+        line-height: 1.6;
+        white-space: pre-wrap;
+      }
+
+      .loading {
+        text-align: center;
+        padding: 40px;
+        color: #6b7280;
+      }
+
+      .spinner {
+        border: 3px solid #e5e7eb;
+        border-top: 3px solid var(--primary);
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 16px;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #6b7280;
+      }
+
+      .empty-state svg {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 16px;
+        opacity: 0.5;
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 20px;
+      }
+
+      .pagination button {
+        padding: 8px 14px;
+        background: white;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 14px;
+      }
+
+      .pagination button:hover:not(:disabled) {
+        border-color: var(--primary);
+        background: #f8fafc;
+      }
+
+      .pagination button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .pagination .page-info {
+        padding: 0 16px;
+        color: #6b7280;
+        font-size: 14px;
+      }
+
+      @media (max-width: 768px) {
         .admin-header {
-            background: white;
-            border-radius: 12px;
-            padding: 20px 28px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .admin-header h1 {
-            margin: 0;
-            font-size: 24px;
-            color: var(--primary-dark);
-            font-weight: 700;
-        }
-
-        .header-subtitle {
-            margin: 4px 0 0 0;
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        .logout-btn {
-            background: #dc2626;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .logout-btn:hover {
-            background: #b91c1c;
-        }
-
-        .login-card {
-            background: white;
-            border-radius: 12px;
-            padding: 40px;
-            max-width: 360px;
-            margin: 80px auto;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
-        }
-
-        .login-card h2 {
-            text-align: center;
-            margin-bottom: 28px;
-            color: var(--primary-dark);
-            font-size: 22px;
-            font-weight: 700;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            color: #374151;
-            font-size: 14px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 15px;
-            transition: all 0.2s;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(89, 144, 174, 0.15);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 12px;
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .submit-btn:hover {
-            opacity: 0.9;
-        }
-
-        .error-message {
-            background: #fef2f2;
-            color: #991b1b;
-            padding: 12px 14px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            text-align: center;
-            border-left: 3px solid #dc2626;
-            font-size: 14px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 10px;
-            padding: 18px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .stat-card .label {
-            font-size: 13px;
-            color: #6b7280;
-            margin-bottom: 6px;
-        }
-
-        .stat-card .value {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-
-        .filters-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          flex-direction: column;
+          gap: 16px;
+          text-align: center;
         }
 
         .filters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 14px;
-            align-items: end;
+          grid-template-columns: 1fr;
         }
 
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .filter-group label {
-            font-size: 13px;
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 5px;
-        }
-
-        .filter-group input,
-        .filter-group select {
-            padding: 9px 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-
-        .filter-group input:focus,
-        .filter-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .filter-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-
-        .filter-btn:hover {
-            background: var(--primary-dark);
-        }
-
-        .refresh-btn {
-            background: #6BA89E;
-        }
-
-        .refresh-btn:hover {
-            background: #5A9488;
-        }
-
-        .table-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            overflow-x: auto;
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
 
         table {
-            width: 100%;
-            border-collapse: collapse;
+          font-size: 14px;
         }
 
-        thead {
-            background: #f8fafc;
-        }
-
-        th {
-            text-align: left;
-            padding: 12px 14px;
-            font-weight: 600;
-            color: #374151 !important;
-            border-bottom: 2px solid #e5e7eb;
-            font-size: 13px;
-        }
-
-        table thead th {
-            color: #374151 !important;
-        }
-
+        th,
         td {
-            padding: 14px;
-            border-bottom: 1px solid #f3f4f6;
-            color: #1f2937 !important;
-            font-size: 14px;
+          padding: 12px 8px;
         }
-
-        tbody td {
-            color: #1f2937 !important;
-        }
-
-        tr:hover {
-            background: #f8fafc;
-            cursor: pointer;
-        }
-
-        tr.highlighted {
-            background: #e0f2fe;
-            animation: highlight-fade 2s ease-in-out;
-        }
-
-        @keyframes highlight-fade {
-            0%, 100% { background: #e0f2fe; }
-            50% { background: #bae6fd; }
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .status-pending {
-            background: #fef3c7;
-            color: #92400e;
-        }
-
-        .status-contacted {
-            background: #dbeafe;
-            color: #1e40af;
-        }
-
-        .status-completed {
-            background: #d1fae5;
-            color: #065f46;
-        }
-
-        .source-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .source-chatbot {
-            background: #e0f2fe;
-            color: #0369a1;
-        }
-
-        .source-contact_form {
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        .source-footer_form {
-            background: #f3e8ff;
-            color: #7c3aed;
-        }
-
-        .source-download_chat {
-            background: #e0f2fe;
-            color: #0369a1;
-        }
-
-        .status-select {
-            padding: 6px 10px;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .status-select:hover {
-            border-color: var(--primary);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal.show {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 12px;
-            padding: 28px;
-            max-width: 700px;
-            width: 100%;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #6b7280;
-            transition: color 0.2s;
-        }
-
-        .modal-close:hover {
-            color: #1f2937;
-        }
-
-        .modal h3 {
-            margin-top: 0;
-            margin-bottom: 20px;
-            color: var(--primary-dark);
-            font-size: 20px;
-        }
-
-        .detail-grid {
-            display: grid;
-            gap: 14px;
-        }
-
-        .detail-item {
-            padding: 12px;
-            background: #f9fafb;
-            border-radius: 8px;
-        }
-
-        .detail-item label {
-            display: block;
-            font-size: 12px;
-            font-weight: 600;
-            color: #6b7280;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
-
-        .detail-item .value {
-            color: #1f2937;
-            font-size: 14px;
-        }
-
-        .conversation-context {
-            background: #f8fafc;
-            padding: 16px;
-            border-radius: 6px;
-            border-left: 3px solid var(--primary);
-            max-height: 300px;
-            overflow-y: auto;
-            font-family: monospace;
-            font-size: 13px;
-            line-height: 1.6;
-            white-space: pre-wrap;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #6b7280;
-        }
-
-        .spinner {
-            border: 3px solid #e5e7eb;
-            border-top: 3px solid var(--primary);
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 16px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #6b7280;
-        }
-
-        .empty-state svg {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 16px;
-            opacity: 0.5;
-        }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
-        }
-
-        .pagination button {
-            padding: 8px 14px;
-            background: white;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 14px;
-        }
-
-        .pagination button:hover:not(:disabled) {
-            border-color: var(--primary);
-            background: #f8fafc;
-        }
-
-        .pagination button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .pagination .page-info {
-            padding: 0 16px;
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        @media (max-width: 768px) {
-            .admin-header {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-            }
-
-            .filters-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            table {
-                font-size: 14px;
-            }
-
-            th, td {
-                padding: 12px 8px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Login Screen -->
     <div id="loginScreen" class="login-screen">
-        <div class="login-card">
-            <h2>Admin sign in</h2>
-            <p style="color:#6b7280;line-height:1.5;text-align:center;margin:-12px 0 24px;">Enter an authorised email address and we’ll send you a one-time sign-in link.</p>
-            <div id="loginError" class="error-message" style="display: none;"></div>
-            <div id="loginSuccess" class="error-message" style="display:none;background:#ecfdf5;color:#065f46;"></div>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" id="email" name="email" autocomplete="email" required autofocus>
-                </div>
-                <button type="submit" class="submit-btn">Email me a sign-in link</button>
-            </form>
-        </div>
+      <div class="login-card">
+        <h2>Admin sign in</h2>
+        <p
+          style="
+            color: #6b7280;
+            line-height: 1.5;
+            text-align: center;
+            margin: -12px 0 24px;
+          "
+        >
+          Enter an authorised email address and we’ll send you a one-time
+          sign-in link.
+        </p>
+        <div id="loginError" class="error-message" style="display: none"></div>
+        <div
+          id="loginSuccess"
+          class="error-message"
+          style="display: none; background: #ecfdf5; color: #065f46"
+        ></div>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+              autofocus
+            />
+          </div>
+          <button type="submit" class="submit-btn">
+            Email me a sign-in link
+          </button>
+        </form>
+      </div>
     </div>
 
     <!-- Admin Dashboard -->
-    <div id="adminDashboard" class="admin-container" style="display: none;">
-        <!-- Header -->
-        <div class="admin-header">
-            <div>
-                <h1>Simple Page Website Enquiries</h1>
-                <p class="header-subtitle">Manage callback, offer enquiry and chat leads</p>
-            </div>
-            <button id="logoutBtn" class="logout-btn">Logout</button>
+    <div id="adminDashboard" class="admin-container" style="display: none">
+      <!-- Header -->
+      <div class="admin-header">
+        <div>
+          <h1>Simple Page Website Enquiries</h1>
+          <p class="header-subtitle">
+            Review saved enquiries and the next follow-up. Completed is an
+            enquiry status, not proof of a paid website job.
+          </p>
+        </div>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="label">Total Requests</div>
+          <div class="value" id="statTotal">-</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Pending</div>
+          <div class="value" id="statPending">-</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Contacted</div>
+          <div class="value" id="statContacted">-</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Completed</div>
+          <div class="value" id="statCompleted">-</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Last 7 Days</div>
+          <div class="value" id="statWeek">-</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Last 30 Days</div>
+          <div class="value" id="statMonth">-</div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters-card">
+        <div class="filters-grid">
+          <div class="filter-group">
+            <label for="filterStatus">Status</label>
+            <select id="filterStatus">
+              <option value="">All</option>
+              <option value="pending">Pending</option>
+              <option value="contacted">Contacted</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="filterSource">Source</label>
+            <select id="filterSource">
+              <option value="">All Sources</option>
+              <option value="chatbot">AI Chatbot</option>
+              <option value="contact_form">Contact Form</option>
+              <option value="footer_form">Footer Form</option>
+              <option value="download_chat">Download Chat</option>
+              <option value="chat_booking">Chat Callback</option>
+              <option value="assessment">Project brief</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="filterSearch">Search</label>
+            <input
+              type="text"
+              id="filterSearch"
+              placeholder="Name, email, or phone"
+            />
+          </div>
+          <div class="filter-group">
+            <label for="filterStartDate">Start Date</label>
+            <input type="date" id="filterStartDate" />
+          </div>
+          <div class="filter-group">
+            <label for="filterEndDate">End Date</label>
+            <input type="date" id="filterEndDate" />
+          </div>
+          <div class="filter-group">
+            <label>&nbsp;</label>
+            <button id="applyFilters" class="filter-btn">Apply Filters</button>
+          </div>
+          <div class="filter-group">
+            <label>&nbsp;</label>
+            <button id="refreshBtn" class="filter-btn refresh-btn">
+              Refresh
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-card">
+        <div id="loadingState" class="loading">
+          <div class="spinner"></div>
+          <div>Loading callback requests...</div>
         </div>
 
-        <!-- Stats -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="label">Total Requests</div>
-                <div class="value" id="statTotal">-</div>
-            </div>
-            <div class="stat-card">
-                <div class="label">Pending</div>
-                <div class="value" id="statPending">-</div>
-            </div>
-            <div class="stat-card">
-                <div class="label">Contacted</div>
-                <div class="value" id="statContacted">-</div>
-            </div>
-            <div class="stat-card">
-                <div class="label">Completed</div>
-                <div class="value" id="statCompleted">-</div>
-            </div>
-            <div class="stat-card">
-                <div class="label">Last 7 Days</div>
-                <div class="value" id="statWeek">-</div>
-            </div>
-            <div class="stat-card">
-                <div class="label">Last 30 Days</div>
-                <div class="value" id="statMonth">-</div>
-            </div>
+        <div id="emptyState" class="empty-state" style="display: none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+            />
+          </svg>
+          <h3>No callback requests found</h3>
+          <p>
+            Callback requests will appear here when customers request a callback
+            through the AI chat.
+          </p>
         </div>
 
-        <!-- Filters -->
-        <div class="filters-card">
-            <div class="filters-grid">
-                <div class="filter-group">
-                    <label for="filterStatus">Status</label>
-                    <select id="filterStatus">
-                        <option value="">All</option>
-                        <option value="pending">Pending</option>
-                        <option value="contacted">Contacted</option>
-                        <option value="completed">Completed</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="filterSource">Source</label>
-                    <select id="filterSource">
-                        <option value="">All Sources</option>
-                        <option value="chatbot">AI Chatbot</option>
-                        <option value="contact_form">Contact Form</option>
-                        <option value="footer_form">Footer Form</option>
-                        <option value="download_chat">Download Chat</option>
-                        <option value="chat_booking">Chat Callback</option>
-                        <option value="assessment">Project brief</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="filterSearch">Search</label>
-                    <input type="text" id="filterSearch" placeholder="Name, email, or phone">
-                </div>
-                <div class="filter-group">
-                    <label for="filterStartDate">Start Date</label>
-                    <input type="date" id="filterStartDate">
-                </div>
-                <div class="filter-group">
-                    <label for="filterEndDate">End Date</label>
-                    <input type="date" id="filterEndDate">
-                </div>
-                <div class="filter-group">
-                    <label>&nbsp;</label>
-                    <button id="applyFilters" class="filter-btn">Apply Filters</button>
-                </div>
-                <div class="filter-group">
-                    <label>&nbsp;</label>
-                    <button id="refreshBtn" class="filter-btn refresh-btn">Refresh</button>
-                </div>
-            </div>
+        <div id="tableContainer" style="display: none">
+          <table id="callbacksTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Source</th>
+                <th>Preferred Method</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="callbacksTableBody"></tbody>
+          </table>
+
+          <!-- Pagination -->
+          <div class="pagination">
+            <button id="prevPage">← Previous</button>
+            <span class="page-info" id="pageInfo">Page 1</span>
+            <button id="nextPage">Next →</button>
+          </div>
         </div>
-
-        <!-- Table -->
-        <div class="table-card">
-            <div id="loadingState" class="loading">
-                <div class="spinner"></div>
-                <div>Loading callback requests...</div>
-            </div>
-
-            <div id="emptyState" class="empty-state" style="display: none;">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-                </svg>
-                <h3>No callback requests found</h3>
-                <p>Callback requests will appear here when customers request a callback through the AI chat.</p>
-            </div>
-
-            <div id="tableContainer" style="display: none;">
-                <table id="callbacksTable">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Source</th>
-                            <th>Preferred Method</th>
-                            <th>Status</th>
-                            <th>Created</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="callbacksTableBody">
-                    </tbody>
-                </table>
-
-                <!-- Pagination -->
-                <div class="pagination">
-                    <button id="prevPage">← Previous</button>
-                    <span class="page-info" id="pageInfo">Page 1</span>
-                    <button id="nextPage">Next →</button>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
 
     <!-- Detail Modal -->
     <div id="detailModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" id="closeModal">&times;</button>
-            <h3>Callback Request Details</h3>
-            <div class="detail-grid" id="detailContent">
-                <!-- Populated dynamically -->
-            </div>
+      <div class="modal-content">
+        <button class="modal-close" id="closeModal">&times;</button>
+        <h3>Website Enquiry Details</h3>
+        <div class="detail-grid" id="detailContent">
+          <!-- Populated dynamically -->
         </div>
+      </div>
     </div>
 
     <script>
-        class CallbackDashboard {
-            escapeHtml(value) {
-                return String(value ?? '').replace(/[&<>"']/g, character => ({
-                    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-                })[character]);
+      class CallbackDashboard {
+        escapeHtml(value) {
+          return String(value ?? "").replace(
+            /[&<>"']/g,
+            (character) =>
+              ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;",
+              })[character],
+          );
+        }
+        constructor() {
+          this.currentPage = 1;
+          this.currentFilters = {};
+          this.init();
+        }
+
+        async init() {
+          const authResult = new URLSearchParams(window.location.search).get(
+            "auth",
+          );
+          if (authResult === "invalid")
+            this.showError(
+              "That sign-in link is invalid, expired, or has already been used.",
+            );
+
+          try {
+            const response = await fetch("/api/admin/session");
+            if (response.ok) {
+              this.showDashboard();
+              this.loadData();
+              if (authResult)
+                history.replaceState({}, "", window.location.pathname);
+            } else {
+              this.showLogin();
             }
-            constructor() {
-                this.currentPage = 1;
-                this.currentFilters = {};
-                this.init();
+          } catch (error) {
+            this.showLogin();
+            this.showError("Unable to check your session. Please try again.");
+          }
+
+          // Event listeners
+          document
+            .getElementById("loginForm")
+            .addEventListener("submit", (e) => this.handleLogin(e));
+          document
+            .getElementById("logoutBtn")
+            .addEventListener("click", () => this.handleLogout());
+          document
+            .getElementById("applyFilters")
+            .addEventListener("click", () => this.applyFilters());
+          document
+            .getElementById("refreshBtn")
+            .addEventListener("click", () => this.loadData());
+          document
+            .getElementById("prevPage")
+            .addEventListener("click", () => this.changePage(-1));
+          document
+            .getElementById("nextPage")
+            .addEventListener("click", () => this.changePage(1));
+          document
+            .getElementById("closeModal")
+            .addEventListener("click", () => this.closeModal());
+
+          // Check for URL params (highlight specific callback)
+          const urlParams = new URLSearchParams(window.location.search);
+          const highlightId = urlParams.get("id");
+          if (highlightId) {
+            this.highlightCallbackId = highlightId;
+          }
+        }
+
+        showLogin() {
+          document.getElementById("loginScreen").style.display = "block";
+          document.getElementById("adminDashboard").style.display = "none";
+        }
+
+        showDashboard() {
+          document.getElementById("loginScreen").style.display = "none";
+          document.getElementById("adminDashboard").style.display = "block";
+        }
+
+        async handleLogin(e) {
+          e.preventDefault();
+          const email = document.getElementById("email").value.trim();
+          const button = e.currentTarget.querySelector('button[type="submit"]');
+          button.disabled = true;
+          button.textContent = "Sending link…";
+
+          try {
+            const response = await fetch("/api/admin/magic-link", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+              document.getElementById("loginForm").reset();
+              this.showSuccess(data.message);
+            } else {
+              this.showError(data.error || "Unable to send sign-in link");
+            }
+          } catch (error) {
+            this.showError("Unable to send sign-in link. Please try again.");
+          } finally {
+            button.disabled = false;
+            button.textContent = "Email me a sign-in link";
+          }
+        }
+
+        async handleLogout() {
+          await fetch("/api/admin/logout", { method: "POST" });
+          this.showLogin();
+        }
+
+        showSuccess(message) {
+          const successDiv = document.getElementById("loginSuccess");
+          successDiv.textContent = message;
+          successDiv.style.display = "block";
+        }
+
+        showError(message) {
+          const errorDiv = document.getElementById("loginError");
+          errorDiv.textContent = message;
+          errorDiv.style.display = "block";
+          setTimeout(() => {
+            errorDiv.style.display = "none";
+          }, 5000);
+        }
+
+        async loadData() {
+          await Promise.all([this.loadStats(), this.loadCallbacks()]);
+        }
+
+        async loadStats() {
+          try {
+            const response = await fetch("/api/callbacks-stats", {
+              headers: { Accept: "application/json" },
+            });
+
+            if (response.status === 401) return this.showLogin();
+
+            const data = await response.json();
+            if (data.success) {
+              const stats = data.data;
+              document.getElementById("statTotal").textContent =
+                stats.total || 0;
+              document.getElementById("statPending").textContent =
+                stats.pending || 0;
+              document.getElementById("statContacted").textContent =
+                stats.contacted || 0;
+              document.getElementById("statCompleted").textContent =
+                stats.completed || 0;
+              document.getElementById("statWeek").textContent =
+                stats.last_7_days || 0;
+              document.getElementById("statMonth").textContent =
+                stats.last_30_days || 0;
+            }
+          } catch (error) {
+            console.error("Failed to load stats:", error);
+          }
+        }
+
+        async loadCallbacks() {
+          document.getElementById("loadingState").style.display = "block";
+          document.getElementById("emptyState").style.display = "none";
+          document.getElementById("tableContainer").style.display = "none";
+
+          try {
+            const params = new URLSearchParams({
+              page: this.currentPage,
+              limit: 50,
+              ...this.currentFilters,
+            });
+
+            const response = await fetch(`/api/callbacks?${params}`);
+
+            if (response.status === 401) {
+              document.getElementById("loadingState").style.display = "none";
+              return this.showLogin();
             }
 
-            async init() {
-                const authResult = new URLSearchParams(window.location.search).get('auth');
-                if (authResult === 'invalid') this.showError('That sign-in link is invalid, expired, or has already been used.');
+            const data = await response.json();
 
-                try {
-                    const response = await fetch('/api/admin/session');
-                    if (response.ok) {
-                        this.showDashboard();
-                        this.loadData();
-                        if (authResult) history.replaceState({}, '', window.location.pathname);
-                    } else {
-                        this.showLogin();
-                    }
-                } catch (error) {
-                    this.showLogin();
-                    this.showError('Unable to check your session. Please try again.');
-                }
+            document.getElementById("loadingState").style.display = "none";
 
-                // Event listeners
-                document.getElementById('loginForm').addEventListener('submit', (e) => this.handleLogin(e));
-                document.getElementById('logoutBtn').addEventListener('click', () => this.handleLogout());
-                document.getElementById('applyFilters').addEventListener('click', () => this.applyFilters());
-                document.getElementById('refreshBtn').addEventListener('click', () => this.loadData());
-                document.getElementById('prevPage').addEventListener('click', () => this.changePage(-1));
-                document.getElementById('nextPage').addEventListener('click', () => this.changePage(1));
-                document.getElementById('closeModal').addEventListener('click', () => this.closeModal());
+            if (data.success && data.data && data.data.length > 0) {
+              this.renderCallbacks(data.data, data.pagination);
+              document.getElementById("tableContainer").style.display = "block";
+            } else {
+              document.getElementById("emptyState").style.display = "block";
+            }
+          } catch (error) {
+            console.error("Failed to load callbacks:", error);
+            document.getElementById("loadingState").style.display = "none";
+            document.getElementById("emptyState").style.display = "block";
+          }
+        }
 
-                // Check for URL params (highlight specific callback)
-                const urlParams = new URLSearchParams(window.location.search);
-                const highlightId = urlParams.get('id');
-                if (highlightId) {
-                    this.highlightCallbackId = highlightId;
-                }
+        renderCallbacks(callbacks, pagination) {
+          const tbody = document.getElementById("callbacksTableBody");
+          tbody.innerHTML = "";
+
+          callbacks.forEach((callback, index) => {
+            const tr = document.createElement("tr");
+            if (this.highlightCallbackId == callback.id) {
+              tr.className = "highlighted";
+              setTimeout(() => {
+                tr.scrollIntoView({ behavior: "smooth", block: "center" });
+              }, 100);
             }
 
-            showLogin() {
-                document.getElementById('loginScreen').style.display = 'block';
-                document.getElementById('adminDashboard').style.display = 'none';
-            }
+            const createdDate = new Date(callback.created_at);
+            const formattedDate = createdDate.toLocaleString("en-AU", {
+              day: "2-digit",
+              month: "short",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+            });
 
-            showDashboard() {
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('adminDashboard').style.display = 'block';
-            }
-
-            async handleLogin(e) {
-                e.preventDefault();
-                const email = document.getElementById('email').value.trim();
-                const button = e.currentTarget.querySelector('button[type="submit"]');
-                button.disabled = true;
-                button.textContent = 'Sending link…';
-
-                try {
-                    const response = await fetch('/api/admin/magic-link', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email })
-                    });
-
-                    const data = await response.json();
-
-                    if (data.success) {
-                        document.getElementById('loginForm').reset();
-                        this.showSuccess(data.message);
-                    } else {
-                        this.showError(data.error || 'Unable to send sign-in link');
-                    }
-                } catch (error) {
-                    this.showError('Unable to send sign-in link. Please try again.');
-                } finally {
-                    button.disabled = false;
-                    button.textContent = 'Email me a sign-in link';
-                }
-            }
-
-            async handleLogout() {
-                await fetch('/api/admin/logout', { method: 'POST' });
-                this.showLogin();
-            }
-
-            showSuccess(message) {
-                const successDiv = document.getElementById('loginSuccess');
-                successDiv.textContent = message;
-                successDiv.style.display = 'block';
-            }
-
-            showError(message) {
-                const errorDiv = document.getElementById('loginError');
-                errorDiv.textContent = message;
-                errorDiv.style.display = 'block';
-                setTimeout(() => {
-                    errorDiv.style.display = 'none';
-                }, 5000);
-            }
-
-            async loadData() {
-                await Promise.all([
-                    this.loadStats(),
-                    this.loadCallbacks()
-                ]);
-            }
-
-            async loadStats() {
-                try {
-                    const response = await fetch('/api/callbacks-stats', {
-                        headers: { 'Accept': 'application/json' }
-                    });
-
-                    if (response.status === 401) return this.showLogin();
-
-                    const data = await response.json();
-                    if (data.success) {
-                        const stats = data.data;
-                        document.getElementById('statTotal').textContent = stats.total || 0;
-                        document.getElementById('statPending').textContent = stats.pending || 0;
-                        document.getElementById('statContacted').textContent = stats.contacted || 0;
-                        document.getElementById('statCompleted').textContent = stats.completed || 0;
-                        document.getElementById('statWeek').textContent = stats.last_7_days || 0;
-                        document.getElementById('statMonth').textContent = stats.last_30_days || 0;
-                    }
-                } catch (error) {
-                    console.error('Failed to load stats:', error);
-                }
-            }
-
-            async loadCallbacks() {
-                document.getElementById('loadingState').style.display = 'block';
-                document.getElementById('emptyState').style.display = 'none';
-                document.getElementById('tableContainer').style.display = 'none';
-
-                try {
-                    const params = new URLSearchParams({
-                        page: this.currentPage,
-                        limit: 50,
-                        ...this.currentFilters
-                    });
-
-                    const response = await fetch(`/api/callbacks?${params}`);
-
-                    if (response.status === 401) {
-                        document.getElementById('loadingState').style.display = 'none';
-                        return this.showLogin();
-                    }
-
-                    const data = await response.json();
-
-                    document.getElementById('loadingState').style.display = 'none';
-
-                    if (data.success && data.data && data.data.length > 0) {
-                        this.renderCallbacks(data.data, data.pagination);
-                        document.getElementById('tableContainer').style.display = 'block';
-                    } else {
-                        document.getElementById('emptyState').style.display = 'block';
-                    }
-                } catch (error) {
-                    console.error('Failed to load callbacks:', error);
-                    document.getElementById('loadingState').style.display = 'none';
-                    document.getElementById('emptyState').style.display = 'block';
-                }
-            }
-
-            renderCallbacks(callbacks, pagination) {
-                const tbody = document.getElementById('callbacksTableBody');
-                tbody.innerHTML = '';
-
-                callbacks.forEach((callback, index) => {
-                    const tr = document.createElement('tr');
-                    if (this.highlightCallbackId == callback.id) {
-                        tr.className = 'highlighted';
-                        setTimeout(() => {
-                            tr.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }, 100);
-                    }
-
-                    const createdDate = new Date(callback.created_at);
-                    const formattedDate = createdDate.toLocaleString('en-AU', {
-                        day: '2-digit',
-                        month: 'short',
-                        year: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    });
-
-                    tr.innerHTML = `
+            tr.innerHTML = `
                         <td><strong>#${callback.id}</strong></td>
                         <td>${this.escapeHtml(callback.name)}</td>
-                        <td>${this.escapeHtml(callback.phone || '-')}</td>
-                        <td>${this.escapeHtml(callback.email || '-')}</td>
-                        <td><span class="source-badge source-${this.escapeHtml(callback.source || 'chatbot')}">${this.escapeHtml(this.formatSource(callback.source || 'chatbot'))}</span></td>
-                        <td>${this.escapeHtml(callback.preferred_contact_method || '-')}</td>
+                        <td>${this.escapeHtml(callback.phone || "-")}</td>
+                        <td>${this.escapeHtml(callback.email || "-")}</td>
+                        <td><span class="source-badge source-${this.escapeHtml(callback.source || "chatbot")}">${this.escapeHtml(this.formatSource(callback.source || "chatbot"))}</span></td>
+                        <td>${this.escapeHtml(callback.preferred_contact_method || "-")}</td>
                         <td><span class="status-badge status-${callback.status}">${callback.status}</span></td>
                         <td>${formattedDate}</td>
                         <td>
                             <select class="status-select" data-id="${callback.id}" data-current="${callback.status}">
-                                <option value="pending" ${callback.status === 'pending' ? 'selected' : ''}>Pending</option>
-                                <option value="contacted" ${callback.status === 'contacted' ? 'selected' : ''}>Contacted</option>
-                                <option value="completed" ${callback.status === 'completed' ? 'selected' : ''}>Completed</option>
+                                <option value="pending" ${callback.status === "pending" ? "selected" : ""}>Pending</option>
+                                <option value="contacted" ${callback.status === "contacted" ? "selected" : ""}>Contacted</option>
+                                <option value="completed" ${callback.status === "completed" ? "selected" : ""}>Completed</option>
                             </select>
                         </td>
                     `;
 
-                    tr.addEventListener('click', (e) => {
-                        if (!e.target.classList.contains('status-select')) {
-                            this.showDetails(callback);
-                        }
-                    });
+            tr.addEventListener("click", (e) => {
+              if (!e.target.classList.contains("status-select")) {
+                this.showDetails(callback);
+              }
+            });
 
-                    tbody.appendChild(tr);
-                });
+            tbody.appendChild(tr);
+          });
 
-                // Add event listeners for status selects
-                document.querySelectorAll('.status-select').forEach(select => {
-                    select.addEventListener('change', (e) => {
-                        e.stopPropagation();
-                        this.updateStatus(select.dataset.id, select.value, select.dataset.current);
-                    });
-                });
+          // Add event listeners for status selects
+          document.querySelectorAll(".status-select").forEach((select) => {
+            select.addEventListener("change", (e) => {
+              e.stopPropagation();
+              this.updateStatus(
+                select.dataset.id,
+                select.value,
+                select.dataset.current,
+              );
+            });
+          });
 
-                // Update pagination
-                document.getElementById('pageInfo').textContent = 
-                    `Page ${pagination.page} of ${pagination.totalPages} (${pagination.total} total)`;
-                document.getElementById('prevPage').disabled = pagination.page === 1;
-                document.getElementById('nextPage').disabled = pagination.page >= pagination.totalPages;
-            }
+          // Update pagination
+          document.getElementById("pageInfo").textContent =
+            `Page ${pagination.page} of ${pagination.totalPages} (${pagination.total} total)`;
+          document.getElementById("prevPage").disabled = pagination.page === 1;
+          document.getElementById("nextPage").disabled =
+            pagination.page >= pagination.totalPages;
+        }
 
-            async showDetails(callback) {
-                const content = document.getElementById('detailContent');
-                content.innerHTML = `
+        async showDetails(callback) {
+          const content = document.getElementById("detailContent");
+          content.innerHTML = `
                     <div class="detail-item">
                         <label>ID</label>
                         <div class="value">#${callback.id}</div>
@@ -947,19 +1040,19 @@
                     </div>
                     <div class="detail-item">
                         <label>Phone</label>
-                        <div class="value">${this.escapeHtml(callback.phone || '-')}</div>
+                        <div class="value">${this.escapeHtml(callback.phone || "-")}</div>
                     </div>
                     <div class="detail-item">
                         <label>Email</label>
-                        <div class="value">${this.escapeHtml(callback.email || '-')}</div>
+                        <div class="value">${this.escapeHtml(callback.email || "-")}</div>
                     </div>
                     <div class="detail-item">
                         <label>Trade / business</label><div class="value">${this.escapeHtml(callback.service || "-")}</div></div><div class="detail-item"><label>Preferred Contact Method</label>
-                        <div class="value">${this.escapeHtml(callback.preferred_contact_method || '-')}</div>
+                        <div class="value">${this.escapeHtml(callback.preferred_contact_method || "-")}</div>
                     </div>
                     <div class="detail-item">
                         <label>Preferred Time</label>
-                        <div class="value">${this.escapeHtml(callback.preferred_time || '-')}</div>
+                        <div class="value">${this.escapeHtml(callback.preferred_time || "-")}</div>
                     </div>
                     <div class="detail-item">
                         <label>Status</label>
@@ -967,112 +1060,135 @@
                     </div>
                     <div class="detail-item">
                         <label>Message</label>
-                        <div class="value">${this.escapeHtml(callback.message || '-')}</div>
+                        <div class="value">${this.escapeHtml(callback.message || "-")}</div>
                     </div>
                     <div class="detail-item">
                         <label>Created At</label>
-                        <div class="value">${new Date(callback.created_at).toLocaleString('en-AU')}</div>
+                        <div class="value">${new Date(callback.created_at).toLocaleString("en-AU")}</div>
                     </div>
                     <div class="detail-item">
                         <label>Updated At</label>
-                        <div class="value">${new Date(callback.updated_at).toLocaleString('en-AU')}</div>
+                        <div class="value">${new Date(callback.updated_at).toLocaleString("en-AU")}</div>
                     </div>
-                    ${callback.conversation_context ? `
+                    ${
+                      callback.conversation_context
+                        ? `
                         <div class="detail-item" style="grid-column: 1 / -1;">
                             <label>Conversation Context</label>
                             <div class="conversation-context">${this.escapeHtml(callback.conversation_context)}</div>
                         </div>
-                    ` : ''}
+                    `
+                        : ""
+                    }
                 `;
 
-                document.getElementById('detailModal').classList.add('show');
-                if (callback.quote_details || callback.notification_status) {
-                    const details = document.createElement('div');
-                    details.className = 'detail-item'; details.style.gridColumn = '1 / -1';
-                    details.innerHTML = (callback.source === 'assessment' ? '<label>Project details</label><div class="value">' + this.escapeHtml(callback.message || '') + '</div>' : '') + '<label>Notification</label><div class="value">' + this.escapeHtml(callback.notification_status || 'pending') + '</div>';
-                    content.append(details);
-                    const photos = document.createElement('div'); photos.className = 'detail-item'; photos.style.gridColumn = '1 / -1'; photos.textContent = 'Loading damage photos…'; content.append(photos);
-                    try {
-                        const response = await fetch(`/api/quotes/${callback.id}/photos`);
-                        if (!response.ok) throw new Error('Photos unavailable');
-                        const files = await response.json(); photos.textContent = files.length ? 'Damage photos' : 'No photos uploaded.';
-                        files.forEach(file => { const link = document.createElement('a'); link.href = `/api/quotes/${callback.id}/photos/${file.id}`; link.target = '_blank'; link.rel = 'noopener'; const image = document.createElement('img'); image.src = link.href; image.alt = file.filename; image.style.cssText = 'width:120px;height:90px;object-fit:cover;border-radius:6px;display:inline-block;margin:12px 12px 0 0'; link.append(image); photos.append(link); });
-                    } catch (error) { photos.textContent = 'Photos could not be loaded. Please refresh and try again.'; }
-                }
-
-            }
-
-            closeModal() {
-                document.getElementById('detailModal').classList.remove('show');
-            }
-
-            async updateStatus(id, newStatus, oldStatus) {
-                try {
-                    const response = await fetch(`/api/callbacks/${id}`, {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ status: newStatus })
-                    });
-
-                    const data = await response.json();
-
-                    if (data.success) {
-                        // Reload data to update stats and table
-                        await this.loadData();
-                    } else {
-                        alert('Failed to update status: ' + data.error);
-                        // Revert select
-                        document.querySelector(`select[data-id="${id}"]`).value = oldStatus;
-                    }
-                } catch (error) {
-                    console.error('Failed to update status:', error);
-                    alert('Failed to update status');
-                    // Revert select
-                    document.querySelector(`select[data-id="${id}"]`).value = oldStatus;
-                }
-            }
-
-            formatSource(source) {
-                const sourceMap = {
-                    'chatbot': '🤖 AI Chat',
-                    'contact_form': '📝 Contact Form',
-                    'footer_form': '📋 Footer Form',
-                    'download_chat': '💬 Download Chat',
-                    'chat_booking': '📞 Chat Callback',
-                    'assessment': '📝 Project brief'
-                };
-                return sourceMap[source] || source;
-            }
-
-            applyFilters() {
-                this.currentFilters = {};
-                this.currentPage = 1;
-
-                const status = document.getElementById('filterStatus').value;
-                const source = document.getElementById('filterSource').value;
-                const search = document.getElementById('filterSearch').value;
-                const startDate = document.getElementById('filterStartDate').value;
-                const endDate = document.getElementById('filterEndDate').value;
-
-                if (status) this.currentFilters.status = status;
-                if (source) this.currentFilters.source = source;
-                if (search) this.currentFilters.search = search;
-                if (startDate) this.currentFilters.startDate = startDate;
-                if (endDate) this.currentFilters.endDate = endDate;
-
-                this.loadData();
-            }
-
-            changePage(direction) {
-                this.currentPage += direction;
-                this.loadCallbacks();
-            }
+          const acquisition = document.createElement("div");
+          acquisition.className = "detail-item";
+          acquisition.style.gridColumn = "1 / -1";
+          const source = document.createElement("label");
+          source.textContent = "Acquisition and follow-up context";
+          acquisition.append(source);
+          const value = document.createElement("div");
+          value.className = "value";
+          value.textContent = [
+            `Source: ${callback.utm_source || "Not recorded"}`,
+            `Campaign: ${callback.utm_campaign || "Not recorded"}`,
+            `Ad: ${callback.utm_content || "Not recorded"}`,
+            `Entry page: ${callback.landing_path || "Not recorded"}`,
+            `Referrer: ${callback.referrer_host || "Not recorded"}`,
+          ].join(" | ");
+          acquisition.append(value);
+          content.append(acquisition);
+          document.getElementById("detailModal").classList.add("show");
+          if (callback.quote_details || callback.notification_status) {
+            const details = document.createElement("div");
+            details.className = "detail-item";
+            details.style.gridColumn = "1 / -1";
+            details.innerHTML =
+              (callback.source === "assessment"
+                ? '<label>Project details</label><div class="value">' +
+                  this.escapeHtml(callback.message || "") +
+                  "</div>"
+                : "") +
+              '<label>Notification</label><div class="value">' +
+              this.escapeHtml(callback.notification_status || "pending") +
+              "</div>";
+            content.append(details);
+          }
         }
 
-        // Initialize dashboard
-        new CallbackDashboard();
+        closeModal() {
+          document.getElementById("detailModal").classList.remove("show");
+        }
+
+        async updateStatus(id, newStatus, oldStatus) {
+          try {
+            const response = await fetch(`/api/callbacks/${id}`, {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ status: newStatus }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+              // Reload data to update stats and table
+              await this.loadData();
+            } else {
+              alert("Failed to update status: " + data.error);
+              // Revert select
+              document.querySelector(`select[data-id="${id}"]`).value =
+                oldStatus;
+            }
+          } catch (error) {
+            console.error("Failed to update status:", error);
+            alert("Failed to update status");
+            // Revert select
+            document.querySelector(`select[data-id="${id}"]`).value = oldStatus;
+          }
+        }
+
+        formatSource(source) {
+          const sourceMap = {
+            chatbot: "🤖 AI Chat",
+            contact_form: "📝 Contact Form",
+            footer_form: "📋 Footer Form",
+            download_chat: "💬 Download Chat",
+            chat_booking: "📞 Chat Callback",
+            assessment: "📝 Project brief",
+          };
+          return sourceMap[source] || source;
+        }
+
+        applyFilters() {
+          this.currentFilters = {};
+          this.currentPage = 1;
+
+          const status = document.getElementById("filterStatus").value;
+          const source = document.getElementById("filterSource").value;
+          const search = document.getElementById("filterSearch").value;
+          const startDate = document.getElementById("filterStartDate").value;
+          const endDate = document.getElementById("filterEndDate").value;
+
+          if (status) this.currentFilters.status = status;
+          if (source) this.currentFilters.source = source;
+          if (search) this.currentFilters.search = search;
+          if (startDate) this.currentFilters.startDate = startDate;
+          if (endDate) this.currentFilters.endDate = endDate;
+
+          this.loadData();
+        }
+
+        changePage(direction) {
+          this.currentPage += direction;
+          this.loadCallbacks();
+        }
+      }
+
+      // Initialize dashboard
+      new CallbackDashboard();
     </script>
-</body>
+  </body>
 </html>

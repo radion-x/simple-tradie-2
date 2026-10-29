@@ -425,6 +425,7 @@ async function executeCallbackRequest(
   data,
   conversationContext,
   source = "chatbot",
+  attribution = {},
 ) {
   if (process.env.ENABLE_CALLBACKS !== "true")
     return {
@@ -448,6 +449,7 @@ async function executeCallbackRequest(
   const checked = validateLead(
     {
       ...data,
+      ...require("../services/attribution").extractAttribution(attribution),
       event_id: eventId,
       consent: true,
       transcript: conversationContext
@@ -523,7 +525,13 @@ async function sendQuotaWarningEmail(currentCount, quota) {
  */
 router.post("/chat", async (req, res) => {
   try {
-    const { message, history = [], transcript = history, sessionId } = req.body;
+    const {
+      message,
+      history = [],
+      transcript = history,
+      sessionId,
+      attribution = {},
+    } = req.body;
     if (
       typeof message !== "string" ||
       message.length > 1500 ||
@@ -777,6 +785,7 @@ router.post("/chat", async (req, res) => {
                 args,
                 conversationContext,
                 "chat_booking",
+                attribution,
               );
               debugLog(
                 "Callback request completed, success:",
@@ -960,6 +969,8 @@ router.post("/chat", async (req, res) => {
           toolResult = await executeCallbackRequest(
             functionArgs,
             conversationContext,
+            "chatbot",
+            attribution,
           );
         }
 

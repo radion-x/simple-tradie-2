@@ -23,6 +23,8 @@ function cleanValue(value, maxLength) {
 }
 
 function extractAttribution(payload = {}) {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload))
+    payload = {};
   const attribution = {};
   for (const [key, maxLength] of Object.entries(ATTRIBUTION_LIMITS)) {
     attribution[key] = cleanValue(payload[key], maxLength);

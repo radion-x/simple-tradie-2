@@ -387,3 +387,80 @@ test("marketing snippets are excluded from the shared staff dashboard", async ()
   });
   assert.equal(served, true);
 });
+test("a minimal phone enquiry needs no written brief and uses phone follow-up", async () => {
+  const before = sent.length;
+  const result = await post("/api/send-email", {
+    name: "Minimal controlled enquiry",
+    phone: "0400000000",
+    email: "",
+    consent: true,
+    event_id: crypto.randomUUID(),
+  });
+  assert.equal(result.status, 200);
+  const row = (
+    await pool.query("SELECT * FROM callback_requests WHERE id=$1", [
+      result.data.id,
+    ])
+  ).rows[0];
+  assert.equal(row.message, "");
+  assert.equal(row.preferred_contact_method, "phone");
+  assert.equal(sent.length, before + 1);
+});
+test("saved campaign and referrer context reaches the lead and staff notification", async () => {
+  const result = await post("/api/send-email", {
+    ...valid(),
+    utm_source: "gumtree",
+    utm_medium: "classified",
+    utm_campaign: "tradie_997",
+    utm_content: "jack_free",
+    landing_path: "/",
+    referrer_host: "www.gumtree.com.au",
+  });
+  assert.equal(result.status, 200);
+  const row = (
+    await pool.query("SELECT * FROM callback_requests WHERE id=$1", [
+      result.data.id,
+    ])
+  ).rows[0];
+  assert.equal(row.utm_source, "gumtree");
+  assert.equal(row.utm_content, "jack_free");
+  assert.equal(row.referrer_host, "www.gumtree.com.au");
+  assert.ok(sent.at(-2).text.includes("tradie_997"));
+});
+test("chatbot-created callbacks retain acquisition context", async () => {
+  axios.post = async () => ({
+    data: {
+      choices: [
+        {
+          message: {
+            tool_calls: [
+              {
+                function: {
+                  name: "request_callback",
+                  arguments: JSON.stringify({
+                    name: "Attributed tool enquiry",
+                    consent: true,
+                    email: "tool@example.invalid",
+                  }),
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  });
+  const result = await post("/api/chat", {
+    message: "Yes, save the callback.",
+    history: [],
+    attribution: { utm_source: "gumtree", utm_campaign: "tradie_997" },
+  });
+  assert.equal(result.status, 200);
+  assert.equal(result.data.tool_call.result.success, true);
+  const row = (
+    await pool.query("SELECT * FROM callback_requests WHERE id=$1", [
+      result.data.tool_call.result.id,
+    ])
+  ).rows[0];
+  assert.equal(row.utm_source, "gumtree");
+});

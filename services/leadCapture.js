@@ -32,15 +32,13 @@ function validateLead(body, source) {
     (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email) ||
       /[\r\n]/.test(data.email))
   )
-    return { error: "Please enter a valid email address." };
+    return { error: "Please enter a valid email address.", field: "email" };
   if (
     data.phone &&
     (!/^[+\d\s().-]{8,30}$/.test(data.phone) ||
       data.phone.replace(/\D/g, "").length < 8)
   )
-    return { error: "Please enter a valid phone number." };
-  if (source === "contact_form" && !data.message)
-    return { error: "Please describe what you need help with." };
+    return { error: "Please enter a valid phone number.", field: "phone" };
   if (source === "chat_booking" && !data.phone && !data.email)
     return {
       error: "Please provide a phone number or email for your callback.",
@@ -67,7 +65,7 @@ function validateLead(body, source) {
     body.preferred_contact_method,
   )
     ? body.preferred_contact_method
-    : source === "contact_form" || !data.phone
+    : data.email
       ? "email"
       : "phone";
   data.conversation = transcript
@@ -94,7 +92,7 @@ async function captureLead(data, source, { database, mailer }) {
     throw new Error("Invalid lead source");
   const attribution = data.attribution || {};
   const result = await database.query(
-    `INSERT INTO callback_requests(name,phone,email,message,preferred_time,preferred_contact_method,conversation_context,source,service,event_id,funnel,landing_path,utm_source,utm_medium,utm_campaign,utm_content,utm_term,gclid,fbclid,msclkid,quote_details) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$20,$9,'tradie_website',$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) ON CONFLICT(event_id) WHERE event_id IS NOT NULL DO NOTHING RETURNING id`,
+    `INSERT INTO callback_requests(name,phone,email,message,preferred_time,preferred_contact_method,conversation_context,source,service,event_id,funnel,landing_path,utm_source,utm_medium,utm_campaign,utm_content,utm_term,gclid,fbclid,msclkid,quote_details,referrer_host) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$20,$9,'tradie_website',$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$21) ON CONFLICT(event_id) WHERE event_id IS NOT NULL DO NOTHING RETURNING id`,
     [
       data.name,
       data.phone || null,
@@ -116,6 +114,7 @@ async function captureLead(data, source, { database, mailer }) {
       attribution.msclkid,
       JSON.stringify({ consent: true, consent_at: new Date().toISOString() }),
       data.service || "Tradie website enquiry",
+      attribution.referrer_host,
     ],
   );
   if (!result.rows.length) {
@@ -148,7 +147,7 @@ async function captureLead(data, source, { database, mailer }) {
       value: data.preferred_time || "As soon as possible",
     },
     { label: "Reference", value: reference },
-    { label: "Trade / business", value: data.service || "Not supplied" },
+    { label: "Trade / business", value: data.service || "To discuss" },
   ];
   const from =
     process.env.EMAIL_FROM ||
@@ -156,28 +155,32 @@ async function captureLead(data, source, { database, mailer }) {
   let notificationSent = false,
     confirmationSent = false;
   try {
-    await mailer
-      .messages()
-      .send({
-        from,
-        ...staffNotificationRecipients(),
-        ...(data.email ? { "h:Reply-To": data.email } : {}),
-        subject: `Simple Page ${callback ? "callback request" : "contact enquiry"} | ${data.name} | ${reference}`,
-        html: brandedEmail({
-          eyebrow: callback ? "Callback request" : "Contact enquiry",
-          title: `A new enquiry from ${data.name}`,
-          intro: "Saved in the Simple Page lead dashboard.",
-          body:
-            fieldTable(fields) +
-            messageBlock("Customer message", data.message) +
-            messageBlock("Full chat conversation", data.conversation) +
-            button(
-              "View this enquiry",
-              `${siteUrl()}/admin/callbacks.html?id=${id}`,
-            ),
-        }),
-        text: `${reference}\n${fields.map((item) => `${item.label}: ${item.value}`).join("\n")}\n\nCustomer message:\n${data.message}\n\nFull chat conversation:\n${data.conversation}`,
-      });
+    await mailer.messages().send({
+      from,
+      ...staffNotificationRecipients(),
+      ...(data.email ? { "h:Reply-To": data.email } : {}),
+      subject: `Simple Page ${callback ? "callback request" : "contact enquiry"} | ${data.name} | ${reference}`,
+      html: brandedEmail({
+        eyebrow: callback ? "Callback request" : "Contact enquiry",
+        title: `A new enquiry from ${data.name}`,
+        intro: "Saved in the Simple Page lead dashboard.",
+        body:
+          fieldTable([
+            ...fields,
+            { label: "Campaign source", value: attribution.utm_source },
+            { label: "Campaign", value: attribution.utm_campaign },
+            { label: "Ad / creative", value: attribution.utm_content },
+            { label: "Entry page", value: attribution.landing_path },
+          ]) +
+          messageBlock("Customer message", data.message) +
+          messageBlock("Full chat conversation", data.conversation) +
+          button(
+            "View this enquiry",
+            `${siteUrl()}/admin/callbacks.html?id=${id}`,
+          ),
+      }),
+      text: `${reference}\nCampaign source: ${attribution.utm_source || "Not supplied"}\nCampaign: ${attribution.utm_campaign || "Not supplied"}\nAd: ${attribution.utm_content || "Not supplied"}\n${fields.map((item) => `${item.label}: ${item.value}`).join("\n")}\n\nCustomer message:\n${data.message}\n\nFull chat conversation:\n${data.conversation}`,
+    });
     notificationSent = true;
   } catch (error) {
     console.error(
@@ -191,28 +194,26 @@ async function captureLead(data, source, { database, mailer }) {
   );
   if (data.email) {
     try {
-      await mailer
-        .messages()
-        .send({
-          from,
-          to: data.email,
-          "h:Reply-To": "hello@simplepage.com.au",
-          subject: `Your ${callback ? "callback request" : "enquiry"} | Simple Page | ${reference}`,
-          html: brandedEmail({
-            eyebrow: "Enquiry received",
-            title: `Thank you, ${data.name}`,
-            intro: callback
-              ? "We’ve received your callback request. The team will contact you to arrange the next step."
-              : "We’ve received your message. The team will contact you about your enquiry.",
-            body:
-              fieldTable(fields) +
-              messageBlock("Your message", data.message) +
-              messageBlock("Your chat conversation", data.conversation),
-            footer:
-              "A callback request is not a confirmed appointment. Call (02) 8958 8545 if you would prefer to speak with us.",
-          }),
-          text: `Thank you, ${data.name}. Your enquiry has been received.\nReference: ${reference}\nPreferred time: ${data.preferred_time || "As soon as possible"}\n\n${data.message}\n\n${data.conversation}\n\nA callback request is not a confirmed appointment. Call (02) 8958 8545 if you would prefer to speak with us.`,
-        });
+      await mailer.messages().send({
+        from,
+        to: data.email,
+        "h:Reply-To": "hello@simplepage.com.au",
+        subject: `Your ${callback ? "callback request" : "enquiry"} | Simple Page | ${reference}`,
+        html: brandedEmail({
+          eyebrow: "Enquiry received",
+          title: `Thank you, ${data.name}`,
+          intro: callback
+            ? "We’ve received your callback request. The team will contact you to arrange the next step."
+            : "We’ve received your message. The team will contact you about your enquiry.",
+          body:
+            fieldTable(fields) +
+            messageBlock("Your message", data.message) +
+            messageBlock("Your chat conversation", data.conversation),
+          footer:
+            "A callback request is not a confirmed appointment. Call (02) 8958 8545 if you would prefer to speak with us.",
+        }),
+        text: `Thank you, ${data.name}. Your enquiry has been received.\nReference: ${reference}\nPreferred time: ${data.preferred_time || "As soon as possible"}\n\n${data.message}\n\n${data.conversation}\n\nA callback request is not a confirmed appointment. Call (02) 8958 8545 if you would prefer to speak with us.`,
+      });
       confirmationSent = true;
     } catch (error) {
       console.error(

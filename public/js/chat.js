@@ -7,7 +7,8 @@
     transcript = [],
     chatting = false;
   const sessionId = crypto.randomUUID();
-  let transcriptEventId = crypto.randomUUID();
+  let transcriptEventId = crypto.randomUUID(),
+    transcriptSignature = "";
   function chatMessage(role, text) {
     const el = document.createElement("div");
     el.className = `chat-message ${role}`;
@@ -28,10 +29,50 @@
   $("#chatClose").addEventListener("click", () => {
     chat.hidden = true;
     $("#chatToggle").setAttribute("aria-expanded", "false");
-    $("#chatToggle").focus();
+    (document.body.classList.contains("contact-visible")
+      ? $("[data-open-assistant]")
+      : $("#chatToggle")
+    ).focus();
   });
+  const panels = [...chat.querySelectorAll("details")];
+  function syncPanels() {
+    chat.classList.toggle(
+      "panel-open",
+      panels.some((panel) => panel.open),
+    );
+  }
+  function closePanel(panel) {
+    panel.open = false;
+    syncPanels();
+    input.focus();
+  }
+  panels.forEach((panel) => {
+    panel
+      .querySelector("[data-panel-close]")
+      .addEventListener("click", () => closePanel(panel));
+    panel.addEventListener("toggle", () => {
+      if (panel.open)
+        panels
+          .filter((other) => other !== panel)
+          .forEach((other) => {
+            other.open = false;
+          });
+      syncPanels();
+    });
+  });
+  document.querySelectorAll("[data-open-assistant]").forEach((button) =>
+    button.addEventListener("click", () => {
+      chat.hidden = false;
+      $("#chatToggle").setAttribute("aria-expanded", "true");
+      input.focus();
+    }),
+  );
   chat.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") $("#chatClose").click();
+    if (event.key !== "Escape") return;
+    event.preventDefault();
+    const open = panels.find((panel) => panel.open);
+    if (open) closePanel(open);
+    else $("#chatClose").click();
   });
   fetch("/api/chat/config")
     .then((res) => res.json())
@@ -73,7 +114,13 @@
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message, history, transcript, sessionId }),
+        body: JSON.stringify({
+          message,
+          history,
+          transcript,
+          sessionId,
+          attribution: window.tradieFunnel?.attribution(),
+        }),
         signal: controller.signal,
       });
       if (!response.ok)
@@ -162,9 +209,18 @@
       status.textContent = "Start a conversation first, then email it here.";
       return;
     }
+    const signature = JSON.stringify([
+      $("#transcriptEmail").value.trim(),
+      transcript,
+    ]);
+    if (signature !== transcriptSignature) {
+      transcriptEventId = crypto.randomUUID();
+      transcriptSignature = signature;
+    }
     const button = $("#transcriptForm button");
     button.disabled = true;
     status.textContent = "Sending…";
+    window.tradieFunnel?.track("form_submitted", { form_kind: "transcript" });
     try {
       const response = await fetch("/api/chat/email-transcript", {
         method: "POST",
@@ -176,6 +232,7 @@
           message: "Requested conversation transcript",
           consent: $("#transcriptForm input[name=consent]").checked,
           transcript,
+          ...window.tradieFunnel?.attribution(),
           sessionId,
           event_id: transcriptEventId,
         }),
@@ -183,21 +240,37 @@
       const result = await response.json();
       if (!response.ok)
         throw new Error(result.error || "Unable to send. Please try again.");
-      status.textContent = result.confirmation_sent
-        ? "Your conversation has been submitted for email delivery."
-        : "Your conversation is saved, but the email could not be sent. Contact hello@simplepage.com.au.";
-      transcriptEventId = crypto.randomUUID();
+      status.textContent = result.duplicate
+        ? `This conversation request is already saved. Reference ${result.referenceId}.`
+        : result.confirmation_sent
+          ? "Your conversation has been submitted for email delivery."
+          : "Your conversation is saved, but the email could not be sent. Contact hello@simplepage.com.au.";
+      window.tradieFunnel?.track("enquiry_saved", {
+        form_kind: "transcript",
+        reference: result.id,
+        duplicate: result.duplicate,
+      });
     } catch (error) {
       status.textContent = error.message;
+      window.tradieFunnel?.track("form_error", {
+        form_kind: "transcript",
+        field: "form",
+      });
     } finally {
       button.disabled = false;
     }
   });
 
   // Keep enquiry details in the form after failures; only clear after a saved lead.
-  function leadEvent(type, kind) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: "tradie_form_" + type, form_kind: kind });
+  function leadEvent(type, kind, details = {}) {
+    const events = {
+      view: "form_viewed",
+      start: "form_started",
+      error: "form_error",
+      submit: "form_submitted",
+      success: "enquiry_saved",
+    };
+    window.tradieFunnel?.track(events[type], { form_kind: kind, ...details });
   }
   document
     .querySelectorAll('[data-lead-form="callback"]')
@@ -238,20 +311,7 @@
           original = submit.innerHTML;
         const data = Object.fromEntries(new FormData(leadForm));
         data.event_id = leadEventId;
-        data.landing_path = location.pathname;
-        const params = new URLSearchParams(location.search);
-        [
-          "utm_source",
-          "utm_medium",
-          "utm_campaign",
-          "utm_content",
-          "utm_term",
-          "gclid",
-          "fbclid",
-          "msclkid",
-        ].forEach((key) => {
-          if (params.has(key)) data[key] = params.get(key);
-        });
+        Object.assign(data, window.tradieFunnel?.attribution());
         if (kind === "callback") data.transcript = transcript;
         sending = true;
         submit.disabled = true;
@@ -287,7 +347,10 @@
             'Request received <span aria-hidden="true">✓</span>';
           status.setAttribute("tabindex", "-1");
           status.focus();
-          leadEvent("success", kind);
+          leadEvent("success", kind, {
+            reference: result.id,
+            duplicate: result.duplicate,
+          });
           if (kind === "callback") chatMessage("assistant", status.textContent);
         } catch (error) {
           status.textContent = error.message;

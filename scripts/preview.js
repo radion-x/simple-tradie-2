@@ -18,7 +18,13 @@ process.env.OPENROUTER_MODEL = "preview-only";
 process.env.HTML_HEAD_INJECT =
   '<style>body:before{content:"LOCAL REVIEW: AI replies and email delivery are simulated. Form requests save to a test database.";display:block;padding:8px 20px;background:#fff2cc;color:#513e00;text-align:center;font:12px Arial,sans-serif}</style>';
 require("../services/mailgun").createMailgunClient = () => ({
-  messages: () => ({ send: async () => ({ id: "simulated-preview-message" }) }),
+  messages: () => ({
+    send: async (data) => {
+      if ((data.text || "").includes("simulate email failure"))
+        throw new Error("Controlled preview email failure");
+      return { id: "simulated-preview-message" };
+    },
+  }),
 });
 require("axios").post = async (url, body) => {
   if (body.messages.at(-1).content.toLowerCase().includes("simulate failure"))
@@ -36,8 +42,47 @@ require("axios").post = async (url, body) => {
     },
   };
 };
-require("../server").listen(process.env.PORT || 3150, "127.0.0.1", () =>
+const database = require("../db/pool");
+const originalQuery = database.query.bind(database);
+database.query = (sql, params) => {
+  if (
+    sql.startsWith("INSERT INTO callback_requests") &&
+    params?.some(
+      (value) =>
+        typeof value === "string" && value.includes("simulate save failure"),
+    )
+  )
+    return Promise.reject(new Error("Controlled preview database failure"));
+  return originalQuery(sql, params);
+};
+const app = require("../server"),
+  preview = require("express")();
+preview.get("/__preview/staff", async (req, res, next) => {
+  try {
+    const auth = require("../services/adminAuth");
+    const token = await auth.issueMagicLink("owner@example.invalid");
+    const session = await auth.consumeMagicLink(token);
+    res.setHeader("Set-Cookie", auth.sessionCookie(session.sessionToken));
+    res.redirect("/admin/callbacks.html");
+  } catch (error) {
+    next(error);
+  }
+});
+preview.get("/admin/callbacks.html", (req, res) => {
+  const html = require("node:fs")
+    .readFileSync(
+      require("node:path").join(__dirname, "../public/admin/callbacks.html"),
+      "utf8",
+    )
+    .replace(
+      "<h1>Simple Page Website Enquiries</h1>",
+      "<h1>LOCAL REVIEW: Synthetic Enquiries</h1>",
+    );
+  res.type("html").send(html);
+});
+preview.use(app);
+preview.listen(process.env.PORT || 3150, "127.0.0.1", () =>
   console.log(
-    "Isolated review at http://localhost:3150. No external emails or AI requests.",
+    "Isolated review at http://localhost:3150. No external email or AI requests.",
   ),
 );

@@ -995,3 +995,128 @@ dialog > p {
   margin-top: 3px;
   accent-color: var(--blue);
 }
+/* Conversion review: clear charges, optional detail and unobstructed phone forms. */
+.price-note {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.price-note span {
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+.proof-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.8rem;
+}
+.contact-fields {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.contact-fields legend {
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 0;
+}
+.contact-fields .form-hint {
+  margin: 5px 0 14px;
+}
+.enquiry-form label small {
+  font-weight: 400;
+  color: var(--muted);
+  display: contents;
+}
+.assistant-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  color: var(--blue);
+  margin-top: 22px;
+}
+.form-status {
+  scroll-margin: 30px;
+}
+.chat-toggle {
+  padding: 12px 16px;
+}
+.contact-visible .chat-toggle[aria-expanded="false"] {
+  visibility: hidden;
+  pointer-events: none;
+}
+.form-status.error {
+  background: #fff1ee;
+  border-color: #a53321;
+}
+.enquiry-form [aria-invalid="true"] {
+  border-color: #a53321;
+}
+.chat-window button,
+.chat-window summary {
+  min-height: 44px;
+}
+.chat-window header button {
+  min-width: 44px;
+}
+@media (max-width: 650px) {
+  .hero h1 {
+    font-size: 3.7rem;
+  }
+  .hero {
+    padding-block: 32px;
+  }
+  .price-note {
+    font-size: 0.86rem;
+  }
+  .chat-toggle {
+    font-size: 0.74rem;
+    padding: 11px 14px;
+    background: #fff;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+  }
+  .hero .lead {
+    margin-bottom: 22px;
+  }
+  .form-status {
+    scroll-margin-top: 20px;
+  }
+}
+/* An enquiry panel is an explicit view with a persistent route back. Drafts stay in the DOM. */
+.chat-window.panel-open .chat-messages,
+.chat-window.panel-open .chat-suggestions,
+.chat-window.panel-open #chatForm,
+.chat-window.panel-open details:not([open]) {
+  display: none;
+}
+.chat-window.panel-open details[open] {
+  flex: 1;
+  max-height: none;
+  min-height: 0;
+  overflow: auto;
+}
+.panel-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 4px 0 10px;
+  background: #fff;
+}
+.panel-toolbar button {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--blue);
+  border-radius: 6px;
+  color: var(--blue);
+  background: var(--soft);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 12px;
+}

@@ -11,7 +11,10 @@ const mailer = createMailgunClient({
 function leadHandler(source) {
   return async (req, res) => {
     const checked = validateLead(req.body, source);
-    if (checked.error) return res.status(400).json({ error: checked.error });
+    if (checked.error)
+      return res
+        .status(400)
+        .json({ error: checked.error, field: checked.field });
     if (
       source === "download_chat" &&
       (!checked.data.email || !checked.data.conversation)
@@ -25,12 +28,10 @@ function leadHandler(source) {
       );
     } catch (error) {
       console.error("Lead save failed", error.code || "database error");
-      return res
-        .status(503)
-        .json({
-          error:
-            "Your enquiry could not be saved. Please try again or email hello@simplepage.com.au.",
-        });
+      return res.status(503).json({
+        error:
+          "Your enquiry could not be saved. Please try again or email hello@simplepage.com.au.",
+      });
     }
   };
 }

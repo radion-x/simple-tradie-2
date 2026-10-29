@@ -1,6 +1,6 @@
 {
   "shared_base_tests": 12,
-  "tradie_integration_tests": 17,
+  "tradie_integration_tests": 23,
   "tests_passed": true,
   "unique_html_ids": true,
   "local_links_and_assets": true,
@@ -14,5 +14,17 @@
     "primary enquiry saved to preview database"
   ],
   "real_provider_test": "GPT streamed callback through app, email simulated",
-  "live_release": false
+  "live_release": false,
+  "conversion_review_tests_passed": true,
+  "analytics_reporting": "Local dataLayer events only. No connected reporting configured or published.",
+  "conversion_review_screenshots": [
+    "conversion-desktop.jpg",
+    "conversion-mobile.jpg",
+    "chat-back-mobile.jpg",
+    "conversion-mobile-fallback.jpg"
+  ],
+  "browser_widths_verified": [
+    1280,
+    390
+  ]
 }
