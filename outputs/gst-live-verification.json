@@ -1,0 +1,20 @@
+{
+  "site": "https://tradie.simplepage.com.au",
+  "revision": "c517727e2f920a011714a2d78fb48f2b85a12124",
+  "checked_at": "2026-10-29T03:27:09.896Z",
+  "checks": {
+    "hero": true,
+    "package": true,
+    "faq": true,
+    "enquiry": true,
+    "health": {
+      "status": "ok"
+    }
+  },
+  "chat_status": 200,
+  "chat_answer": "Yes, both the $997 setup and the $30 monthly hosting and AI prices include GST, so GST is not added on top.",
+  "no_enquiries_or_emails_created": true,
+  "deployment_status": "finished",
+  "deployment_finished_at": "2026-10-29T03:26:57.000000Z",
+  "mobile_390px_visual_check": true
+}

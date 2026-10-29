@@ -67,3 +67,5 @@ References: [Google sender guidelines](https://support.google.com/mail/answer/81
 ## GST clarification, 29 October 2026
 
 Rad confirmed the $997 build and $30/month hosting and AI prices both include GST. The page hero, package card, monthly FAQ, enquiry introduction, metadata and authoritative assistant prompt now state this. Totals and other terms are unchanged. Receipts do not quote package prices, so no receipt change is required.
+
+GST clarification deployed successfully as `c517727e2f920a011714a2d78fb48f2b85a12124` (Coolify `rw0devkgusekcpiqirbmeb7q`). Published hero/package/FAQ/enquiry text and 390px layout verified. One short live GPT check confirmed both prices include GST with no extra GST charge. Health remained OK. No enquiries or emails were created. Evidence: `outputs/gst-live-verification.json`.
