@@ -1120,3 +1120,14 @@ dialog > p {
   text-align: left;
   padding: 8px 12px;
 }
+
+/* Keep editable text at 16px on phones, including assistant panels. */
+@media (max-width: 640px) {
+  input:not([type="checkbox"]):not([type="hidden"]),
+  textarea,
+  #chatForm input,
+  .chat-callback input,
+  .chat-transcript input[type="email"] {
+    font-size: 1rem;
+  }
+}

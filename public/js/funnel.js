@@ -22,31 +22,42 @@
     msclkid: 500,
   };
   function createFunnel({ location, storage, referrer = "", emit }) {
-    let first = {};
-    try {
-      first = JSON.parse(storage.getItem("tradie_entry") || "{}");
-    } catch {}
-    if (!first || typeof first !== "object" || Array.isArray(first)) first = {};
-    if (!first.landing_path) {
-      first = { landing_path: location.pathname };
-      const params = new URLSearchParams(location.search);
-      for (const key of campaignKeys)
-        if (params.has(key)) first[key] = params.get(key);
+    function readStored(key) {
       try {
-        const host = new URL(referrer).hostname;
-        if (host !== location.hostname) first.referrer_host = host;
-      } catch {}
+        const value = JSON.parse(storage.getItem(key) || "{}");
+        return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+      } catch { return {}; }
     }
-    const attribution = {};
-    for (const [key, max] of Object.entries(limits))
-      if (typeof first[key] === "string")
-        attribution[key] = first[key]
-          .replace(/[\u0000-\u001F\u007F]/g, "")
-          .slice(0, max);
-    if (!attribution.landing_path?.startsWith("/"))
-      attribution.landing_path = location.pathname;
+    function clean(values) {
+      const result = {};
+      for (const [key, max] of Object.entries(limits))
+        if (typeof values[key] === "string")
+          result[key] = values[key].replace(/[\u0000-\u001F\u007F]/g, "").slice(0, max);
+      if (!result.landing_path?.startsWith("/")) result.landing_path = location.pathname;
+      return result;
+    }
+    const params = new URLSearchParams(location.search);
+    const entry = { landing_path: location.pathname };
+    for (const key of campaignKeys) {
+      // Gumtree currently emits literal &amp; separators. Canonical keys win.
+      // Do not rewrite the browser URL or decode arbitrary query data.
+      const value = params.has(key) ? params.get(key) : params.get(`amp;${key}`);
+      if (value !== null) entry[key] = value;
+    }
+    try {
+      const host = new URL(referrer).hostname;
+      if (host !== location.hostname) entry.referrer_host = host;
+    } catch {}
+    const first = readStored("tradie_entry");
+    const attribution = clean(first.landing_path ? first : entry);
+    const previousLatest = readStored("tradie_latest_campaign");
+    const latest = campaignKeys.some((key) => Object.hasOwn(entry, key))
+      ? clean(entry)
+      : previousLatest.landing_path ? clean(previousLatest) : {};
     try {
       storage.setItem("tradie_entry", JSON.stringify(attribution));
+      if (latest.landing_path)
+        storage.setItem("tradie_latest_campaign", JSON.stringify(latest));
     } catch {}
     const saved = new Set();
     function track(event, data = {}) {
@@ -83,7 +94,11 @@
         payload.field = data.field;
       emit(payload);
     }
-    return { attribution: () => ({ ...attribution }), track };
+    return {
+      attribution: () => ({ ...attribution }),
+      latestAttribution: () => ({ ...latest }),
+      track,
+    };
   }
   if (typeof module !== "undefined" && module.exports)
     module.exports = { createFunnel };
