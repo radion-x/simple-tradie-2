@@ -1131,3 +1131,72 @@ dialog > p {
     font-size: 1rem;
   }
 }
+
+/* Readability: preserve display scale while giving page copy room to breathe. */
+:root {
+  --body-copy-size: 1.125rem;
+  --supporting-copy-size: 1rem;
+}
+.lead,
+.essentials > div > p:last-child,
+.service-list p,
+.section-heading p,
+.package-description > p:not(.eyebrow),
+.checklist li,
+.steps p,
+.faq summary,
+.faq details p,
+.monthly,
+.contact-grid > div > p:not(.eyebrow):not(.form-hint) {
+  font-size: var(--body-copy-size);
+  line-height: 1.65;
+}
+.price-note,
+.price-note small,
+.price-note span,
+.small,
+.hero-work figcaption,
+.work-grid figcaption,
+.scope-strip .wrap,
+.proof-link,
+.contact-grid .form-hint,
+.assistant-link,
+.contact-grid > div > a:not(.contact-phone),
+.enquiry-form label,
+.enquiry-form .form-hint,
+.enquiry-form .consent,
+.enquiry-form .form-status,
+.contact-fields legend {
+  font-size: var(--supporting-copy-size);
+  line-height: 1.6;
+}
+.enquiry-form input,
+.enquiry-form textarea,
+.button {
+  font-size: 1rem;
+}
+.checklist li {
+  padding: 11px 0 11px 28px;
+}
+.service-list p,
+.steps p {
+  margin-top: 12px;
+}
+.faq details {
+  padding-block: 24px;
+}
+.faq details p {
+  margin-top: 16px;
+}
+.price-panel .small + .small {
+  margin-top: 16px;
+}
+.work-grid figcaption {
+  flex-wrap: wrap;
+  row-gap: 4px;
+}
+footer p,
+footer a:not(.wordmark) {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
