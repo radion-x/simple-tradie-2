@@ -10,6 +10,58 @@ function storage() {
     },
   };
 }
+function entry(search, saved = storage()) {
+  return createFunnel({
+    location: {
+      pathname: "/",
+      hostname: "tradie.simplepage.com.au",
+      search,
+    },
+    storage: saved,
+    emit: () => {},
+  });
+}
+test("Gumtree HTML-escaped separators retain complete attribution across navigation", () => {
+  const saved = storage();
+  const funnel = entry(
+    "?utm_source=gumtree&amp;utm_medium=classified&amp;utm_campaign=tradie_997&amp;utm_content=jack_free",
+    saved,
+  );
+  const expected = {
+    landing_path: "/",
+    utm_source: "gumtree",
+    utm_medium: "classified",
+    utm_campaign: "tradie_997",
+    utm_content: "jack_free",
+  };
+  assert.deepEqual(funnel.attribution(), expected);
+  assert.deepEqual(entry("", saved).attribution(), expected);
+});
+test("normal campaign values stay intact and unknown escaped keys are discarded", () => {
+  assert.deepEqual(
+    entry(
+      "?utm_source=gumtree&utm_medium=classified&utm_campaign=repairs%26amp%3Bmaintenance&amp;email=private%40example.invalid",
+    ).attribution(),
+    {
+      landing_path: "/",
+      utm_source: "gumtree",
+      utm_medium: "classified",
+      utm_campaign: "repairs&amp;maintenance",
+    },
+  );
+});
+test("proper campaign keys win over escaped aliases regardless of order, including empty values", () => {
+  for (const search of [
+    "?amp;utm_source=wrong&utm_source=gumtree&utm_medium=&amp;utm_medium=wrong",
+    "?utm_source=gumtree&amp;utm_source=wrong&amp;utm_medium=wrong&utm_medium=",
+  ]) {
+    assert.deepEqual(entry(search).attribution(), {
+      landing_path: "/",
+      utm_source: "gumtree",
+      utm_medium: "",
+    });
+  }
+});
 test("first entry attribution survives privacy navigation and preserves the original campaign", () => {
   const saved = storage(),
     events = [];

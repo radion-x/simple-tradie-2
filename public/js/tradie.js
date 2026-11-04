@@ -121,7 +121,7 @@
     if (status.dataset.saved === "true") {
       const button = form.querySelector("button[type=submit]");
       button.disabled = false;
-      button.textContent = "Send my website enquiry";
+      button.textContent = "Send my website request";
       status.textContent = "";
       status.dataset.saved = "false";
     }

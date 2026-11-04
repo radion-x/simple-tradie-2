@@ -30,8 +30,12 @@
     if (!first.landing_path) {
       first = { landing_path: location.pathname };
       const params = new URLSearchParams(location.search);
-      for (const key of campaignKeys)
-        if (params.has(key)) first[key] = params.get(key);
+      for (const key of campaignKeys) {
+        // Some listing sites send literal &amp; query separators. Recover only
+        // known campaign keys, keeping proper parameters and values untouched.
+        const parameter = params.has(key) ? key : `amp;${key}`;
+        if (params.has(parameter)) first[key] = params.get(parameter);
+      }
       try {
         const host = new URL(referrer).hostname;
         if (host !== location.hostname) first.referrer_host = host;

@@ -1,0 +1,19 @@
+Generated using the built-in image_gen tool on 4 November 2026.
+Output: gumtree-tradie-main-v3.png
+References: previous approved Gumtree image and actual public/images/work/harbourtown-handyman.png.
+
+Use case: ads-marketing, compositing.
+Create ONE polished square Gumtree main advertisement image for Simple Page, a website design business serving Sydney tradies. This is a new clearer version of the old ad supplied as image 1. Image 1 is only a colour/brand reference, NOT a layout to copy. Image 2 is the authentic Harbour Town Handyman website screenshot, a supporting compositing input that must remain faithful as portfolio evidence.
+Goal: instantly readable as a small phone thumbnail. White background, cobalt blue #1747D1 and deep ink #111827. Bold clean condensed sans-serif typography, generous spacing, professional and direct. Few words, strong hierarchy. Big service headline at top, large price treatment, one restrained photographic screen crop below or to side, small Simple Page wordmark. No decorative clutter. The main advertisement text must dominate the screenshot.
+Exact text to render, no extra ad claims:
+'simplepage'
+'WEBSITES FOR'
+'SYDNEY TRADIES'
+'$997 build'
+'+ $30/month'
+'hosting & AI'
+'Both prices include GST'
+'3 custom pages'
+'Message your trade + suburb'
+Optional only if comfortable space remains: 'Your work deserves a proper website.'
+Use image 2 as a small portfolio screen inset with the label 'Portfolio example: Harbour Town Handyman'. Crop the actual screenshot to its central hero showing Sydney harbour and Harbour Town Handyman Sydney. Crop out BOTH top navigation and bottom buttons, so NO phone numbers or contact information from the screenshot survive. Do not redraw or invent that website, testimonials, claims, UI or customer results. A clean rectangular screen crop is preferable to a laptop mockup. No screenshot phone number, URL, email, no fake ratings, no guarantees, no discounts, no contact details anywhere on the finished image. Give both pricing components substantial readable weight. Keep all important content inside safe margins. Opaque white background.

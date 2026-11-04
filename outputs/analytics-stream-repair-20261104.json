@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-11-04T02:18:32.533063+00:00",
+  "before": {
+    "name": "properties/517169232/dataStreams/13174148380/enhancedMeasurementSettings",
+    "streamEnabled": true,
+    "scrollsEnabled": true,
+    "outboundClicksEnabled": true,
+    "siteSearchEnabled": true,
+    "videoEngagementEnabled": true,
+    "fileDownloadsEnabled": true,
+    "pageChangesEnabled": true,
+    "formInteractionsEnabled": true,
+    "searchQueryParameter": "q,s,search,query,keyword"
+  },
+  "before_source": "Read-only API result captured immediately before PATCH in this task.",
+  "after": {
+    "name": "properties/517169232/dataStreams/13174148380/enhancedMeasurementSettings",
+    "scrollsEnabled": true,
+    "outboundClicksEnabled": true,
+    "siteSearchEnabled": true,
+    "videoEngagementEnabled": true,
+    "fileDownloadsEnabled": true,
+    "pageChangesEnabled": true,
+    "formInteractionsEnabled": true,
+    "searchQueryParameter": "q,s,search,query,keyword",
+    "_serviceAccountEmail": "radion@websited.org (user OAuth)"
+  },
+  "effective_streamEnabled": false,
+  "note": "Google protobuf JSON omits false boolean defaults. All individual saved interaction settings are preserved; the overall streamEnabled switch is off.",
+  "scope": "Only this verified Tradie stream; automatic Enhanced Measurement disabled so explicit consented allowlisted events are used."
+}

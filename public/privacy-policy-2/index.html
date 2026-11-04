@@ -43,11 +43,42 @@
       <p style="margin-block: 20px">
         Our hosting and delivery services process technical request information
         such as IP addresses. Authorised staff access the dashboard using an
-        expiring email link and a secure session cookie. If analytics are
-        enabled, additional information about website use may be collected
-        through the configured service. Ask us if you would like details of the
-        current configuration.
+        expiring email link and a secure session cookie.
       </p>
+      <h2>Optional website analytics</h2>
+      <p style="margin-block: 20px">
+        Analytics is off unless you choose to allow it. If you allow it, we use
+        Google Analytics to understand visits, contact-button clicks, form
+        progress and saved enquiries. Google receives technical information
+        about your browser and visit and uses analytics cookies. This helps us
+        see whether the page is useful. A saved enquiry is counted separately
+        from a paying customer.
+      </p>
+      <p style="margin-block: 20px">
+        Our analytics events exclude names, email addresses, phone numbers,
+        form answers, chat conversations and enquiry references. We remove
+        query strings and fragments from page addresses and send only recognised
+        campaign labels. Advertising features and session recording are not
+        enabled. Staff dashboard activity is not measured. Google may process
+        analytics information overseas under its own privacy terms.
+      </p>
+      <p style="margin-block: 20px">
+        Your choice is saved in this browser. You can change it using
+        <button type="button" data-analytics-settings>Analytics choices</button>
+        here or in the website footer. Turning analytics off stops future
+        measurement in this browser. Forms, chat and telephone contact work
+        either way. Previously collected data is not removed by changing this
+        setting; contact us with any questions about your information.
+      </p>
+      <section id="analyticsChoice" class="analytics-choice" aria-labelledby="analyticsChoiceTitle" hidden>
+        <h3 id="analyticsChoiceTitle">Optional analytics</h3>
+        <p>Allow Google Analytics to measure visits and enquiry steps? Your form answers and chats are excluded.</p>
+        <p id="analyticsChoiceStatus" role="status">Optional analytics is off.</p>
+        <div class="analytics-choice-actions">
+          <button type="button" data-analytics-choice="accepted">Allow analytics</button>
+          <button type="button" data-analytics-choice="declined">No thanks</button>
+        </div>
+      </section>
       <h2>Your choices</h2>
       <p style="margin-block: 20px">
         You can call or email instead of using a form or chat. We use enquiry
@@ -56,5 +87,6 @@
         submissions to a marketing mailing list through this application.
       </p>
     </main>
+    <script src="/js/analytics.js" defer></script>
   </body>
 </html>
