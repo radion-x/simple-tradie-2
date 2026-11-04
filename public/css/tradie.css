@@ -1121,17 +1121,97 @@ dialog > p {
   padding: 8px 12px;
 }
 
+/* Keep editable text at 16px on phones, including assistant panels. */
+@media (max-width: 640px) {
+  input:not([type="checkbox"]):not([type="hidden"]),
+  textarea,
+  #chatForm input,
+  .chat-callback input,
+  .chat-transcript input[type="email"] {
+    font-size: 1rem;
+  }
+}
+
+/* Readability: preserve display scale while giving page copy room to breathe. */
+:root {
+  --body-copy-size: 1.125rem;
+  --supporting-copy-size: 1rem;
+}
+.lead,
+.essentials > div > p:last-child,
+.service-list p,
+.section-heading p,
+.package-description > p:not(.eyebrow),
+.checklist li,
+.steps p,
+.faq summary,
+.faq details p,
+.monthly,
+.contact-grid > div > p:not(.eyebrow):not(.form-hint) {
+  font-size: var(--body-copy-size);
+  line-height: 1.65;
+}
+.price-note,
+.price-note small,
+.price-note span,
+.small,
+.hero-work figcaption,
+.work-grid figcaption,
+.scope-strip .wrap,
+.proof-link,
+.contact-grid .form-hint,
+.assistant-link,
+.contact-grid > div > a:not(.contact-phone),
+.enquiry-form label,
+.enquiry-form .form-hint,
+.enquiry-form .consent,
+.enquiry-form .form-status,
+.contact-fields legend {
+  font-size: var(--supporting-copy-size);
+  line-height: 1.6;
+}
+.enquiry-form input,
+.enquiry-form textarea,
+.button {
+  font-size: 1rem;
+}
+.checklist li {
+  padding: 11px 0 11px 28px;
+}
+.service-list p,
+.steps p {
+  margin-top: 12px;
+}
+.faq details {
+  padding-block: 24px;
+}
+.faq details p {
+  margin-top: 16px;
+}
+.price-panel .small + .small {
+  margin-top: 16px;
+}
+.work-grid figcaption {
+  flex-wrap: wrap;
+  row-gap: 4px;
+}
+footer p,
+footer a:not(.wordmark) {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
 /* November offer revision: price, proof and an explicit next step. */
 .hero { grid-template-columns: 1.05fr 1fr; gap: 44px; padding-block: 54px; }
 .hero h1 { font-size: clamp(3.6rem, 5.3vw, 5rem); }
 .hero .lead { margin: 22px 0; max-width: 470px; }
 .hero-offer { padding: 17px 0; margin: 0 0 22px; border-block: 1px solid var(--line); }
-.hero-offer p { color: var(--ink); font-size: .98rem; }
+.hero-offer p { color: var(--ink); font-size: var(--body-copy-size); }
 .hero-offer strong { font-size: 1.65rem; letter-spacing: -.04em; }
 .hero-offer span { display: block; }
-.hero-offer small { display: block; font-size: .74rem; color: var(--muted); margin-top: 3px; }
-.next-step { font-size: .78rem; margin-top: 12px; max-width: 370px; }
-.hero .proof-link { display: inline-block; margin-top: 18px; font-size: .85rem; }
+.hero-offer small { display: block; font-size: .875rem; color: var(--muted); margin-top: 3px; }
+.next-step { font-size: var(--supporting-copy-size); margin-top: 12px; max-width: 370px; }
+.hero .proof-link { display: inline-block; margin-top: 18px; font-size: var(--supporting-copy-size); }
 .hero-work { transform: none; box-shadow: 12px 12px 0 var(--soft); }
 .work-section { padding-block: 58px; }
 .package-section { padding-block: 70px; }
@@ -1149,14 +1229,14 @@ footer button[data-analytics-settings] { background: none; border: 0; padding: 0
   .hero { grid-template-columns: 1fr; gap: 32px; padding-block: 30px 40px; }
   .hero h1 { font-size: clamp(3rem, 11vw, 4.2rem); }
   .hero .eyebrow { font-size: .61rem; margin-bottom: 14px; }
-  .hero .lead { margin-block: 18px; font-size: 1rem; }
+  .hero .lead { margin-block: 18px; }
   .hero-offer { margin-bottom: 18px; padding-block: 12px; }
   .hero .button { width: 100%; }
   .work-section { padding-block: 40px; }
   .package-section { padding-block: 45px; }
   .mobile-enquiry { display: flex; position: fixed; bottom: 0; left: 0; right: 0; padding: 10px 20px calc(10px + env(safe-area-inset-bottom)); background: white; border-top: 1px solid var(--line); z-index: 30; align-items: center; justify-content: space-between; gap: 12px; }
   .mobile-enquiry > span { font-size: .8rem; font-weight: 700; line-height: 1.4; }
-  .mobile-enquiry small { display: block; font-size: .65rem; font-weight: 400; }
+  .mobile-enquiry small { display: block; font-size: .75rem; font-weight: 400; }
   .mobile-enquiry .button { font-size: .8rem; padding: 12px 16px; }
   .contact-visible .mobile-enquiry, body:has(.chat-window:not([hidden])) .mobile-enquiry { display: none; }
   .chat-toggle { bottom: 90px; }

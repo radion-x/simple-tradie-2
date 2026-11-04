@@ -62,6 +62,30 @@ test("proper campaign keys win over escaped aliases regardless of order, includi
     });
   }
 });
+test("latest campaign updates on a tagged return while first entry stays intact", () => {
+  const saved = storage();
+  const first = entry("?utm_source=referral&utm_campaign=first", saved);
+  assert.deepEqual(first.latestAttribution(), first.attribution());
+
+  const returned = entry(
+    "?utm_source=gumtree&amp;utm_medium=classified&amp;utm_campaign=tradie_997",
+    saved,
+  );
+  assert.deepEqual(returned.attribution(), first.attribution());
+  assert.deepEqual(returned.latestAttribution(), {
+    landing_path: "/",
+    utm_source: "gumtree",
+    utm_medium: "classified",
+    utm_campaign: "tradie_997",
+  });
+  const untagged = entry("", saved);
+  assert.deepEqual(untagged.attribution(), first.attribution());
+  assert.deepEqual(untagged.latestAttribution(), returned.latestAttribution());
+});
+test("direct visits do not invent a latest campaign", () => {
+  assert.deepEqual(entry("").latestAttribution(), {});
+  assert.deepEqual(entry("?amp;email=private%40example.invalid").latestAttribution(), {});
+});
 test("first entry attribution survives privacy navigation and preserves the original campaign", () => {
   const saved = storage(),
     events = [];
