@@ -1,5 +1,5 @@
 (function (root) {
-  const ID = "G-Y88HMZ1241";
+  const ID = "G-3P2DEQYRGE";
   const CHOICE_KEY = "tradie_analytics_choice_v1";
   const HOST = "tradie.simplepage.com.au";
   const EVENTS = new Set([
@@ -138,6 +138,11 @@
     if (panel) panel.hidden = Boolean(api.choice());
     if (status) status.textContent = api.choice() === "accepted" ? "Optional analytics is on." : "Optional analytics is off.";
   }
+  root.addEventListener("storage", (event) => {
+    if (event.storageArea !== storage || (event.key !== CHOICE_KEY && event.key !== null)) return;
+    api.setChoice(event.newValue === "accepted" ? "accepted" : "declined");
+    render();
+  });
   doc.querySelectorAll("[data-analytics-choice]").forEach((button) => {
     button.addEventListener("click", () => { api.setChoice(button.dataset.analyticsChoice); render(); });
   });

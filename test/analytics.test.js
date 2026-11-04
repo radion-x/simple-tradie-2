@@ -91,6 +91,7 @@ test("browser bootstrap creates no Google script before acceptance and drops ear
   };
   const window = { document, location: { hostname: "tradie.simplepage.com.au", pathname: "/" },
     localStorage: { getItem: (key) => store.get(key), setItem: (key, value) => store.set(key, value) },
+    addEventListener: (event, fn) => { handlers[event] = fn; },
     sessionStorage: { getItem: () => null }, dataLayer: [] };
   vm.runInNewContext(fs.readFileSync(require.resolve("../public/js/analytics"), "utf8"), { window, URL });
   window.dataLayer.push({ event: "form_started", form_kind: "main" });
@@ -100,7 +101,7 @@ test("browser bootstrap creates no Google script before acceptance and drops ear
   assert.equal(scripts.length, 1);
   assert.equal(scripts[0].async, true);
   assert.equal(scripts[0].referrerPolicy, "no-referrer");
-  assert.ok(scripts[0].src.includes("G-Y88HMZ1241"));
+  assert.ok(scripts[0].src.includes("G-3P2DEQYRGE"));
   assert.ok(!JSON.stringify(window.tradieAnalyticsLayer).includes("form_started"));
   window.dataLayer.push({ event: "cta_clicked", placement: "hero", email: "private@example.invalid" });
   assert.ok(!JSON.stringify(window.tradieAnalyticsLayer).includes("private"));
@@ -108,5 +109,12 @@ test("browser bootstrap creates no Google script before acceptance and drops ear
   const count = window.tradieAnalyticsLayer.length;
   window.dataLayer.push({ event: "enquiry_saved", form_kind: "main" });
   assert.equal(window.tradieAnalyticsLayer.length, count);
-  assert.equal(window["ga-disable-G-Y88HMZ1241"], true);
+  assert.equal(window["ga-disable-G-3P2DEQYRGE"], true);
+  handlers.accept();
+  handlers.storage({ key: CHOICE_KEY, newValue: "declined", storageArea: window.localStorage });
+  const afterWithdrawal = window.tradieAnalyticsLayer.length;
+  window.dataLayer.push({ event: "cta_clicked", placement: "hero" });
+  assert.equal(window.tradieAnalyticsLayer.length, afterWithdrawal);
+  assert.equal(window["ga-disable-G-3P2DEQYRGE"], true);
+  assert.equal(status.textContent, "Optional analytics is off.");
 });

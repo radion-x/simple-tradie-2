@@ -1,0 +1,273 @@
+{
+  "timestamp": "2026-11-04T02:32:20.663749+00:00",
+  "reason": "Old Tradie destination is linked to a shared tag with automatic user-data collection; preserve old tag/history and use isolated consented stream.",
+  "newStream": {
+    "name": "properties/517169232/dataStreams/16266963786",
+    "type": "WEB_DATA_STREAM",
+    "displayName": "Tradie website consent analytics 2026-11-04",
+    "createTime": "2026-11-04T02:32:08.756Z",
+    "updateTime": "2026-11-04T02:32:08.756Z",
+    "webStreamData": {
+      "measurementId": "G-3P2DEQYRGE",
+      "defaultUri": "https://tradie.simplepage.com.au"
+    }
+  },
+  "enhancedBefore": {
+    "name": "properties/517169232/dataStreams/16266963786/enhancedMeasurementSettings",
+    "scrollsEnabled": true,
+    "outboundClicksEnabled": true,
+    "siteSearchEnabled": true,
+    "videoEngagementEnabled": true,
+    "fileDownloadsEnabled": true,
+    "pageChangesEnabled": true,
+    "formInteractionsEnabled": true,
+    "searchQueryParameter": "q,s,search,query,keyword"
+  },
+  "enhancedAfter": {
+    "name": "properties/517169232/dataStreams/16266963786/enhancedMeasurementSettings",
+    "searchQueryParameter": "q,s,search,query,keyword"
+  },
+  "effectiveAllEnhancedMeasurementOff": true,
+  "googleTag": {
+    "path": "accounts/6402350665/containers/285124749",
+    "accountId": "6402350665",
+    "containerId": "285124749",
+    "name": "Tradie website consent analytics 2026-11-04",
+    "publicId": "G-3P2DEQYRGE",
+    "usageContext": [
+      "web"
+    ],
+    "fingerprint": "1793759530369",
+    "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6402350665/containers/285124749/workspaces?apiLink=container",
+    "features": {
+      "supportUserPermissions": false,
+      "supportEnvironments": false,
+      "supportWorkspaces": false,
+      "supportGtagConfigs": true,
+      "supportBuiltInVariables": true,
+      "supportClients": false,
+      "supportFolders": false,
+      "supportTags": false,
+      "supportTemplates": false,
+      "supportTriggers": false,
+      "supportVariables": false,
+      "supportVersions": false,
+      "supportZones": false,
+      "supportTransformations": false
+    },
+    "tagIds": [
+      "G-3P2DEQYRGE",
+      "GT-WRDDMHR7"
+    ]
+  },
+  "destinations": {
+    "destination": [
+      {
+        "path": "accounts/6402350665/containers/285124749/destinations/4",
+        "accountId": "6402350665",
+        "containerId": "285124749",
+        "destinationLinkId": "4",
+        "destinationId": "G-3P2DEQYRGE",
+        "name": "Tradie website consent analytics 2026-11-04",
+        "fingerprint": "1793759530409",
+        "tagManagerUrl": "https://tagmanager.google.com/#/admin/accounts/6402350665/containers/285124749/tagdetails?apiLink=destination"
+      }
+    ]
+  },
+  "workspaces": {
+    "workspace": [
+      {
+        "path": "accounts/6402350665/containers/285124749/workspaces/0",
+        "accountId": "6402350665",
+        "containerId": "285124749",
+        "workspaceId": "0",
+        "name": "Default Workspace",
+        "fingerprint": "1793759530384",
+        "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6402350665/containers/285124749/workspaces/0?apiLink=workspace"
+      }
+    ]
+  },
+  "tagConfigs": [
+    {
+      "gtagConfig": [
+        {
+          "path": "accounts/6402350665/containers/285124749/workspaces/0/gtag_config/2",
+          "accountId": "6402350665",
+          "containerId": "285124749",
+          "workspaceId": "0",
+          "gtagConfigId": "2",
+          "type": "ogt_auto_events",
+          "parameter": [
+            {
+              "type": "boolean",
+              "key": "enableOutboundClick",
+              "value": "true"
+            },
+            {
+              "type": "boolean",
+              "key": "enableScroll",
+              "value": "true"
+            },
+            {
+              "type": "boolean",
+              "key": "enableDownload",
+              "value": "true"
+            },
+            {
+              "type": "boolean",
+              "key": "enableHistoryEvents",
+              "value": "true"
+            },
+            {
+              "type": "boolean",
+              "key": "enableForm",
+              "value": "true"
+            },
+            {
+              "type": "boolean",
+              "key": "enableVideo",
+              "value": "true"
+            },
+            {
+              "type": "boolean",
+              "key": "enablePageView",
+              "value": "true"
+            }
+          ],
+          "fingerprint": "1793759530383",
+          "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6402350665/containers/285124749/workspaces/0/activities/2?apiLink=activity"
+        },
+        {
+          "path": "accounts/6402350665/containers/285124749/workspaces/0/gtag_config/3",
+          "accountId": "6402350665",
+          "containerId": "285124749",
+          "workspaceId": "0",
+          "gtagConfigId": "3",
+          "type": "ogt_1p_data_v2",
+          "parameter": [
+            {
+              "type": "boolean",
+              "key": "isAutoEnabled",
+              "value": "true"
+            },
+            {
+              "type": "boolean",
+              "key": "isManualEnabled",
+              "value": "false"
+            },
+            {
+              "type": "boolean",
+              "key": "autoPhoneEnabled",
+              "value": "true"
+            },
+            {
+              "type": "list",
+              "key": "autoCollectExclusionSelectors",
+              "list": [
+                {
+                  "type": "map",
+                  "map": [
+                    {
+                      "type": "template",
+                      "key": "exclusionSelector"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "boolean",
+              "key": "isEnabled",
+              "value": "true"
+            },
+            {
+              "type": "boolean",
+              "key": "autoAddressEnabled",
+              "value": "true"
+            },
+            {
+              "type": "boolean",
+              "key": "autoEmailEnabled",
+              "value": "true"
+            }
+          ],
+          "fingerprint": "1793759530383",
+          "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6402350665/containers/285124749/workspaces/0/activities/3?apiLink=activity"
+        }
+      ]
+    }
+  ],
+  "publicScript": {
+    "status": 200,
+    "contentType": "application/javascript; charset=UTF-8"
+  },
+  "tagConfigsAfter": [
+    {
+      "path": "accounts/6402350665/containers/285124749/workspaces/0/gtag_config/3",
+      "accountId": "6402350665",
+      "containerId": "285124749",
+      "workspaceId": "0",
+      "gtagConfigId": "3",
+      "type": "ogt_1p_data_v2",
+      "parameter": [
+        {
+          "type": "boolean",
+          "key": "isEnabled",
+          "value": "false"
+        }
+      ],
+      "fingerprint": "1793759639334",
+      "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6402350665/containers/285124749/workspaces/0/activities/3?apiLink=activity"
+    },
+    {
+      "path": "accounts/6402350665/containers/285124749/workspaces/0/gtag_config/2",
+      "accountId": "6402350665",
+      "containerId": "285124749",
+      "workspaceId": "0",
+      "gtagConfigId": "2",
+      "type": "ogt_auto_events",
+      "parameter": [
+        {
+          "type": "boolean",
+          "key": "enableOutboundClick",
+          "value": "false"
+        },
+        {
+          "type": "boolean",
+          "key": "enableScroll",
+          "value": "false"
+        },
+        {
+          "type": "boolean",
+          "key": "enableDownload",
+          "value": "false"
+        },
+        {
+          "type": "boolean",
+          "key": "enableHistoryEvents",
+          "value": "false"
+        },
+        {
+          "type": "boolean",
+          "key": "enableForm",
+          "value": "false"
+        },
+        {
+          "type": "boolean",
+          "key": "enableVideo",
+          "value": "false"
+        },
+        {
+          "type": "boolean",
+          "key": "enablePageView",
+          "value": "true"
+        }
+      ],
+      "fingerprint": "1793759648882",
+      "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6402350665/containers/285124749/workspaces/0/activities/2?apiLink=activity"
+    }
+  ],
+  "tagConfigVerifiedAt": "2026-11-04T02:34:12.320503+00:00",
+  "effectiveAutomaticUserDataOff": true,
+  "automaticEventNote": "All editable auto events disabled. Google rejects enablePageView=false; client send_page_view=false plus stream enhanced measurement all false prevents automatic pageview send."
+}
