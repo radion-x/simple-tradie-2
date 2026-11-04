@@ -2,7 +2,7 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const vm = require("node:vm");
-const { createAnalytics, CHOICE_KEY } = require("../public/js/analytics");
+const { createAnalytics, safeCampaign, CHOICE_KEY } = require("../public/js/analytics");
 
 function setup({ saved = "", hostname = "tradie.simplepage.com.au", pathname = "/", attribution = {} } = {}) {
   const loaded = [], sent = [], flags = [], values = new Map([[CHOICE_KEY, saved]]);
@@ -53,7 +53,44 @@ test("arbitrary campaign and event values cannot leave the adapter", () => {
   const x = setup({ saved: "accepted", attribution: { utm_source: "gumtree", utm_campaign: "private", utm_content: "private", utm_medium: "private" } });
   x.api.track({ event: "form_error", field: "private", form_kind: "private", placement: "private" });
   assert.ok(!JSON.stringify([x.loaded, x.sent]).includes("private"));
+  assert.deepEqual(Object.fromEntries(Object.entries(x.loaded[0]).filter(([key]) => key.startsWith("campaign_"))), { campaign_source: "gumtree" });
   assert.deepEqual(x.sent[1], { event: "form_error", funnel: "tradie_website" });
+});
+
+for (const [medium, content] of [["organic", "gbp_update"], ["cpc", "rsa_trade"]]) {
+  test(`Google ${medium} campaign passes only approved context after consent`, () => {
+    const x = setup({ attribution: {
+      utm_source: "google", utm_medium: medium, utm_campaign: "sydney_tradie_websites", utm_content: content,
+      utm_term: "private search", gclid: "private click", email: "private@example.invalid",
+    } });
+    assert.equal(x.loaded.length, 0);
+    assert.equal(x.sent.length, 0);
+    x.api.setChoice("declined");
+    assert.equal(x.loaded.length, 0);
+    assert.equal(x.sent.length, 0);
+    x.api.setChoice("accepted");
+    assert.equal(x.loaded.length, 1);
+    assert.equal(x.sent.length, 1);
+    assert.deepEqual(Object.fromEntries(Object.entries(x.loaded[0]).filter(([key]) => key.startsWith("campaign_"))), {
+      campaign_source: "google", campaign_medium: medium,
+      campaign_name: "sydney_tradie_websites", campaign_content: content,
+    });
+    assert.ok(!JSON.stringify([x.loaded, x.sent]).includes("private"));
+  });
+}
+
+test("Google campaign rejects mixed, incomplete and unknown routes", () => {
+  for (const [medium, content] of [["organic", "gbp_update"], ["cpc", "rsa_trade"]]) {
+    const approved = { utm_source: "google", utm_medium: medium, utm_campaign: "sydney_tradie_websites", utm_content: content };
+    for (const key of Object.keys(approved)) {
+      for (const value of [undefined, "", "private@example.invalid"]) {
+        assert.deepEqual(safeCampaign({ ...approved, [key]: value }), {}, `${medium}: ${key}=${value}`);
+      }
+    }
+    assert.deepEqual(safeCampaign({ ...approved, utm_content: content === "gbp_update" ? "rsa_trade" : "gbp_update" }), {});
+    assert.deepEqual(safeCampaign({ ...approved, utm_campaign: "tradie_997" }), {});
+    assert.deepEqual(safeCampaign({ ...approved, utm_medium: "classified" }), {});
+  }
 });
 
 test("saved acceptance works only on the public production homepage", () => {

@@ -21,6 +21,16 @@
   }
 
   function safeCampaign(attribution = {}) {
+    // Google campaigns are approved as complete routes, never mixed field by field.
+    if (attribution.utm_source === "google" && attribution.utm_campaign === "sydney_tradie_websites" && (
+      (attribution.utm_medium === "organic" && attribution.utm_content === "gbp_update") ||
+      (attribution.utm_medium === "cpc" && attribution.utm_content === "rsa_trade")
+    )) return {
+      campaign_source: "google",
+      campaign_medium: attribution.utm_medium,
+      campaign_name: "sydney_tradie_websites",
+      campaign_content: attribution.utm_content,
+    };
     if (attribution.utm_source !== "gumtree") return {};
     const result = { campaign_source: "gumtree" };
     if (attribution.utm_medium === "classified") result.campaign_medium = "classified";
