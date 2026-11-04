@@ -34,3 +34,13 @@ If views remain low, changing page copy alone cannot solve acquisition volume. A
 - Gumtree confirmed the existing ad was updated successfully, with four images and the Free plan retained. The website button was checked through Gumtree and loaded the new page with all four campaign labels recovered.
 - Main page revision c8c65e92d84c862bb97317b6c821b97eab72312c deployed successfully at 02:25:22 UTC. The final measurement revision and receipt check are recorded below.
 - Public desktop/mobile screenshots and the published ad gallery are saved alongside this record.
+
+## Final live verification
+
+Final code revision 0e44d7299ad0f96ef483a7094c9ee1d8d5ca94e1 deployed successfully at 02:40:25 UTC. The analytics asset URL is versioned to refresh the site's four-hour static-file cache.
+
+The dedicated tag G-3P2DEQYRGE loaded successfully. Google returned HTTP 204 for page_view, form_viewed and cta_clicked, all addressed only to this measurement ID with the canonical page URL. Browser inspection verified no Google analytics request before consent and no new Google request after withdrawal. No customer enquiry, email, callback or paid sale was created by these checks. These reporting events are owner verification and must not be counted as traction.
+
+The dedicated tag has automatic user-data collection disabled and one destination. The old shared tag was preserved without being loaded or altered. The owner's browser was returned to optional analytics off.
+
+GA4 real-time reporting independently confirmed receipt at 02:43:03 UTC: one page_view, one cta_clicked and one form_viewed, plus one first_visit and session_start. All are owner verification. No enquiry_saved or paying-customer event was produced.

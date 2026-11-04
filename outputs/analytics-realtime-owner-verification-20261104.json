@@ -1,7 +1,9 @@
 {
-  "checked_at_utc": "2026-11-04T02:26:45.810642+00:00",
+  "checked_at_utc": "2026-11-04T02:43:03.524171+00:00",
   "property": "517169232",
-  "window_minutes": 10,
+  "stream": "16266963786",
+  "measurement_id": "G-3P2DEQYRGE",
+  "window_minutes": 5,
   "report": {
     "dimensionHeaders": [
       {
@@ -14,8 +16,71 @@
         "type": "TYPE_INTEGER"
       }
     ],
-    "kind": "analyticsData#runRealtimeReport",
-    "_serviceAccountEmail": "radion@websited.org (user OAuth)"
+    "rows": [
+      {
+        "dimensionValues": [
+          {
+            "value": "cta_clicked"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "first_visit"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "form_viewed"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "page_view"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "session_start"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1"
+          }
+        ]
+      }
+    ],
+    "rowCount": 5,
+    "kind": "analyticsData#runRealtimeReport"
   },
-  "interpretation": "Owner validation window after deployment, not customer acquisition results. No enquiry was submitted in this UI validation."
+  "browser_transport_evidence": "Parent agent observed HTTP 200 for new script and HTTP 204 for page_view and form_viewed collect requests around 02:42 UTC. Canonical URL sent without query or fragment.",
+  "interpretation": "Bounded owner verification after deployment and explicit analytics consent. Counts observed in this test window are instrumentation validation, not evidence of customer traction. No enquiry submitted and no paying-customer result tested."
 }

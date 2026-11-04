@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-11-04T02:42:48.124Z",
+  "deployment": "0e44d7299ad0f96ef483a7094c9ee1d8d5ca94e1",
+  "measurementId": "G-3P2DEQYRGE",
+  "noGoogleBeforeConsent": true,
+  "received": [
+    {
+      "method": "Network.responseReceived",
+      "host": "www.google-analytics.com",
+      "path": "/g/collect",
+      "status": 204,
+      "event": "page_view",
+      "page": "https://tradie.simplepage.com.au/",
+      "measurement": "G-3P2DEQYRGE",
+      "postEvents": []
+    },
+    {
+      "method": "Network.responseReceived",
+      "host": "www.google-analytics.com",
+      "path": "/g/collect",
+      "status": 204,
+      "event": "form_viewed",
+      "page": "https://tradie.simplepage.com.au/",
+      "measurement": "G-3P2DEQYRGE",
+      "postEvents": []
+    },
+    {
+      "status": 204,
+      "event": "cta_clicked",
+      "measurement": "G-3P2DEQYRGE",
+      "page": "https://tradie.simplepage.com.au/"
+    }
+  ],
+  "noGoogleAfterWithdrawal": true,
+  "scope": "Owner verification only. No customer enquiry, message or paid sale was created. No form answers, chat text or contact details sent to Google. Browser choice returned to off."
+}
