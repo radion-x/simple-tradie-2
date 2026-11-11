@@ -514,7 +514,10 @@ test("report links visits to prospects and verified customers without counting r
   report=await sales.report(query);assert.equal(report.metrics.enquiries,1);assert.equal(report.metrics.transcript_only,1);
   const prior='2026-01-01';
   await pool.query("UPDATE callback_requests SET created_at=$1::timestamp WHERE id=$2",[prior+' 12:00:00',saved.data.id]);
-  report=await sales.report(query);assert.equal(report.metrics.paid_customers,0);assert.equal(report.metrics.payments_in_period,1);
+  // Returning in a later period must not create another new prospect or paid cohort.
+  await post('/api/send-email',{...v,event_id:crypto.randomUUID()});
+  report=await sales.report(query);assert.equal(report.metrics.enquiries,0);assert.equal(report.metrics.paid_customers,0);assert.equal(report.metrics.payments_in_period,1);
+  assert.equal(report.metrics.visits_with_customer,1);
   assert.equal((await sales.report({startDate:prior,endDate:prior,source:'google'})).metrics.paid_customers,1);
   await assert.rejects(sales.report({startDate:'2026-02-31',endDate:date,source:'google'}),{status:400});
 });
