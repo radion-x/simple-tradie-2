@@ -72,7 +72,7 @@
       status.textContent = result.duplicate
         ? `${saved} The team already has your enquiry.`
         : result.notification_sent
-          ? `${saved} We’ll contact you to discuss your website.${data.email && !result.confirmation_sent ? " Your email receipt could not be sent." : ""}`
+          ? `${saved} We’ll contact you to confirm what you need and prepare your website quote.${data.email && !result.confirmation_sent ? " Your email receipt could not be sent." : ""}`
           : `${saved} The notification email could not be sent. Your enquiry is in our dashboard. You can also call (02) 8958 8545.`;
       status.dataset.saved = "true";
       button.textContent = "Enquiry saved";
@@ -121,7 +121,7 @@
     if (status.dataset.saved === "true") {
       const button = form.querySelector("button[type=submit]");
       button.disabled = false;
-      button.textContent = "Send my website request";
+      button.textContent = "Request my website quote";
       status.textContent = "";
       status.dataset.saved = "false";
     }
