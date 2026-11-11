@@ -33,7 +33,7 @@
     };
     if (attribution.utm_source !== "gumtree") return {};
     const result = { campaign_source: "gumtree" };
-    if (attribution.utm_medium === "classified") result.campaign_medium = "classified";
+    if (!attribution.utm_medium || attribution.utm_medium === "classified") result.campaign_medium = "classified";
     if (attribution.utm_campaign === "tradie_997") result.campaign_name = "tradie_997";
     if (attribution.utm_content === "jack_free") result.campaign_content = "jack_free";
     return result;
@@ -47,7 +47,7 @@
   }
 
   // Injected dependencies keep consent behaviour testable without Google requests.
-  function createAnalytics({ location, storage, referrer = "", attribution = () => ({}), load, send, disable }) {
+  function createAnalytics({ location, storage, referrer = "", attribution = () => ({}), load, send, disable, recordVisit = () => {}, stopVisit = () => {} }) {
     const eligible = location.hostname === HOST && location.pathname === "/";
     let choice = "", loaded = false, pageViewSent = false;
     try { choice = storage.getItem(CHOICE_KEY) || ""; } catch {}
@@ -55,6 +55,7 @@
     function start() {
       if (!eligible || choice !== "accepted") return;
       disable(false);
+      recordVisit();
       if (!loaded) {
         loaded = true;
         load({
@@ -81,10 +82,11 @@
         choice = value;
         try { storage.setItem(CHOICE_KEY, value); } catch {}
         if (choice === "accepted") start();
-        else disable(true);
+        else { disable(true); stopVisit(); }
       },
       track(input) {
         if (!eligible || choice !== "accepted") return;
+        recordVisit();
         const clean = safeEvent(input);
         if (!clean) return;
         const { event, ...params } = clean;
@@ -107,9 +109,11 @@
   const api = createAnalytics({
     location: root.location, storage, referrer: doc.referrer,
     attribution: () => {
-      try { return root.tradieFunnel?.attribution() || JSON.parse(root.sessionStorage.getItem("tradie_entry") || "{}"); }
+      try { return root.tradieFunnel?.latestAttribution()?.utm_source ? root.tradieFunnel.latestAttribution() : root.tradieFunnel?.attribution() || JSON.parse(root.sessionStorage.getItem("tradie_entry") || "{}"); }
       catch { return {}; }
     },
+    recordVisit: () => root.tradieVisit?.start(),
+    stopVisit: () => root.tradieVisit?.stop(),
     disable: (disabled) => {
       root[`ga-disable-${ID}`] = disabled;
       if (disabled) {

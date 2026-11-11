@@ -39,7 +39,7 @@ cleanup.unref();
 app.get("/health", async (req, res) => {
   try {
     await pool.query(
-      "SELECT event_id,quote_details,notification_status FROM callback_requests LIMIT 0",
+      "SELECT event_id,quote_details,notification_status,sales_stage,visit_id,latest_utm_source FROM callback_requests LIMIT 0",
     );
     res.json({ status: "ok" });
   } catch {
@@ -49,6 +49,8 @@ app.get("/health", async (req, res) => {
 app.use("/api", require("./routes/email"));
 app.use("/api", require("./routes/ai"));
 app.use("/api", require("./routes/callbacks"));
+app.use("/api", require("./routes/measurement"));
+app.use((req,res,next) => { if(req.path === "/" || req.path.endsWith(".html")) res.set("Cache-Control", "no-cache"); next(); });
 const root = path.join(__dirname, "public");
 app.use((req, res, next) => {
   let decodedPath;
@@ -88,7 +90,7 @@ app.use((error, req, res, next) => {
 if (require.main === module) {
   pool
     .query(
-      "SELECT event_id,quote_details,notification_status FROM callback_requests LIMIT 0",
+      "SELECT event_id,quote_details,notification_status,sales_stage,visit_id,latest_utm_source FROM callback_requests LIMIT 0",
     )
     .then(() =>
       app.listen(process.env.PORT || 3000, "0.0.0.0", () =>

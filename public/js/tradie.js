@@ -54,7 +54,7 @@
       return;
     }
     data.transcript = transcript || [];
-    Object.assign(data, window.tradieFunnel?.attribution());
+    Object.assign(data, window.tradieFunnel?.captureAttribution());
     const signature = JSON.stringify(data);
     if (signatures.get(form) !== signature) {
       eventIds.set(form, crypto.randomUUID());

@@ -119,7 +119,7 @@
           history,
           transcript,
           sessionId,
-          attribution: window.tradieFunnel?.attribution(),
+          attribution: window.tradieFunnel?.captureAttribution(),
         }),
         signal: controller.signal,
       });
@@ -232,7 +232,7 @@
           message: "Requested conversation transcript",
           consent: $("#transcriptForm input[name=consent]").checked,
           transcript,
-          ...window.tradieFunnel?.attribution(),
+          ...window.tradieFunnel?.captureAttribution(),
           sessionId,
           event_id: transcriptEventId,
         }),
@@ -311,7 +311,7 @@
           original = submit.innerHTML;
         const data = Object.fromEntries(new FormData(leadForm));
         data.event_id = leadEventId;
-        Object.assign(data, window.tradieFunnel?.attribution());
+        Object.assign(data, window.tradieFunnel?.captureAttribution());
         if (kind === "callback") data.transcript = transcript;
         sending = true;
         submit.disabled = true;

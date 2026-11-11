@@ -92,7 +92,7 @@ async function captureLead(data, source, { database, mailer }) {
     throw new Error("Invalid lead source");
   const attribution = data.attribution || {};
   const result = await database.query(
-    `INSERT INTO callback_requests(name,phone,email,message,preferred_time,preferred_contact_method,conversation_context,source,service,event_id,funnel,landing_path,utm_source,utm_medium,utm_campaign,utm_content,utm_term,gclid,fbclid,msclkid,quote_details,referrer_host) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$20,$9,'tradie_website',$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$21) ON CONFLICT(event_id) WHERE event_id IS NOT NULL DO NOTHING RETURNING id`,
+    `INSERT INTO callback_requests(name,phone,email,message,preferred_time,preferred_contact_method,conversation_context,source,service,event_id,funnel,landing_path,utm_source,utm_medium,utm_campaign,utm_content,utm_term,gclid,fbclid,msclkid,quote_details,referrer_host,visit_id,latest_utm_source) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$20,$9,'tradie_website',$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$21,(SELECT id FROM campaign_visits WHERE id=$22),$23) ON CONFLICT(event_id) WHERE event_id IS NOT NULL DO NOTHING RETURNING id`,
     [
       data.name,
       data.phone || null,
@@ -115,6 +115,8 @@ async function captureLead(data, source, { database, mailer }) {
       JSON.stringify({ consent: true, consent_at: new Date().toISOString() }),
       data.service || "Tradie website enquiry",
       attribution.referrer_host,
+      attribution.visit_id,
+      attribution.latest_utm_source,
     ],
   );
   if (!result.rows.length) {

@@ -1,5 +1,7 @@
 const ATTRIBUTION_LIMITS = {
   event_id: 64,
+  visit_id: 36,
+  latest_utm_source: 255,
   funnel: 64,
   landing_path: 2048,
   referrer_host: 255,
@@ -46,6 +48,8 @@ function extractAttribution(payload = {}) {
     attribution.referrer_host = null;
   }
 
+  if (!/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(attribution.visit_id || "")) attribution.visit_id = null;
+  if (!["gumtree", "google"].includes(attribution.latest_utm_source)) attribution.latest_utm_source = null;
   return attribution;
 }
 

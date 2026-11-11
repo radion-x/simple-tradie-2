@@ -155,3 +155,8 @@ test("browser bootstrap creates no Google script before acceptance and drops ear
   assert.equal(window["ga-disable-G-3P2DEQYRGE"], true);
   assert.equal(status.textContent, "Optional analytics is off.");
 });
+
+
+test("the existing source-only Gumtree link supplies its classified medium", () => {
+  assert.deepEqual(safeCampaign({utm_source:"gumtree"}), {campaign_source:"gumtree",campaign_medium:"classified"});
+});

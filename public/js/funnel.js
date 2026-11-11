@@ -21,7 +21,7 @@
     fbclid: 500,
     msclkid: 500,
   };
-  function createFunnel({ location, storage, referrer = "", emit }) {
+  function createFunnel({ location, storage, referrer = "", emit, visitId = () => null }) {
     function readStored(key) {
       try {
         const value = JSON.parse(storage.getItem(key) || "{}");
@@ -97,6 +97,7 @@
     return {
       attribution: () => ({ ...attribution }),
       latestAttribution: () => ({ ...latest }),
+      captureAttribution: () => ({ ...attribution, ...(latest.utm_source ? {latest_utm_source:latest.utm_source} : {}), ...(visitId() ? {visit_id:visitId()} : {}) }),
       track,
     };
   }
@@ -113,6 +114,7 @@
     location: root.location,
     storage,
     referrer: root.document.referrer,
+    visitId: () => root.tradieVisit?.id(),
     emit: (event) => {
       root.dataLayer = root.dataLayer || [];
       root.dataLayer.push(event);

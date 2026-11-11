@@ -464,3 +464,68 @@ test("chatbot-created callbacks retain acquisition context", async () => {
   ).rows[0];
   assert.equal(row.utm_source, "gumtree");
 });
+
+
+test("visit measurement respects consent, origin, staff exclusion and retry deduplication", async () => {
+  const beforeCount=Number((await pool.query('SELECT COUNT(*) FROM campaign_visits')).rows[0].count);
+  const body={visit_id:crypto.randomUUID(),source:'google',consent:true};
+  const send=async(payload,headers={})=>fetch(base+'/api/measurement/visit',{method:'POST',headers:{'Content-Type':'application/json',Origin:process.env.SITE_URL,...headers},body:JSON.stringify(payload)});
+  assert.equal((await send({...body,consent:false})).status,400);
+  assert.equal((await send(body,{Origin:'https://untrusted.example'})).status,403);
+  assert.equal((await send({...body,source:'private@example.invalid'})).status,400);
+  const token=await auth.issueMagicLink('owner@example.invalid');
+  const session=await auth.consumeMagicLink(token), Cookie=auth.sessionCookie(session.sessionToken).split(';')[0];
+  assert.equal((await (await send(body,{Cookie})).json()).excluded,true);
+  assert.equal(Number((await pool.query('SELECT COUNT(*) FROM campaign_visits')).rows[0].count),beforeCount);
+  assert.equal((await send(body)).status,200);
+  assert.equal((await send(body)).status,200);
+  assert.equal(Number((await pool.query('SELECT COUNT(*) FROM campaign_visits')).rows[0].count),beforeCount+1);
+  assert.equal((await fetch(base+'/api/performance')).status,401);
+  assert.equal((await fetch(base+'/api/sales/1',{method:'PATCH',headers:{'Content-Type':'application/json'},body:'{}'})).status,401);
+});
+
+test("report links visits to prospects and verified customers without counting retries, tests or transcript requests", async () => {
+  const sales=require('../services/salesReporting'), date=sales.today();
+  const visit=crypto.randomUUID();
+  await pool.query('INSERT INTO campaign_visits(id,source) VALUES($1,$2)',[visit,'google']);
+  const v={...valid(),email:'measurement@example.invalid',visit_id:visit,utm_source:'other',latest_utm_source:'google'};
+  const saved=await post('/api/send-email',v), duplicate=await post('/api/send-email',{...v,event_id:crypto.randomUUID()});
+  assert.equal(saved.status,200);
+  const savedRow=(await pool.query('SELECT * FROM callback_requests WHERE id=$1',[saved.data.id])).rows[0];
+  assert.equal(savedRow.visit_id,visit);assert.equal(savedRow.latest_utm_source,'google');
+  const query={startDate:date,endDate:date,source:'google'};
+  let report=await sales.report(query);
+  assert.equal(report.metrics.enquiries,1);assert.equal(report.metrics.visits_with_enquiry,1);assert.equal(report.metrics.paid_customers,0);
+  const payment={sales_stage:'paid',customer_key:'Controlled unique business',paid_on:date,paid_amount:'199.40',payment_reference:'TEST-INV-1',payment_confirmed:true};
+  await assert.rejects(sales.updateSale(saved.data.id,{...payment,payment_confirmed:false},'owner@example.invalid'),{status:400});
+  await assert.rejects(sales.updateSale(saved.data.id,{...payment,paid_amount:'0'},'owner@example.invalid'),{status:400});
+  await sales.updateSale(saved.data.id,payment,'owner@example.invalid');
+  await sales.updateSale(saved.data.id,payment,'owner@example.invalid');
+  await assert.rejects(sales.updateSale(duplicate.data.id,{...payment,customer_key:' CONTROLLED UNIQUE BUSINESS '},'owner@example.invalid'),{status:409});
+  await sales.updateSale(duplicate.data.id,{sales_stage:'excluded',sales_notes:'Duplicate of SP-'+saved.data.id},'owner@example.invalid');
+  report=await sales.report(query);
+  assert.equal(report.metrics.enquiries,1);assert.equal(report.metrics.paid_customers,1);assert.equal(report.metrics.visits_with_customer,1);assert.equal(Number(report.metrics.first_payments_cents),19940);
+  assert.equal(report.metrics.excluded,1);
+  assert.equal((await pool.query('SELECT sales_stage FROM callback_requests WHERE id=$1',[duplicate.data.id])).rows[0].sales_stage,'excluded');
+  assert.ok(Number((await pool.query('SELECT COUNT(*) FROM sales_changes WHERE callback_id=$1',[saved.data.id])).rows[0].count)>=1);
+  await assert.rejects(sales.updateSale(saved.data.id,{...payment,source_override:'gumtree'},'owner@example.invalid'),{status:400});
+  const transcript=await post('/api/chat/email-transcript',{...valid(),email:'transcript-measurement@example.invalid',utm_source:'google',transcript:[{role:'user',content:'Controlled transcript only'}]});
+  assert.equal(transcript.status,200);
+  report=await sales.report(query);assert.equal(report.metrics.enquiries,1);assert.equal(report.metrics.transcript_only,1);
+  const prior='2026-01-01';
+  await pool.query("UPDATE callback_requests SET created_at=$1::timestamp WHERE id=$2",[prior+' 12:00:00',saved.data.id]);
+  report=await sales.report(query);assert.equal(report.metrics.paid_customers,0);assert.equal(report.metrics.payments_in_period,1);
+  assert.equal((await sales.report({startDate:prior,endDate:prior,source:'google'})).metrics.paid_customers,1);
+  await assert.rejects(sales.report({startDate:'2026-02-31',endDate:date,source:'google'}),{status:400});
+});
+
+test("manual Gumtree and phone enquiries are private, idempotent and do not send emails",async()=>{
+  const sales=require('../services/salesReporting'), beforeMail=sent.length;
+  const token=await auth.issueMagicLink('owner@example.invalid'), session=await auth.consumeMagicLink(token), Cookie=auth.sessionCookie(session.sessionToken).split(';')[0];
+  const body={name:'Controlled phone enquiry',source:'gumtree',capture_method:'phone',message:'Test conversation reference',enquired_on:sales.today(),event_id:crypto.randomUUID()};
+  const send=async(headers={})=>fetch(base+'/api/sales/manual',{method:'POST',headers:{'Content-Type':'application/json',Origin:process.env.SITE_URL,Cookie,...headers},body:JSON.stringify(body)});
+  assert.equal((await send({Origin:'https://untrusted.example'})).status,403);
+  const one=await (await send()).json(), two=await (await send()).json();
+  assert.equal(one.id,two.id);assert.equal(sent.length,beforeMail);
+  const row=(await pool.query('SELECT * FROM callback_requests WHERE id=$1',[one.id])).rows[0];assert.equal(row.capture_method,'phone');assert.equal(row.utm_source,'gumtree');
+});
