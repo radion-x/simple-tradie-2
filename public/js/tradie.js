@@ -14,13 +14,13 @@
         signal: controller.signal,
       });
       const data = await response.json().catch(() => ({}));
-      if (!response.ok || data.success === false)
+      if (!response.ok || data?.success !== true || !/^[1-9]\d*$/.test(data.id))
         throw Object.assign(
           new Error(
-            data.error ||
+            data?.error ||
               "The request did not complete. Your details are still here. Please retry or email hello@simplepage.com.au.",
           ),
-          { field: data.field },
+          { field: data?.field },
         );
       return data;
     } catch (error) {
@@ -37,30 +37,18 @@
       clearTimeout(timer);
     }
   }
-  async function submitLead(form, url, transcript) {
+  async function submitLead(form, url) {
     const button = form.querySelector("button[type=submit]");
     const status = form.querySelector(".form-status");
     const data = Object.fromEntries(new FormData(form));
     data.consent = form.elements.consent.checked;
-    if (!data.phone.trim() && !data.email.trim()) {
-      status.textContent = "Add a phone number or email so we can contact you.";
-      status.classList.add("error");
-      window.tradieFunnel?.track("form_error", {
-        form_kind: "main",
-        field: "phone",
-      });
-      form.elements.phone.setAttribute("aria-invalid", "true");
-      form.elements.phone.focus();
-      return;
-    }
-    data.transcript = transcript || [];
-    Object.assign(data, window.tradieFunnel?.captureAttribution());
     const signature = JSON.stringify(data);
     if (signatures.get(form) !== signature) {
       eventIds.set(form, crypto.randomUUID());
       signatures.set(form, signature);
     }
     data.event_id = eventIds.get(form);
+    Object.assign(data, window.tradieFunnel?.captureAttribution());
     button.disabled = true;
     status.classList.remove("error");
     for (const field of form.elements) field.removeAttribute("aria-invalid");
@@ -72,7 +60,7 @@
       status.textContent = result.duplicate
         ? `${saved} The team already has your enquiry.`
         : result.notification_sent
-          ? `${saved} We’ll contact you to confirm what you need and prepare your website quote.${data.email && !result.confirmation_sent ? " Your email receipt could not be sent." : ""}`
+          ? `${saved} We’ll be in touch with a relevant example and your page plan.${data.reply_to.includes("@") && !result.confirmation_sent ? " Your email receipt could not be sent." : ""}`
           : `${saved} The notification email could not be sent. Your enquiry is in our dashboard. You can also call (02) 8958 8545.`;
       status.dataset.saved = "true";
       button.textContent = "Enquiry saved";
@@ -121,7 +109,7 @@
     if (status.dataset.saved === "true") {
       const button = form.querySelector("button[type=submit]");
       button.disabled = false;
-      button.textContent = "Request my website quote";
+      button.textContent = "Send me my page plan";
       status.textContent = "";
       status.dataset.saved = "false";
     }

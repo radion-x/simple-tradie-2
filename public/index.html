@@ -6,7 +6,7 @@
     <title>Website Design for Sydney Tradies | Simple Page</title>
     <meta
       name="description"
-      content="Show your work and make it easy for customers to enquire. See real tradie website examples and request your website quote. $997 build plus $30/month hosting and AI, both including GST."
+      content="Three-page websites for Sydney tradies. $997 build + $30/month for hosting and AI, both including GST. Tell us your trade and suburb for a free page plan."
     />
     <link rel="canonical" href="https://tradie.simplepage.com.au/" />
     <meta
@@ -15,7 +15,7 @@
     />
     <meta
       property="og:description"
-      content="Show your work. Make it easy to enquire. See real examples and request your website quote. $997 build + $30/month hosting and AI, both including GST."
+      content="Three-page websites for Sydney tradies. Get a free page plan for your trade and suburb. $997 build + $30/month for hosting and AI, both including GST."
     />
     <meta property="og:url" content="https://tradie.simplepage.com.au/" />
     <meta property="og:type" content="website" />
@@ -31,11 +31,11 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Public+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/tradie.css?v=offer-20261104" />
+    <link rel="stylesheet" href="/css/tradie.css?v=offer-20261118" />
     <script src="/js/funnel.js?v=measurement-20261111" defer></script>
     <script src="/js/visit-measurement.js?v=measurement-20261111" defer></script>
     <script src="/js/analytics.js?v=measurement-20261111" defer></script>
-    <script src="/js/tradie.js?v=measurement-20261111" defer></script>
+    <script src="/js/tradie.js?v=offer-20261118" defer></script>
     <script src="/js/chat.js?v=measurement-20261111" defer></script>
   </head>
   <body>
@@ -53,60 +53,66 @@
     <main id="main">
       <section class="hero wrap">
         <div class="hero-copy">
-          <p class="eyebrow">WEBSITE DESIGN FOR SYDNEY TRADIES</p>
-          <h1>Show your work.<br />Make it easy to enquire.</h1>
-          <p class="lead">Give people checking your business a clear place to see
-            your jobs, understand your services and request a quote. A website
-            built around your trade and the areas you serve.</p>
+          <p class="eyebrow">WEB DESIGN FOR SYDNEY TRADIES</p>
+          <h1>Trade websites built for word of mouth.</h1>
+          <p class="lead">Give the next person who hears your name a place to see your jobs, check the suburbs you cover and ask for a quote from their phone.</p>
           <div class="hero-offer">
-            <p><strong>$997</strong> custom build <span>+ $30/month hosting &amp; AI</span></p>
-            <small>Both prices include GST. Three pages designed for your business.</small>
+            <p><strong>$997</strong> for a custom three-page website</p>
+            <small>Plus $30/month for hosting and AI. Both prices include GST.</small>
           </div>
-          <a class="button" href="#contact">Request my website quote <span aria-hidden="true">↗</span></a>
-          <p class="next-step">First website or time for an update? Tell us your trade and service area.
-            We’ll confirm what you need before preparing your quote.</p>
-          <a class="proof-link" href="#work">See real website examples ↓</a>
+          <a class="button" href="#contact">Get my free page plan <span aria-hidden="true">↗</span></a>
+          <a class="example-preview" href="#work">
+            <img src="/images/work/harbourtown-handyman.png" width="1440" height="900"
+              alt="" fetchpriority="high" />
+            <span><strong>Harbour Town Handyman</strong>See this site and more of our work ↓</span>
+          </a>
         </div>
-        <figure class="hero-work">
-          <div class="browser-bar">
-            <span>Selected work</span><span>Harbour Town Handyman</span>
-          </div>
-          <img
-            src="/images/work/harbourtown-handyman.png"
-            width="1440"
-            height="900"
-            alt="Harbour Town Handyman website, an example from the Simple Page portfolio"
-            fetchpriority="high"
-          />
-          <figcaption>
-            From the Simple Page portfolio.
-            <a
-              href="https://harbourtownhandyman.com.au/"
-              target="_blank"
-              rel="noopener"
-              >View Harbour Town Handyman ↗</a
-            >
-          </figcaption>
-        </figure>
+        <section id="contact" class="plan-panel" aria-labelledby="planTitle">
+          <h2 id="planTitle">What would your three pages look like?</h2>
+          <p>Tell us your trade and suburb. We’ll reply with a relevant example and a suggested plan for your three pages. It’s free to ask.</p>
+          <form id="enquiryForm" class="enquiry-form" method="post" action="/api/send-email">
+            <label>Trade and suburb <small>(if known)</small>
+              <input name="service" maxlength="160" placeholder="e.g. Electrician, Penrith" />
+            </label>
+            <div class="field-pair">
+              <label>Your name
+                <input name="name" required maxlength="120" autocomplete="given-name" />
+              </label>
+              <label>Email or phone
+                <input type="text" name="reply_to" required maxlength="254" autocapitalize="none" spellcheck="false" />
+              </label>
+            </div>
+            <details class="plan-notes">
+              <summary>Add your current website or a question (optional)</summary>
+              <label><span class="sr-only">Website or question</span>
+                <textarea name="message" maxlength="3000" rows="2"></textarea>
+              </label>
+            </details>
+            <label class="consent"><input type="checkbox" name="consent" value="true" required />
+              <span>Simple Page can contact me about this enquiry. <a href="/privacy-policy-2/">Privacy policy</a></span>
+            </label>
+            <button class="button" type="submit">Send me my page plan <span aria-hidden="true">↗</span></button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+          <button class="assistant-link" type="button" data-open-assistant>Ask the website assistant ↗</button>
+          <p class="plan-alternative">Prefer a chat? <a href="tel:+61289588545">Call (02) 8958 8545</a> or <a href="mailto:hello@simplepage.com.au">email us</a>.</p>
+        </section>
       </section>
-      <div class="scope-strip">
-        <div class="wrap">
-          <span>Show your actual work</span><span>Explain what you do</span
-          ><span>Make it easy to enquire</span
-          ><span>Keep submitted requests together</span>
-        </div>
-      </div>
       <section id="work" class="work-section">
         <div class="wrap">
           <div class="section-heading">
-            <h2>See what your website could do.</h2>
+            <h2>Websites we’ve built for the trades.</h2>
             <p>
-              Real websites from our portfolio. See how work photos, clear services
-              and contact options help people decide whether to get in touch.
-              Your website is designed around your business and agreed scope.
+              Open a project to see how we lay out job photos, services and contact details.
             </p>
           </div>
           <div class="work-grid">
+            <figure>
+              <a href="https://harbourtownhandyman.com.au/" target="_blank" rel="noopener">
+                <img src="/images/work/harbourtown-handyman.png" width="1440" height="900" loading="lazy" alt="View the Harbour Town Handyman website" />
+              </a>
+              <figcaption><strong>Harbour Town Handyman</strong><span>View live website ↗</span></figcaption>
+            </figure>
             <figure>
               <a
                 href="https://rivercityhandyman.com.au/"
@@ -147,7 +153,7 @@
       <section id="pricing" class="wrap package-section">
         <div class="package-description">
           <p class="eyebrow">THE TRADIE WEBSITE PACKAGE</p>
-          <h2>Make choosing<br />your business easier.</h2>
+          <h2>What the $997 build includes.</h2>
           <p>
             A practical three-page website for people who hear about you through
             referrals, your business profile or advertising. Show them what you do,
@@ -171,7 +177,7 @@
             + <strong>$30/month</strong><br />for hosting &amp; AI. Both prices include GST.
           </p>
           <a class="button" href="#contact"
-            >Request my website quote <span aria-hidden="true">↗</span></a
+            >Get my free page plan <span aria-hidden="true">↗</span></a
           >
           <p class="small">
             We confirm your scope, final price, domain costs, ongoing inclusions
@@ -182,100 +188,14 @@
           </p>
         </aside>
       </section>
-      <section id="contact" class="contact-section">
-        <div class="wrap contact-grid">
-          <div>
-            <p class="eyebrow">FIRST WEBSITE OR TIME FOR AN UPDATE?</p>
-            <h2>Request your<br />website quote.</h2>
-            <p>
-              Tell us your trade and service area, or share your current website.
-              We’ll contact you to confirm what you need, then provide a written
-              quote with the scope, costs and timing before any work begins.
-              The three-page package is $997 build + $30/month, both including GST.
-            </p>
-            <p class="form-hint">You’re enquiring with Simple Page Pty Ltd, Sydney.
-              Our Gumtree listing appears under Jack.</p>
-            <button class="assistant-link" type="button" data-open-assistant>
-              Have a package question? Ask the assistant ↗
-            </button>
-            <a class="contact-phone" href="tel:+61289588545">(02) 8958 8545</a
-            ><a href="mailto:hello@simplepage.com.au"
-              >hello@simplepage.com.au</a
-            >
-          </div>
-          <form id="enquiryForm" class="enquiry-form">
-            <div class="field-pair">
-              <label
-                >Your name<input
-                  name="name"
-                  required
-                  maxlength="120"
-                  autocomplete="name" /></label
-              ><label
-                >Trade and service area <small>(optional)</small
-                ><input
-                  name="service"
-                  maxlength="160"
-                  autocomplete="organization"
-                  placeholder="e.g. Plumbing, Western Sydney"
-              /></label>
-            </div>
-            <fieldset class="contact-fields">
-              <legend>How can we contact you?</legend>
-              <p id="contactHelp" class="form-hint">
-                Phone or email. One is enough.
-              </p>
-              <div class="field-pair">
-                <label
-                  >Phone<input
-                    type="tel"
-                    name="phone"
-                    aria-describedby="contactHelp"
-                    maxlength="30"
-                    autocomplete="tel" /></label
-                ><label
-                  >Email<input
-                    type="email"
-                    name="email"
-                    aria-describedby="contactHelp"
-                    maxlength="254"
-                    autocomplete="email"
-                /></label>
-              </div>
-            </fieldset>
-            <label
-              >Existing website or what you need <small>(optional)</small
-              ><textarea
-                name="message"
-                rows="3"
-                maxlength="3000"
-                placeholder="e.g. I’m an electrician in Parramatta. I need a first website."
-              ></textarea></label
-            ><label class="consent"
-              ><input type="checkbox" name="consent" required /><span
-                >I agree to Simple Page contacting me about this enquiry.
-                <a href="/privacy-policy-2/">Privacy policy</a>.</span
-              ></label
-            ><button class="button" type="submit">
-              Request my website quote <span aria-hidden="true">↗</span>
-            </button>
-            <p class="form-status" role="status" aria-live="polite"></p>
-            <p class="small">
-              This sends an enquiry, not an order. We’ll discuss your needs and
-              confirm the quote before you decide whether to go ahead.
-            </p>
-          </form>
-        </div>
-      </section>
       <section class="process-section">
         <div class="wrap">
           <h2>Know what happens next.</h2>
           <ol class="steps">
             <li>
-              <h3>Tell us what you need</h3>
+              <h3>Get your page plan</h3>
               <p>
-                Share your trade, service area and current website if you have one.
-                We’ll discuss the customers and jobs you want it to support.
+                We’ll suggest how to use your three pages and show you an example from our work. Let us know what you’d change.
               </p>
             </li>
             <li>
@@ -366,7 +286,7 @@
         <button type="button" data-analytics-choice="declined">No thanks</button>
       </div>
     </section>
-    <div class="mobile-enquiry"><span>$997 + $30/mo<small>Both include GST</small></span><a class="button" href="#contact">Request my quote ↗</a></div>
+    <div class="mobile-enquiry"><span>$997 + $30/mo<small>Both include GST</small></span><a class="button" href="#contact">Get my page plan ↗</a></div>
     <button
       id="chatToggle"
       class="chat-toggle"

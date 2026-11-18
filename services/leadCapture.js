@@ -12,6 +12,15 @@ const {
 const { extractAttribution } = require("./attribution");
 function validateLead(body, source) {
   const data = {};
+  // The main form accepts a single reply address. Keep the separate fields for
+  // chat, older clients and any open form from before the page update.
+  const combinedReply = source === "contact_form" && body.reply_to != null;
+  if (combinedReply) {
+    if (typeof body.reply_to !== "string" || !body.reply_to.trim())
+      return { error: "Enter a phone number or email address.", field: "reply_to" };
+    const reply = body.reply_to.trim();
+    body = { ...body, phone: "", email: "", [reply.includes("@") ? "email" : "phone"]: reply };
+  }
   for (const [field, max] of Object.entries({
     name: 120,
     email: 254,
@@ -24,21 +33,23 @@ function validateLead(body, source) {
       return { error: "Please check your contact details." };
     data[field] = (body[field] || "").trim();
     if (data[field].length > max || /\x00/.test(data[field]))
-      return { error: `Please shorten the ${field.replace("_", " ")} field.` };
+      return { error: `Please shorten the ${field.replace("_", " ")} field.`, field: combinedReply && ["phone", "email"].includes(field) ? "reply_to" : field };
   }
-  if (!data.name) return { error: "Please enter your name." };
+  if (!data.name) return { error: "Please enter your name.", field: "name" };
   if (
     data.email &&
     (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email) ||
       /[\r\n]/.test(data.email))
   )
-    return { error: "Please enter a valid email address.", field: "email" };
+    return { error: "Please enter a valid email address.", field: combinedReply ? "reply_to" : "email" };
   if (
     data.phone &&
     (!/^[+\d\s().-]{8,30}$/.test(data.phone) ||
       data.phone.replace(/\D/g, "").length < 8)
   )
-    return { error: "Please enter a valid phone number.", field: "phone" };
+    return combinedReply
+      ? { error: "Enter a valid phone number or email address.", field: "reply_to" }
+      : { error: "Please enter a valid phone number.", field: "phone" };
   if (source === "chat_booking" && !data.phone && !data.email)
     return {
       error: "Please provide a phone number or email for your callback.",
@@ -80,6 +91,7 @@ function validateLead(body, source) {
     )
       ? body.event_id
       : crypto.randomUUID();
+  data.pagePlan = combinedReply;
   data.attribution = extractAttribution(body);
   return { data };
 }
@@ -112,8 +124,12 @@ async function captureLead(data, source, { database, mailer }) {
       attribution.gclid,
       attribution.fbclid,
       attribution.msclkid,
-      JSON.stringify({ consent: true, consent_at: new Date().toISOString() }),
-      data.service || "Tradie website enquiry",
+      JSON.stringify({
+        consent: true,
+        consent_at: new Date().toISOString(),
+        ...(data.pagePlan ? { request: "three_page_plan" } : {}),
+      }),
+      data.service || (data.pagePlan ? "Three-page website plan" : "Tradie website enquiry"),
       attribution.referrer_host,
       attribution.visit_id,
       attribution.latest_utm_source,
@@ -140,6 +156,7 @@ async function captureLead(data, source, { database, mailer }) {
     reference = `SP-${id}`,
     callback = source === "chat_booking" || source === "chatbot";
   const fields = [
+    ...(data.pagePlan ? [{ label: "Requested", value: "Three-page website plan and relevant work example" }] : []),
     { label: "Name", value: data.name },
     { label: "Phone", value: data.phone || "Not supplied" },
     { label: "Email", value: data.email || "Not supplied" },
@@ -195,6 +212,14 @@ async function captureLead(data, source, { database, mailer }) {
     [notificationSent ? "sent" : "failed", id],
   );
   if (data.email) {
+    const receiptIntro = data.pagePlan
+      ? "We’ll reply with a relevant website example and a suggested plan for your three pages."
+      : callback
+        ? "We’ve received your callback request. The team will contact you to arrange the next step."
+        : "We’ve received your message. The team will contact you about your enquiry.";
+    const receiptFooter = callback
+      ? "A callback request is not a confirmed appointment. Call (02) 8958 8545 if you would prefer to speak with us."
+      : "Prefer to speak with us? Call (02) 8958 8545.";
     try {
       await mailer.messages().send({
         from,
@@ -204,17 +229,14 @@ async function captureLead(data, source, { database, mailer }) {
         html: brandedEmail({
           eyebrow: "Enquiry received",
           title: `Thank you, ${data.name}`,
-          intro: callback
-            ? "We’ve received your callback request. The team will contact you to arrange the next step."
-            : "We’ve received your message. The team will contact you about your enquiry.",
+          intro: receiptIntro,
           body:
             fieldTable(fields) +
             messageBlock("Your message", data.message) +
             messageBlock("Your chat conversation", data.conversation),
-          footer:
-            "A callback request is not a confirmed appointment. Call (02) 8958 8545 if you would prefer to speak with us.",
+          footer: receiptFooter,
         }),
-        text: `Thank you, ${data.name}. Your enquiry has been received.\nReference: ${reference}\nPreferred time: ${data.preferred_time || "As soon as possible"}\n\n${data.message}\n\n${data.conversation}\n\nA callback request is not a confirmed appointment. Call (02) 8958 8545 if you would prefer to speak with us.`,
+        text: `Thank you, ${data.name}. ${receiptIntro}\nReference: ${reference}\nPreferred time: ${data.preferred_time || "As soon as possible"}\n\n${data.message}\n\n${data.conversation}\n\n${receiptFooter}`,
       });
       confirmationSent = true;
     } catch (error) {
